@@ -12,7 +12,9 @@ public class RegisterRequests {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "ID", nullable = false)
+    private User user;
 
     @Column(name = "SELFIE_PHOTO")
     private String selfiePhoto;
@@ -29,8 +31,8 @@ public class RegisterRequests {
     @Column(name = "CIVIL_STATUS")
     private String civilStatus;
 
-    @Column(name = "REQUEST_STATUS")
-    private String requestStatus;
+    @Column(name = "APPROVED")
+    private boolean Approved;
 
 
 }

@@ -15,6 +15,10 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "ID", nullable = false)
+    private Account account;
+
     @Column(name = "DESCRIPTION")
     private String description;
 
