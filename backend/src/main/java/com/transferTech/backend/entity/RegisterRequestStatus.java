@@ -3,7 +3,7 @@ package com.transferTech.backend.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "register_request_status")
+@Table(name = "REGISTER_REQUEST_STATUS")
 public class RegisterRequestStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
