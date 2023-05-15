@@ -1,6 +1,6 @@
-package entity;
+package com.transferTech.backend.entity;
 
-import enumeration.ERole;
+import com.transferTech.backend.enumeration.ERole;
 import jakarta.persistence.*;
 
 public class Roles {

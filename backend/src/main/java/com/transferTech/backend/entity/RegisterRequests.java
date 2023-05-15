@@ -1,4 +1,4 @@
-package entity;
+package com.transferTech.backend.entity;
 
 import jakarta.persistence.Table;
 import lombok.Data;

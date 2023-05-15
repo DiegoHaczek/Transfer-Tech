@@ -1,4 +1,4 @@
-package entity;
+package com.transferTech.backend.entity;
 
 import lombok.Data;
 
