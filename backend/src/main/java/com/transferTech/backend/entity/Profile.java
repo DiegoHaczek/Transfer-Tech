@@ -15,6 +15,10 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "ID", nullable = false)
+    private User user;
+
     @Column(name = "AGE")
     private int age;
 
@@ -29,8 +33,5 @@ public class Profile {
 
     @Column(name = "PROFILE_IMG")
     private String profileImg;
-
-
-
 
 }

@@ -2,16 +2,20 @@ package com.transferTech.backend.entity;
 
 import com.transferTech.backend.enumeration.ERole;
 import jakarta.persistence.*;
+import lombok.Data;
 
-public class Roles {
+@Data
+@Entity
+@Table(name = "ROLES")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "NAME"
-            ,unique = true)
+    @Column(name = "NAME",
+            unique = true)
     private ERole name;
 
 }
