@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.Map;
 
 @Data
 @Entity
@@ -15,9 +16,21 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "TRANSFER_CODE",
+            unique = true)
+    private Long transferCode;
+
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "ID", nullable = false)
-    private Account account;
+    @JoinColumn(name = "receiver_account_id",
+            referencedColumnName = "ID",
+            nullable = false)
+    private Account receiverAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "sender_account_id",
+            referencedColumnName = "ID",
+            nullable = false)
+    private Account senderAccount;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -30,4 +43,8 @@ public class Transfer {
 
     @Column(name = "HOUR")
     private Time Hour;
+
+    private Map<String,String> generateProofOfPayment (){
+        return null;
+    }
 }

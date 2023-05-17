@@ -27,8 +27,7 @@ public class Account {
             orphanRemoval = true)
     private Set<Deposit> deposits;
 
-    @OneToMany(mappedBy = "account",
-            cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Transfer> transfers;
 

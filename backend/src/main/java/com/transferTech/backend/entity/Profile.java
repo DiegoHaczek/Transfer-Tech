@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Data
 @Entity
@@ -19,8 +20,8 @@ public class Profile {
     @JoinColumn(name = "user_id", referencedColumnName = "ID", nullable = false)
     private User user;
 
-    @Column(name = "AGE")
-    private int age;
+    @Column(name = "DATE_OF_BIRTH")
+    private Date dateOfBirth;
 
     @Column(name = "COUNTRY")
     private String country;

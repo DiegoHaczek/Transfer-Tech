@@ -27,6 +27,13 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Profile profile;
 
+    @OneToOne(mappedBy = "user")
+    private Account account;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID")
+    private List<User> contacts;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "ROLE_ID")
     @Enumerated(EnumType.STRING)

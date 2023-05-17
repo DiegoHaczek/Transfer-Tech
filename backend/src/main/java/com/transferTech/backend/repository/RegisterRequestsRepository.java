@@ -1,11 +1,11 @@
 package com.transferTech.backend.repository;
 
-import com.transferTech.backend.entity.RegisterRequests;
+import com.transferTech.backend.entity.ApprovalRequests;
 
 public interface RegisterRequestsRepository {
 
-    RegisterRequests create(RegisterRequests request);
-    RegisterRequests findById(Long id);
-    RegisterRequests update(RegisterRequests request);
-    void delete(RegisterRequests request);
+    ApprovalRequests create(ApprovalRequests request);
+    ApprovalRequests findById(Long id);
+    ApprovalRequests update(ApprovalRequests request);
+    void delete(ApprovalRequests request);
 }
