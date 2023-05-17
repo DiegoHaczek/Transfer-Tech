@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "REGISTER_REQUESTS")
-public class RegisterRequests {
+@Table(name = "APPROVAL_REQUESTS")
+public class ApprovalRequests {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
