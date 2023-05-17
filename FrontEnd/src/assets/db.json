@@ -1,33 +1,40 @@
-  {
-    "transferencias": [
-        {
-          "id": 0,
-          "name": "pedro",
-          "descripcion": "Blabalbal",
-          "monto": 10000,
-          "fecha": "20/8/1"
-        },
-        {
-            "id": 0,
-            "name": "pedro",
-            "descripcion": "Blabalbal",
-            "monto": 10000,
-            "fecha": "20/8/1"
-          },
-          {
-            "id": 0,
-            "name": "pedro",
-            "descripcion": "Blabalbal",
-            "monto": 10000,
-            "fecha": "20/8/1"
-          },
-          {
-            "id": 0,
-            "name": "pedro",
-            "descripcion": "Blabalbal",
-            "monto": 10000,
-            "fecha": "20/8/1"
-          }
-
-      ]
+{
+  "transferencias": [
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 10000,
+      "fecha": "20/8/1"
+    },
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 10000,
+      "fecha": "20/8/1"
+    },
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 10000,
+      "fecha": "20/8/1"
+    },
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 10000,
+      "fecha": "20/8/1"
+    }
+  ],
+  "clients": {
+    "id": 1,
+    "name": "Juan",
+    "account": 123456123456,
+    "credit": 123129312,
+    "cvt": 12323,
+    "alias": "pepino.amargo.sal"
   }
+}

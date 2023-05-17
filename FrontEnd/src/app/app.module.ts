@@ -11,6 +11,7 @@ import { InterfazClienteComponent } from './Components/Cliente/interfaz-cliente/
 import { InterfazAdminComponent } from './Components/Admin/interfaz-admin/interfaz-admin.component';
 import { CardClienteComponent } from './Components/Cliente/card-cliente/card-cliente.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,16 +21,16 @@ import { FormsModule } from '@angular/forms';
     InterfazClienteComponent,
     InterfazAdminComponent,
     CardClienteComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
