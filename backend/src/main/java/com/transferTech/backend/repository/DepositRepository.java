@@ -1,10 +1,7 @@
 package com.transferTech.backend.repository;
 
 import com.transferTech.backend.entity.Deposit;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DepositRepository {
-    Deposit create(Deposit deposit);
-    Deposit findById(int id);
-    Deposit update(Deposit deposit);
-    void delete(Deposit deposit);
+public interface DepositRepository extends JpaRepository<Deposit,Long> {
 }

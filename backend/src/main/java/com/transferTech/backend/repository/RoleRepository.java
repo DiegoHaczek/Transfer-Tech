@@ -1,11 +1,8 @@
 package com.transferTech.backend.repository;
 
 import com.transferTech.backend.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository {
+public interface RoleRepository extends JpaRepository<Role,Long> {
 
-    Role create(Role role);
-    Role findById(int id);
-    Role update(Role role);
-    void delete(Role role);
 }
