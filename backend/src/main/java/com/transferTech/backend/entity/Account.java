@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 
@@ -27,16 +28,7 @@ public class Account {
 
     @Column(name = "ACCOUNT_NUMBER",
             unique = true)
-    private int accountNumber;
-
-    @OneToMany(mappedBy = "account",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private Set<Deposit> deposits;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private Set<Transfer> transfers;
+    private BigInteger accountNumber;
 
     @Column(name = "ALIAS",
             unique = true)
@@ -50,19 +42,6 @@ public class Account {
     private String QR;
 
     @Column(name = "ACTIVE")
-    private boolean Active;
+    private boolean active;
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", accountNumber=" + accountNumber +
-                ", deposits=" + deposits +
-                ", transfers=" + transfers +
-                ", alias='" + alias + '\'' +
-                ", balance=" + balance +
-                ", QR='" + QR + '\'' +
-                ", Active=" + Active +
-                '}';
-    }
 }
