@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/user")
 public class UserController {
 
-
+    //TODO
+    //add contact
+    //delete contact
+    //get all contacts by Id
+    //create profile
+    //edit profile
+    //get By Role
+    //assign role
+    //delete role
 
 }
