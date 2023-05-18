@@ -6,8 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
@@ -44,11 +43,8 @@ public class Transfer {
     @Column(name = "AMOUNT")
     private Double amount;
 
-    @Column(name = "DATE")
-    private Date Date;
-
-    @Column(name = "HOUR")
-    private String Hour;
+    @Column(name = "DATE_TIME")
+    private LocalDateTime dateTime;
 
     private Map<String,String> generateProofOfPayment (){
         return null;

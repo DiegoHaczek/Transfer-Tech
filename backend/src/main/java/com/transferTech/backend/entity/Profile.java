@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.parameters.P;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -41,4 +42,7 @@ public class Profile {
     @Column(name = "PROFILE_IMG")
     private String profileImg;
 
+    public Profile(User user){
+        this.user=user;
+    }
 }
