@@ -9,7 +9,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [],
   imports: [
@@ -21,8 +24,24 @@ import {MatDividerModule} from '@angular/material/divider';
     MatButtonModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  exports:[MatToolbarModule, MatIconModule, MatCheckboxModule, MatChipsModule, MatButtonModule, MatSlideToggleModule, MatCardModule, MatDividerModule]
+  exports:[
+    MatToolbarModule, 
+    MatIconModule, 
+    MatCheckboxModule, 
+    MatChipsModule, 
+    MatButtonModule, 
+    MatSlideToggleModule, 
+    MatCardModule,
+    MatDividerModule, 
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule]
 })
 export class SharedModule { }

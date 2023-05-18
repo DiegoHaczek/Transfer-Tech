@@ -12,6 +12,7 @@ import { InterfazAdminComponent } from './Components/Admin/interfaz-admin/interf
 import { CardClienteComponent } from './Components/Cliente/card-cliente/card-cliente.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TableTransferenciaComponent } from './Components/Cliente/table-transferencia/table-transferencia.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     InterfazClienteComponent,
     InterfazAdminComponent,
     CardClienteComponent,
+    TableTransferenciaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+.mat-mdc-paginator {
+     background: transparent;
+    color: rgba(0, 0, 0, 0.87);
+    padding-bottom: 1rem;
+}
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+    background: none !important;
+}
+.demo-table {
+    width: 100%;
+    border-color: black;
+    
+  }
+  
+  .mat-mdc-row .mat-mdc-cell {
+    background: initial !important;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  .borde{
+    border-radius: 2rem !important;
+    
+  }

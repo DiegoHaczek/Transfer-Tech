@@ -1,0 +1,36 @@
+<div class="container mt-4 pt-3 mat-elevation-z8 borde">
+    <H2 class="text-center">Ultimos Movimientos</H2>
+
+    <table  mat-table [dataSource]="table" class=" demo-table"  matSort>
+     
+        <ng-container   matColumnDef="name">
+          <th   mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="monto">
+          <th mat-header-cell *matHeaderCellDef> Monto </th>
+          <td mat-cell *matCellDef="let element"> ${{element.monto}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha}}  </td>
+        </ng-container>
+        
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    >
+</mat-paginator> 
+
+</div>
+   
