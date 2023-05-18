@@ -1,11 +1,17 @@
 package com.transferTech.backend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -38,4 +44,9 @@ public class User {
     @JoinColumn(name = "ROLE_ID")
     @Enumerated(EnumType.STRING)
     private List<Role> role;
+
+
+    public void addContact(User contact){
+        contacts.add(contact);
+    }
 }

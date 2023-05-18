@@ -1,10 +1,10 @@
 package com.transferTech.backend.repository;
 
 import com.transferTech.backend.entity.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AccountRepository {
-    Account create(Account account);
-    Account findById(int id);
-    Account update(Account account);
-    void delete(Account account);
+import java.util.Optional;
+
+public interface AccountRepository extends JpaRepository<Account,Long> {
+    Optional<Account> findByAccountNumber(int accountNumber);
 }

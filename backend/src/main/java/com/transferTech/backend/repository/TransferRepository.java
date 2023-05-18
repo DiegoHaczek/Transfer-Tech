@@ -1,11 +1,8 @@
 package com.transferTech.backend.repository;
 
 import com.transferTech.backend.entity.Transfer;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TransferRepository {
+public interface TransferRepository extends JpaRepository<Transfer,Long> {
 
-    Transfer create(Transfer transfer);
-    Transfer findById(int id);
-    Transfer update(Transfer transfer);
-    void delete(Transfer transfer);
 }

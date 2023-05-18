@@ -1,13 +1,19 @@
 package com.transferTech.backend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Time;
 import java.util.Date;
 import java.util.Map;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "TRANSFERS")
 public class Transfer {
@@ -42,7 +48,7 @@ public class Transfer {
     private Date Date;
 
     @Column(name = "HOUR")
-    private Time Hour;
+    private String Hour;
 
     private Map<String,String> generateProofOfPayment (){
         return null;
