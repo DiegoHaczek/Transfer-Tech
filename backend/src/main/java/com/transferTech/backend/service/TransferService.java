@@ -2,12 +2,14 @@ package com.transferTech.backend.service;
 
 import com.transferTech.backend.dto.DepositRequestDto;
 import com.transferTech.backend.dto.MessageResponse;
+import com.transferTech.backend.dto.MovementDto;
 import com.transferTech.backend.dto.TransferRequestDto;
 import com.transferTech.backend.entity.Account;
 import com.transferTech.backend.entity.Transfer;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
+import com.transferTech.backend.mapper.MovementDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
 import com.transferTech.backend.repository.TransferRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +20,8 @@ import org.springframework.stereotype.Service;
 import java.lang.constant.Constable;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 @Service
@@ -30,6 +30,7 @@ public class TransferService {
 
     private final TransferRepository transferRepository;
     private final AccountRepository accountRepository;
+    private final MovementDtoMapper mapper;
 
     public MessageResponse transfer(Long senderAccountId, TransferRequestDto dto){
 
@@ -62,12 +63,14 @@ public class TransferService {
     public MessageResponse deposit(Long accountId, DepositRequestDto dto){
         Account receiver = accountRepository.findById(accountId)
                 .orElseThrow(()-> new NotFoundException("Receiver account not found"));
+
         Transfer newTransfer = Transfer.builder()
                 .receiverAccount(receiver)
                 .amount(dto.getAmount())
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
                 .build();
+
         transferRepository.save(newTransfer);
         receiver.setBalance(receiver.getBalance()+dto.getAmount());
         accountRepository.save(receiver);
@@ -77,5 +80,13 @@ public class TransferService {
     public Long generateTransferCode() {
         Random rand = new Random();
         return rand.nextLong(100000000,999999999);
+    }
+
+    public List<MovementDto> getAllMovementsById(Long id){
+        return  transferRepository.getAllMovementsByUserId(id)
+                .stream()
+                .map(mapper::QueryResultRowToDto)
+                .toList();
+
     }
 }

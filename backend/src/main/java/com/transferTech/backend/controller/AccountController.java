@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/account")
 @RequiredArgsConstructor
@@ -19,11 +22,31 @@ public class AccountController {
 
     //TODO
     //getById
-    //getByAlias
-    //getByAccountNumber
-    //getAll
     //getAll movements By Id
     //deleteAccount
+    @GetMapping("/movements/{userId}")
+    public ResponseEntity<List<MovementDto>> getMovementsById(@PathVariable Long userId) {
+        return new ResponseEntity<>(transferService.getAllMovementsById(userId),HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<AccountResponseDto>> getAllAccounts() {
+        return new ResponseEntity<>(accountService.getAllAccounts(),HttpStatus.OK);
+    }
+
+    @GetMapping("/info/alias")
+    public ResponseEntity<AccountInfoDto> getAccountInfoByAlias(
+            @RequestBody Map<String,String> alias) {
+        return new ResponseEntity<>(accountService.getAccountInfoByAlias(
+                alias.getOrDefault("alias","")),HttpStatus.OK);
+    }
+
+    @GetMapping("/info/account_number")
+    public ResponseEntity<AccountInfoDto> getAccountInfoByAccountNumber(
+            @RequestBody Map<String,String> alias) {
+        return new ResponseEntity<>(accountService.getAccountInfoByAccountNumber(
+                alias.getOrDefault("account_number","1")),HttpStatus.OK);
+    }
 
     @PostMapping("{accountId}/transfer")
     public ResponseEntity<MessageResponse> transfer(
