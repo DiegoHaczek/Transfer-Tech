@@ -1,19 +1,19 @@
 <h1>Hola, {{ client.name }}</h1>
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mt-4">
   <div><h3>Tu cuenta</h3></div>
   <div>
     <mat-slide-toggle [(ngModel)]="saldo">Ver saldo </mat-slide-toggle>
   </div>
 </div>
 <div>
-  <mat-card class="example-card">
+  <mat-card class="example-card mt-4">
     <mat-card-header>
       <mat-card-subtitle>Cuenta unica</mat-card-subtitle>
       <mat-card-title>{{ client.account }}</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="mt-4">
       <div class="d-flex justify-content-between">
-        <h1 *ngIf="saldo">{{ client.credit }}</h1>
+        <h1 *ngIf="saldo">{{ client.credit | currency }}</h1>
         <button mat-button color="accent">
           Plazo fijo
           <mat-icon
@@ -24,10 +24,10 @@
         </button>
       </div>
 
-      <mat-divider></mat-divider>
+      <mat-divider class="mt-5"></mat-divider>
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions >
       <button mat-button color="accent">
         <mat-icon
           aria-hidden="false"

@@ -4,114 +4,130 @@
       "id": 0,
       "name": "pedro",
       "descripcion": "Blabalbal",
-      "monto": 10000,
+      "monto": 85000,
+      "fecha": "21/8/1",
+      "tipo": true
+    },
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 47000,
+      "fecha": "22/8/1",
+      "tipo": true
+      
+    },
+    {
+      "id": 0,
+      "name": "pedro",
+      "descripcion": "Blabalbal",
+      "monto": 36000,
+      "fecha": "23/8/1",
+      "tipo": true
+    },
+    {
+      "id": 0,
+      "name": "Juan",
+      "descripcion": "Blabalbal",
+      "monto": 52000,
+      "fecha": "24/8/1",
+      "tipo": true
+    },
+    {
+      "id": 0,
+      "name": "Juan",
+      "descripcion": "Blabalbal",
+      "monto": 85000,
+      "fecha": "25/8/1",
+      "tipo": true
+    },
+    {
+      "id": 0,
+      "name": "Juan",
+      "descripcion": "Blabalbal",
+      "monto": 23000,
       "fecha": "20/8/1",
-      "tipo":" "
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Tomas",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 65000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Tomas",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 78000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Tomas",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 65000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Sofia",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 30000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Sofia",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 40000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Sofia",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 90000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Sofia",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 19000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Julieta",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 15000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Julieta",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 15000,
+      "fecha": "20/8/1",
+      "tipo": false
     },
     {
       "id": 0,
-      "name": "pedro",
+      "name": "Julieta",
       "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
-    },
-    {
-      "id": 0,
-      "name": "pedro",
-      "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
-    },
-    {
-      "id": 0,
-      "name": "pedro",
-      "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
-    },
-    {
-      "id": 0,
-      "name": "pedro",
-      "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
-    },
-    {
-      "id": 0,
-      "name": "pedro",
-      "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
-    },
-    {
-      "id": 0,
-      "name": "pedro",
-      "descripcion": "Blabalbal",
-      "monto": 10000,
-      "fecha": "20/8/1"
+      "monto": 15000,
+      "fecha": "20/8/1",
+      "tipo": false
     }
   ],
   "clients": {

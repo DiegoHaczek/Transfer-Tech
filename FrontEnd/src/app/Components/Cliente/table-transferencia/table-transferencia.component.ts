@@ -18,6 +18,7 @@ export class TableTransferenciaComponent {
   'descripcion',
   'monto',
   'fecha',
+  'tipo'
 ];
 table = new MatTableDataSource<ITransfer>();
 
