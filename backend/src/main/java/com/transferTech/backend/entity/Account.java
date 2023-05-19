@@ -37,8 +37,10 @@ public class Account {
     @Column(name = "BALANCE")
     private Double balance;
 
-    @Column(name = "QR",
-            unique = true)
+    @Column(name = "QR"
+     //       ,unique = true
+
+    )
     private String QR;
 
     @Column(name = "ACTIVE")

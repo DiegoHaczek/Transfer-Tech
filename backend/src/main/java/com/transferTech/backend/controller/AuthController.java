@@ -20,6 +20,9 @@ import javax.management.remote.JMXAuthenticator;
 
     private final AuthService authService;
 
+    //TODO
+    //check Approval Request
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody @Valid
                                           RegisterRequestDto request) {

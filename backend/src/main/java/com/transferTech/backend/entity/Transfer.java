@@ -33,8 +33,7 @@ public class Transfer {
 
     @ManyToOne
     @JoinColumn(name = "sender_account_id",
-            referencedColumnName = "ID",
-            nullable = false)
+            referencedColumnName = "ID")
     private Account senderAccount;
 
     @Column(name = "DESCRIPTION")
