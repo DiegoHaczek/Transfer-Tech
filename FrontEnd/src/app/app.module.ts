@@ -13,6 +13,8 @@ import { CardClienteComponent } from './Components/Cliente/card-cliente/card-cli
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableTransferenciaComponent } from './Components/Cliente/table-transferencia/table-transferencia.component';
+import { ClientDashboardComponent } from './Components/client-dashboard/client-dashboard.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,8 @@ import { TableTransferenciaComponent } from './Components/Cliente/table-transfer
     InterfazAdminComponent,
     CardClienteComponent,
     TableTransferenciaComponent,
+    ClientDashboardComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
