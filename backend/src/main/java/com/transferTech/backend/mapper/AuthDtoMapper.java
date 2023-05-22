@@ -1,6 +1,6 @@
 package com.transferTech.backend.mapper;
 
-import com.transferTech.backend.dto.RegisterRequestDto;
+import com.transferTech.backend.dto.auth.RegisterRequestDto;
 import com.transferTech.backend.entity.Role;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.enumeration.ERole;
@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component

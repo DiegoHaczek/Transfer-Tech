@@ -1,4 +1,4 @@
-package com.transferTech.backend.dto;
+package com.transferTech.backend.dto.movement;
 
 import com.transferTech.backend.entity.Account;
 import jakarta.persistence.*;

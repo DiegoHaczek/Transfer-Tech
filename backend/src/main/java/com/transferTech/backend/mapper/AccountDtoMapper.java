@@ -1,7 +1,7 @@
 package com.transferTech.backend.mapper;
 
-import com.transferTech.backend.dto.AccountInfoDto;
-import com.transferTech.backend.dto.AccountResponseDto;
+import com.transferTech.backend.dto.account.AccountInfoDto;
+import com.transferTech.backend.dto.account.AccountResponseDto;
 import com.transferTech.backend.entity.Account;
 import org.springframework.stereotype.Component;
 

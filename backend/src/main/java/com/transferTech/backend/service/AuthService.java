@@ -1,23 +1,16 @@
 package com.transferTech.backend.service;
 
-import com.transferTech.backend.dto.AuthenticationRequestDto;
-import com.transferTech.backend.dto.AuthenticationResponseDto;
-import com.transferTech.backend.dto.RegisterRequestDto;
-import com.transferTech.backend.entity.Account;
+import com.transferTech.backend.dto.auth.AuthenticationRequestDto;
+import com.transferTech.backend.dto.auth.AuthenticationResponseDto;
+import com.transferTech.backend.dto.auth.RegisterRequestDto;
 import com.transferTech.backend.entity.Profile;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.AlreadyExistException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AuthDtoMapper;
-import com.transferTech.backend.repository.AccountRepository;
 import com.transferTech.backend.repository.ProfileRepository;
 import com.transferTech.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.env.Profiles;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.parameters.P;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

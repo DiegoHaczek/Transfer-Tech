@@ -1,13 +1,16 @@
 package com.transferTech.backend.service;
 
-import com.transferTech.backend.dto.AccountInfoDto;
-import com.transferTech.backend.dto.AccountResponseDto;
+import com.transferTech.backend.dto.MessageResponse;
+import com.transferTech.backend.dto.account.AccountInfoDto;
+import com.transferTech.backend.dto.account.AccountResponseDto;
 import com.transferTech.backend.entity.Account;
 import com.transferTech.backend.entity.User;
+import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -72,6 +75,11 @@ public class AccountService {
     public String generateQR(){
         return "";
     }
+
+    public AccountResponseDto getById(Long accountId) {
+        return mapper.EntityToDto(accountRepository.findById(accountId)
+                .orElseThrow(()-> new NotFoundException("Account not found")));
+    }
     public List<AccountResponseDto> getAllAccounts() {
         return accountRepository.findAll().stream()
                 .map(mapper::EntityToDto)
@@ -86,5 +94,15 @@ public class AccountService {
         Account account = accountRepository.findByAccountNumber(new BigInteger(accountNumber))
                 .orElseThrow(()-> new NotFoundException("Account not found"));
         return mapper.EntityToInfoDto(account);
+    }
+
+    public MessageResponse deactivateAccount(Long accountId) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(()-> new NotFoundException("Account not found"));
+        if (!account.isActive()){
+            throw new InputNotValidException("The account is already inactive");
+        }
+        account.deactive();
+        return new MessageResponse(400,"The account is now inactive");
     }
 }

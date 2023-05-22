@@ -1,4 +1,4 @@
-package com.transferTech.backend.dto;
+package com.transferTech.backend.dto.movement;
 
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +13,6 @@ public class MovementDto {
     private String userName;
     private String type;
     private String description;
-    private Timestamp dateTime;
+    private String dateTime;
     private Double amount;
 }
