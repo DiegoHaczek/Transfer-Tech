@@ -1,16 +1,14 @@
 package com.transferTech.backend.controller;
 
-import com.transferTech.backend.dto.AuthenticationRequestDto;
-import com.transferTech.backend.dto.AuthenticationResponseDto;
-import com.transferTech.backend.dto.RegisterRequestDto;
+import com.transferTech.backend.dto.auth.AuthenticationRequestDto;
+import com.transferTech.backend.dto.auth.AuthenticationResponseDto;
+import com.transferTech.backend.dto.auth.RegisterRequestDto;
 import com.transferTech.backend.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.management.remote.JMXAuthenticator;
 
 @RestController
 @RequestMapping("/api/v1/auth")

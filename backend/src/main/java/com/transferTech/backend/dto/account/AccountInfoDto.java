@@ -1,4 +1,4 @@
-package com.transferTech.backend.dto;
+package com.transferTech.backend.dto.account;
 
 import lombok.Builder;
 import lombok.Data;

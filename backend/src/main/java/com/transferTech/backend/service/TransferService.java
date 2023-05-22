@@ -1,28 +1,21 @@
 package com.transferTech.backend.service;
 
-import com.transferTech.backend.dto.DepositRequestDto;
+import com.transferTech.backend.dto.movement.DepositRequestDto;
 import com.transferTech.backend.dto.MessageResponse;
-import com.transferTech.backend.dto.MovementDto;
-import com.transferTech.backend.dto.TransferRequestDto;
+import com.transferTech.backend.dto.movement.MovementDto;
+import com.transferTech.backend.dto.movement.TransferRequestDto;
 import com.transferTech.backend.entity.Account;
 import com.transferTech.backend.entity.Transfer;
-import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.MovementDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
 import com.transferTech.backend.repository.TransferRepository;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.bridge.Message;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.lang.constant.Constable;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -49,14 +42,12 @@ public class TransferService {
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
                 .description(dto.getDescription()).build();
-
         transferRepository.save(newTransfer);
 
-        receiver.setBalance(receiver.getBalance()+dto.getAmount());
-        sender.setBalance(sender.getBalance()-dto.getAmount());
-
-        accountRepository.save(sender);
+        receiver.addBalance(dto.getAmount());
+        sender.subtractBalance(dto.getAmount());
         accountRepository.save(receiver);
+        accountRepository.save(sender);
 
         return new MessageResponse(400,"Successful Transfer");
     }
@@ -64,24 +55,23 @@ public class TransferService {
         Account receiver = accountRepository.findById(accountId)
                 .orElseThrow(()-> new NotFoundException("Receiver account not found"));
 
-        Transfer newTransfer = Transfer.builder()
+        Transfer newDeposit = Transfer.builder()
                 .receiverAccount(receiver)
                 .amount(dto.getAmount())
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
                 .build();
 
-        transferRepository.save(newTransfer);
-        receiver.setBalance(receiver.getBalance()+dto.getAmount());
+        transferRepository.save(newDeposit);
+        receiver.addBalance(dto.getAmount());
         accountRepository.save(receiver);
 
         return new MessageResponse(400,"Successful Deposit");
-    };
+    }
     public Long generateTransferCode() {
         Random rand = new Random();
         return rand.nextLong(100000000,999999999);
     }
-
     public List<MovementDto> getAllMovementsById(Long id){
         return  transferRepository.getAllMovementsByUserId(id)
                 .stream()

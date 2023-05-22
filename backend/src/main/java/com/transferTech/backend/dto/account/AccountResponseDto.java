@@ -1,11 +1,8 @@
-package com.transferTech.backend.dto;
+package com.transferTech.backend.dto.account;
 
-import com.transferTech.backend.entity.User;
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
-import java.math.BigInteger;
 
 @Data
 @Builder

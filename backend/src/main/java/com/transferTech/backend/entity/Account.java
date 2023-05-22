@@ -46,4 +46,15 @@ public class Account {
     @Column(name = "ACTIVE")
     private boolean active;
 
+    public void subtractBalance(Double amount){
+        this.balance-=amount;
+    }
+
+    public void addBalance(Double amount){
+        this.balance+=amount;
+    }
+
+    public void deactive(){
+        this.active=false;
+    }
 }

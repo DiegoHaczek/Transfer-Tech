@@ -1,6 +1,11 @@
 package com.transferTech.backend.controller;
 
 import com.transferTech.backend.dto.*;
+import com.transferTech.backend.dto.account.AccountInfoDto;
+import com.transferTech.backend.dto.account.AccountResponseDto;
+import com.transferTech.backend.dto.movement.DepositRequestDto;
+import com.transferTech.backend.dto.movement.MovementDto;
+import com.transferTech.backend.dto.movement.TransferRequestDto;
 import com.transferTech.backend.service.AccountService;
 import com.transferTech.backend.service.TransferService;
 import jakarta.validation.Valid;
@@ -20,18 +25,15 @@ public class AccountController {
     private final AccountService accountService;
     private final TransferService transferService;
 
-    //TODO
-    //getById
-    //getAll movements By Id
-    //deleteAccount
-    @GetMapping("/movements/{userId}")
-    public ResponseEntity<List<MovementDto>> getMovementsById(@PathVariable Long userId) {
-        return new ResponseEntity<>(transferService.getAllMovementsById(userId),HttpStatus.OK);
-    }
-
     @GetMapping("")
     public ResponseEntity<List<AccountResponseDto>> getAllAccounts() {
         return new ResponseEntity<>(accountService.getAllAccounts(),HttpStatus.OK);
+    }
+
+    @GetMapping("/{accountId}")
+    public ResponseEntity<AccountResponseDto> getAccountById(
+            @PathVariable Long accountId) {
+        return new ResponseEntity<>(accountService.getById(accountId),HttpStatus.OK);
     }
 
     @GetMapping("/info/alias")
@@ -48,15 +50,25 @@ public class AccountController {
                 alias.getOrDefault("account_number","1")),HttpStatus.OK);
     }
 
-    @PostMapping("{accountId}/transfer")
+    @PostMapping("/{accountId}/transfer")
     public ResponseEntity<MessageResponse> transfer(
             @RequestBody @Valid TransferRequestDto request, @PathVariable Long accountId) {
         return new ResponseEntity<>(transferService.transfer(accountId,request),HttpStatus.OK);
     }
 
-    @PostMapping("{accountId}/deposit")
+    @PostMapping("/{accountId}/deposit")
     public ResponseEntity<MessageResponse> deposit(
-            @RequestBody @Valid DepositRequestDto request,@PathVariable Long accountId) {
+            @RequestBody @Valid DepositRequestDto request, @PathVariable Long accountId) {
         return new ResponseEntity<>(transferService.deposit(accountId,request), HttpStatus.OK);
+    }
+
+    @GetMapping("/{accountId}/movements")
+    public ResponseEntity<List<MovementDto>> getMovementsById(@PathVariable Long accountId) {
+        return new ResponseEntity<>(transferService.getAllMovementsById(accountId),HttpStatus.OK);
+    }
+
+    @PutMapping("/{accountId}/deactivate")
+    public ResponseEntity<MessageResponse> deactivate(@PathVariable Long accountId) {
+        return new ResponseEntity<>(accountService.deactivateAccount(accountId),HttpStatus.OK);
     }
 }

@@ -1,4 +1,4 @@
-package com.transferTech.backend.dto;
+package com.transferTech.backend.dto.auth;
 
 import lombok.*;
 import jakarta.validation.constraints.*;

@@ -16,8 +16,8 @@ public interface TransferRepository extends JpaRepository<Transfer,Long> {
     @Query(value = """
                  select
                  (case when sender_account_id is null then 'Deposito'
-                  when sender_account_id= :Id then 'Transferencia Recibida'
-                 else 'Transferencia Enviada' end) as type,*
+                  when sender_account_id= :Id then 'Transferencia Enviada'
+                 else 'Transferencia Recibida' end) as type,*
                  from transfers where sender_account_id = :Id or receiver_account_id = :Id ;
               """
             ,nativeQuery=true)
