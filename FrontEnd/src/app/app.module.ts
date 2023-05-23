@@ -13,6 +13,7 @@ import { CardClienteComponent } from './Components/Cliente/card-cliente/card-cli
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableTransferenciaComponent } from './Components/Cliente/table-transferencia/table-transferencia.component';
+import { pipeTransaccion } from './Utils/pipeTransaccion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { TableTransferenciaComponent } from './Components/Cliente/table-transfer
     InterfazAdminComponent,
     CardClienteComponent,
     TableTransferenciaComponent,
+    pipeTransaccion
   ],
   imports: [
     BrowserModule,

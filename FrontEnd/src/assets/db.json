@@ -85,7 +85,7 @@
       "id": 0,
       "name": "Sofia",
       "descripcion": "Blabalbal",
-      "monto": 40000,
+      "monto": 40900,
       "fecha": "20/8/1",
       "tipo": false
     },
@@ -132,7 +132,7 @@
   ],
   "clients": {
     "id": 1,
-    "name": "Juan",
+    "name": "Juan Perez",
     "account": 123456123456,
     "credit": 123129312,
     "cvt": 12323,

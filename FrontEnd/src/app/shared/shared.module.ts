@@ -13,35 +13,27 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatBadgeModule} from '@angular/material/badge';
+
+const shared=[
+  
+  MatToolbarModule,
+  MatIconModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatButtonModule,
+  MatSlideToggleModule,
+  MatCardModule,
+  MatDividerModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatBadgeModule,
+]
 @NgModule({
   declarations: [],
-  imports: [
-  
-    MatToolbarModule,
-    MatIconModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatCardModule,
-    MatDividerModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSortModule
-  ],
-  exports:[
-    MatToolbarModule, 
-    MatIconModule, 
-    MatCheckboxModule, 
-    MatChipsModule, 
-    MatButtonModule, 
-    MatSlideToggleModule, 
-    MatCardModule,
-    MatDividerModule, 
-    MatTableModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSortModule]
+  imports:shared,
+  exports:shared
 })
 export class SharedModule { }

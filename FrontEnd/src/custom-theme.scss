@@ -9,17 +9,17 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 $custom-primary-map: (
-    50 : #F7FEE7,
-    100 : #ECFCCB,
-    200 : #D9F99D,
-    300 : #BEF264,
-    400 : #A3E635,
-    500 : #BEF264,
-    600 : #65A30D,
-    700 : #4D7C0F,
-    800 : #40680C,
-    900 : #365314,
-    950:  #1A2E05        ,
+    50  : #EAEAFF,
+    100 : #CACBFD,
+    200 : #A6A9FC,
+    300 : #7F87FC,
+    400 : #6069F9,
+    500 : #424BF5,
+    600 : #3D42E9,
+    700 : #3335DC,
+    800 : #2A28D1,
+    900 : #1700C0,
+    950 : #09004D        ,
     contrast: (
          50 : #FAFAFA,
         100 : #F5F5F5,

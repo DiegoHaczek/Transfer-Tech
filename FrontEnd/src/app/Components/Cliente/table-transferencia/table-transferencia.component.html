@@ -1,40 +1,52 @@
-<div class="container mt-4 pt-3 mat-elevation-z8 borde">
+<!-- <div class="container mt-4 pt-3 mat-elevation-z8 borde text-end">
     <H2 class="text-center">Ultimos Movimientos</H2>
 
-    <table  mat-table [dataSource]="table" class=" demo-table"  matSort>
+    <table  mat-table [dataSource]="table"  class=" demo-table"  matSort>
      
         <ng-container   matColumnDef="name">
-          <th   mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <th class="text-center" mat-header-cell *matHeaderCellDef > Nombre </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="descripcion">
-          <th mat-header-cell *matHeaderCellDef > Descripcion </th>
-          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
-        </ng-container>
+
         
         <ng-container matColumnDef="monto">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
-          <td mat-cell *matCellDef="let element"> {{element.monto |currency}} </td>
+          <th class="text-center"mat-header-cell *matHeaderCellDef > Monto </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.monto |currency}} </td>
         </ng-container>
     
         <ng-container matColumnDef="fecha">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha}}  </td>
+          <th class="text-center"mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td  class="text-center" mat-cell *matCellDef="let element"> {{element.fecha}}  </td>
         </ng-container>
-        <ng-container matColumnDef="tipo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
-          <td mat-cell *matCellDef="let element"> {{element.tipo}}  </td>
-        </ng-container>
+      
         
     
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
-     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    >
-</mat-paginator> 
+    <button mat-button class="me-3 mb-3" color="accent">Ver Todos <mat-icon>keyboard_arrow_right</mat-icon> </button>
+  
+    
+</div> -->
+<div class="container-movimientos">
 
+   <div class="container-title">
+
+   <p class="title" > Ultimos Movimientos </p>
+
+  </div>
+  <div *ngFor="let transferencia of transfer" class="transferencia" >
+<div class="datos-cliente" >
+  <img class="icon" src="../../../../assets/FotoPerfil.png" alt="">
+  <div class="container-text">
+    <div class="operacion" > Transferencia {{transferencia.tipo|Transaccion}} </div>
+    <div class="contacto">a {{transferencia.name}} </div>
+  </div>
 </div>
-   
+<div class="fecha-monto" >
+<div class="monto"> {{transferencia.monto |currency}} </div>
+<div class="fecha">{{transferencia.fecha}} </div>
+</div>
+  </div>
+</div>
