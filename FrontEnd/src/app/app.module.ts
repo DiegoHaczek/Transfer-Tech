@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableTransferenciaComponent } from './Components/Cliente/table-transferencia/table-transferencia.component';
 import { pipeTransaccion } from './Utils/pipeTransaccion';
+import { ClientDashboardComponent } from './Components/client-dashboard/client-dashboard.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,10 @@ import { pipeTransaccion } from './Utils/pipeTransaccion';
     InterfazAdminComponent,
     CardClienteComponent,
     TableTransferenciaComponent,
-    pipeTransaccion
+    pipeTransaccion,
+    ClientDashboardComponent,
+    PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,
