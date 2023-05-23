@@ -1,28 +1,6 @@
-.mat-mdc-paginator {
-  background: transparent;
-  color: rgba(0, 0, 0, 0.87);
-  padding-bottom: 1rem;
-}
-.mat-mdc-table tbody,
-.mat-mdc-table tfoot,
-.mat-mdc-table thead,
-.mat-mdc-cell,
-.mat-mdc-footer-cell,
-.mat-mdc-header-row,
-.mat-mdc-row,
-.mat-mdc-footer-row,
-.mat-mdc-table .mat-mdc-header-cell {
-  background: none !important;
-}
-.demo-table {
-  width: 100%;
-  border-color: black;
-}
 
-.borde {
-  border-radius: 2rem !important;
-  background-color: #fafafa;
-}
+
+
 .container-movimientos {
   display: flex;
   flex-direction: column;
@@ -168,4 +146,20 @@ flex: none;
 order: 0;
 flex-grow: 0;
 border-radius: 10rem;
+}
+.footer{
+ box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 24px 16px 16px;
+gap: 10px;
+max-width: 456px;
+max-height: 64px;
+border-bottom: 1px solid #E5E5E5;
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
 }
