@@ -18,6 +18,8 @@ import { ClientDashboardComponent } from './Components/client-dashboard/client-d
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { TransferenciasComponent } from './Components/Cliente/Transferencia/transferencias/transferencias.component';
 import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-cuenta/nueva-cuenta.component';
+import { AuthModule } from './auth/auth.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,7 @@ import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-c
     SharedModule,
     FormsModule,
     HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],
