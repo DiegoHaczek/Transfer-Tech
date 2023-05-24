@@ -20,6 +20,7 @@ import { TransferenciasComponent } from './Components/Cliente/Transferencia/tran
 import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-cuenta/nueva-cuenta.component';
 import { AuthModule } from './auth/auth.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     FormsModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent],
