@@ -1,39 +1,8 @@
-<!-- <div class="container mt-4 pt-3 mat-elevation-z8 borde text-end">
-    <H2 class="text-center">Ultimos Movimientos</H2>
+<div class="container-movimientos ">
 
-    <table  mat-table [dataSource]="table"  class=" demo-table"  matSort>
-     
-        <ng-container   matColumnDef="name">
-          <th class="text-center" mat-header-cell *matHeaderCellDef > Nombre </th>
-          <td class="text-center" mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-    
+   <div class="container-title ">
 
-        
-        <ng-container matColumnDef="monto">
-          <th class="text-center"mat-header-cell *matHeaderCellDef > Monto </th>
-          <td class="text-center" mat-cell *matCellDef="let element"> {{element.monto |currency}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="fecha">
-          <th class="text-center"mat-header-cell *matHeaderCellDef> Fecha </th>
-          <td  class="text-center" mat-cell *matCellDef="let element"> {{element.fecha}}  </td>
-        </ng-container>
-      
-        
-    
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    </table>
-    <button mat-button class="me-3 mb-3" color="accent">Ver Todos <mat-icon>keyboard_arrow_right</mat-icon> </button>
-  
-    
-</div> -->
-<div class="container-movimientos">
-
-   <div class="container-title">
-
-   <p class="title" > Ultimos Movimientos </p>
+   <p class="title m-0" > Ultimos Movimientos </p>
 
   </div>
   <div *ngFor="let transferencia of transfer" class="transferencia" >
@@ -48,5 +17,8 @@
 <div class="monto"> {{transferencia.monto |currency}} </div>
 <div class="fecha">{{transferencia.fecha}} </div>
 </div>
-  </div>
+</div>
+<div class="footer">
+  <button mat-button color="accent">Ver Todas <mat-icon color="accent" fontIcon="chevron_right"></mat-icon> </button>
+</div>
 </div>
