@@ -16,6 +16,7 @@ import { TableTransferenciaComponent } from './Components/Cliente/table-transfer
 import { pipeTransaccion } from './Utils/pipeTransaccion';
 import { ClientDashboardComponent } from './Components/client-dashboard/client-dashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     SharedModule,
     FormsModule,
     HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -14,9 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatInputModule} from '@angular/material/input';
 const shared=[
-  
   MatToolbarModule,
   MatIconModule,
   MatCheckboxModule,
@@ -30,6 +29,7 @@ const shared=[
   MatPaginatorModule,
   MatSortModule,
   MatBadgeModule,
+  MatInputModule,
 ]
 @NgModule({
   declarations: [],

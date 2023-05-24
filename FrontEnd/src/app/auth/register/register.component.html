@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="container">
+<mat-card class=" color " >
+  <mat-card-header>
+    <mat-card-title class="Titulo">Ingresa tu cuenta</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form d-flex flex-column mb-3 ">
+
+      <mat-form-field  class="example-full-width">
+
+        <mat-label >Email</mat-label>
+        <input matInput type="email" placeholder="Ex. pat@example.com" />
+
+      </mat-form-field>
+      <mat-form-field class="example-full-width ">
+
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="email" placeholder="Ex. pat@example.com" />
+
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <p class="d-flex align-self-center OlvideContraseña" color="primary" link="">Olvide mi Contraseña</p>
+  <mat-card-actions fxLayoutAlign="center">
+    <button mat-raised-button color="accent" class="mat-button ">Ingresar</button>
+
+</mat-card-actions>
+<p class="d-flex align-self-center " >¿No tenes una cuenta?</p>
+<mat-card-actions fxLayoutAlign="center">
+  <button mat-raised-button  class="mat-button ">Crear Cuenta</button>
+</mat-card-actions>
+</mat-card>
+</div>
