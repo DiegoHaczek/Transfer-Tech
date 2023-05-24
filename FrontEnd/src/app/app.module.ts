@@ -16,6 +16,8 @@ import { TableTransferenciaComponent } from './Components/Cliente/table-transfer
 import { pipeTransaccion } from './Utils/pipeTransaccion';
 import { ClientDashboardComponent } from './Components/client-dashboard/client-dashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { TransferenciasComponent } from './Components/Cliente/Transferencia/transferencias/transferencias.component';
+import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-cuenta/nueva-cuenta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,8 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     pipeTransaccion,
     ClientDashboardComponent,
     PageNotFoundComponent,
+    TransferenciasComponent,
+    NuevaCuentaComponent,
 
   ],
   imports: [
