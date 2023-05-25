@@ -1,0 +1,47 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ClienteRoutingModule } from './cliente-routing.module';
+
+// Componentes
+import { InterfazClienteComponent } from './interfaz-cliente/interfaz-cliente.component';
+import { CardClienteComponent } from './card-cliente/card-cliente.component';
+import { TableTransferenciaComponent } from './table-transferencia/table-transferencia.component';
+import { MontoTransferenciaComponent } from './Transferencia/monto-transferencia/monto-transferencia.component';
+import { TransferenciasComponent } from './Transferencia/transferencias/transferencias.component';
+import { NuevaCuentaComponent } from './Transferencia/nueva-cuenta/nueva-cuenta.component';
+import { ComprobanteComponent } from './Transferencia/comprobante/comprobante.component';
+import { ConfirmacionTransferenciasComponent } from './Transferencia/confirmacion-transferencias/confirmacion-transferencias.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { DatosCuentaComponent } from './Transferencia/datos-cuenta/datos-cuenta.component';
+import { pipeTransaccion } from 'src/app/Utils/pipeTransaccion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+const Cliente = [
+  InterfazClienteComponent,
+  CardClienteComponent,
+  TableTransferenciaComponent,
+  TransferenciasComponent,
+  MontoTransferenciaComponent,
+  ConfirmacionTransferenciasComponent,
+  ComprobanteComponent,
+  NuevaCuentaComponent,
+  DatosCuentaComponent,
+  ClientDashboardComponent,
+  pipeTransaccion,
+];
+
+@NgModule({
+  declarations: [Cliente],
+  imports: [
+    CommonModule,
+    ClienteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,
+  ],
+  exports: [Cliente],
+})
+export class ClienteModule {}

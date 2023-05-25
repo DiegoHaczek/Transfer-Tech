@@ -1,8 +1,8 @@
 export interface IClient {
   id: number;
   name: string;
-  account: number;
   credit: number;
+  account: number;
   cvu: number;
   alias: string;
 }
