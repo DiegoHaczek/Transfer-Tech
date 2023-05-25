@@ -53,6 +53,10 @@ public class User  implements UserDetails {
         contacts.add(contact);
     }
 
+    public void deleteContact(User contact){
+        contacts.remove(contact);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
