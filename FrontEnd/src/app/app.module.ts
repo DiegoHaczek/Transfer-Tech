@@ -16,7 +16,15 @@ import { TableTransferenciaComponent } from './Components/Cliente/table-transfer
 import { pipeTransaccion } from './Utils/pipeTransaccion';
 import { ClientDashboardComponent } from './Components/client-dashboard/client-dashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { TransferenciasComponent } from './Components/Cliente/Transferencia/transferencias/transferencias.component';
+import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-cuenta/nueva-cuenta.component';
 import { AuthModule } from './auth/auth.module';
+import { DatosCuentaComponent } from './Components/Cliente/Transferencia/datos-cuenta/datos-cuenta.component';
+import { MontoTransferenciaComponent } from './Components/Cliente/Transferencia/monto-transferencia/monto-transferencia.component';
+import { ConfirmacionTransferenciasComponent } from './Components/Cliente/Transferencia/confirmacion-transferencias/confirmacion-transferencias.component';
+import { ComprobanteComponent } from './Components/Cliente/Transferencia/comprobante/comprobante.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +38,12 @@ import { AuthModule } from './auth/auth.module';
     pipeTransaccion,
     ClientDashboardComponent,
     PageNotFoundComponent,
+    TransferenciasComponent,
+    NuevaCuentaComponent,
+    DatosCuentaComponent,
+    MontoTransferenciaComponent,
+    ConfirmacionTransferenciasComponent,
+    ComprobanteComponent,
 
   ],
   imports: [
@@ -39,7 +53,8 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     FormsModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent],
