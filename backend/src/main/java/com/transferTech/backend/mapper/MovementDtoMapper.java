@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.util.Map;
+import java.util.Objects;
 
 @Component
 @AllArgsConstructor
@@ -21,9 +22,13 @@ public class MovementDtoMapper {
                 .type((String) resultRow.get("type"))
                 .amount((Double) resultRow.get("amount"))
                 .description(getDescription(resultRow))
-                .dateTime(String.format("%1$TF %1$TT",(Timestamp) resultRow.get("date_time")))
+                .dateTime(formatDate(resultRow.get("date_time")))
                 .build();
 
+    }
+
+    private String formatDate(Object dateTimeRow) {
+        return String.format("%1$TF %1$TT",(Timestamp) dateTimeRow);
     }
     private String getDescription(Map<String,Object> resultRow) {
         return (resultRow.get("description") == null)? "" :
