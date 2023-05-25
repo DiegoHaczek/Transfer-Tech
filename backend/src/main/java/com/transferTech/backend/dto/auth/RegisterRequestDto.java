@@ -17,11 +17,4 @@ public class RegisterRequestDto {
     @Pattern(regexp = "^([a-zA-Z0-9,ñ]){8,20}$",
             message = "Password must contain at least 8 characters including letters, numbers, spaces and commas")
     private String password;
-
-    @NotBlank(message = "Name is required")
-    @Pattern(regexp = "^([a-zA-Zñ ]){1,20}$",
-            message = "Name must contain only letters and spaces and be maximum 20 characters")
-    private String name;
-
-    private MultipartFile profileImg;
 }

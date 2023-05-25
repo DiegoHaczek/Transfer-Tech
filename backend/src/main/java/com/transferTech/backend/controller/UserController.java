@@ -2,8 +2,9 @@ package com.transferTech.backend.controller;
 
 import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
-import com.transferTech.backend.repository.UserRepository;
+import com.transferTech.backend.dto.user.ProfileDto;
 import com.transferTech.backend.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,15 @@ public class UserController {
     private final UserService userService;
 
     //TODO
-    //create profile
-    //edit profile
+    //get user by id
     //get By Role
     //assign role
     //delete role
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable Long userId){
+        return ResponseEntity.ok(userService.getById(userId));
+    }
 
     @PostMapping("/{userId}/contact")
     public ResponseEntity<MessageResponse> addContact
@@ -45,8 +50,8 @@ public class UserController {
 
     @PostMapping("/{userId}/profile")
     public ResponseEntity<MessageResponse> createProfile
-            (@PathVariable Long userId, @RequestBody Map<String,Long> contactId) {
-        return  ResponseEntity.ok(userService.addContact(userId,contactId));
+            (@PathVariable Long userId, @RequestBody @Valid ProfileDto profileDto) {
+        return  ResponseEntity.ok(userService.createProfile(userId, profileDto));
     }
 
     @PutMapping("/{userId}/profile")

@@ -2,13 +2,13 @@ package com.transferTech.backend.service;
 
 import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
+import com.transferTech.backend.dto.user.ProfileDto;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
-import com.transferTech.backend.repository.ProfileRepository;
 import com.transferTech.backend.repository.UserRepository;
+import com.transferTech.backend.utils.StringFormatter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +19,8 @@ import java.util.Map;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final ProfileRepository profileRepository;
     private final AccountDtoMapper mapper;
+    private final StringFormatter formatter;
 
     public MessageResponse addContact(Long userId, Map<String, Long> contactId) {
         User user = retrieveUser(userId);
@@ -50,8 +50,20 @@ public class UserService {
                 .map(mapper::QueryResultRowToDto)
                 .toList();
     }
+    public MessageResponse createProfile(Long userId, ProfileDto profileDto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(()-> new NotFoundException("User not found"));
 
-    public MessageResponse createProfile() {
+        user.setName(formatter.formatName(profileDto.getName()));
+        user.setDateOfBirth(profileDto.getDate_of_birth());
+        user.setDni(profileDto.getDni());
+
+        userRepository.save(user);
+
+        return new MessageResponse(400,"Profile created successfully");
+    }
+
+    public Object getById(Long userId) {
         return null;
     }
 }

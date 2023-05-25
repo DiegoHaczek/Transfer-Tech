@@ -95,7 +95,6 @@ public class AccountService {
                 .orElseThrow(()-> new NotFoundException("Account not found"));
         return mapper.EntityToInfoDto(account);
     }
-
     public MessageResponse deactivateAccount(Long accountId) {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(()-> new NotFoundException("Account not found"));
