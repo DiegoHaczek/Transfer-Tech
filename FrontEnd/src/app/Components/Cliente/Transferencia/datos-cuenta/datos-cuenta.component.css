@@ -57,12 +57,61 @@
   align-self: stretch;
   flex-grow: 0;
 }
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
 
-.example-full-width {
-  width: 100%;
+.container-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    max-width: 408px;
+    max-height: 48px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+.text{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+max-width: 360px;
+max-height: 48px;
+flex: none;
+order: 1;
+flex-grow: 1;
+}
+.name{
+max-width: 360px;
+max-height: 20px;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+display: flex;
+align-items: center;
+letter-spacing: 0.5px;
+color: #2F2F2F;
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+}
+.label{
+max-width: 360px;
+max-height: 24px;
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 24px;
+display: flex;
+align-items: center;
+letter-spacing: 0.5px;
+color: #2F2F2F;
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
 }

@@ -19,6 +19,10 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
 import { TransferenciasComponent } from './Components/Cliente/Transferencia/transferencias/transferencias.component';
 import { NuevaCuentaComponent } from './Components/Cliente/Transferencia/nueva-cuenta/nueva-cuenta.component';
 import { AuthModule } from './auth/auth.module';
+import { DatosCuentaComponent } from './Components/Cliente/Transferencia/datos-cuenta/datos-cuenta.component';
+import { MontoTransferenciaComponent } from './Components/Cliente/Transferencia/monto-transferencia/monto-transferencia.component';
+import { ConfirmacionTransferenciasComponent } from './Components/Cliente/Transferencia/confirmacion-transferencias/confirmacion-transferencias.component';
+import { ComprobanteComponent } from './Components/Cliente/Transferencia/comprobante/comprobante.component';
 
 
 @NgModule({
@@ -36,6 +40,10 @@ import { AuthModule } from './auth/auth.module';
     PageNotFoundComponent,
     TransferenciasComponent,
     NuevaCuentaComponent,
+    DatosCuentaComponent,
+    MontoTransferenciaComponent,
+    ConfirmacionTransferenciasComponent,
+    ComprobanteComponent,
 
   ],
   imports: [
