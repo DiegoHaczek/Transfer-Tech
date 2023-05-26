@@ -11,6 +11,7 @@ import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.MovementDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
 import com.transferTech.backend.repository.TransferRepository;
+import com.transferTech.backend.utils.StringFormatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class TransferService {
     private final TransferRepository transferRepository;
     private final AccountRepository accountRepository;
     private final MovementDtoMapper mapper;
+    private final StringFormatter formatter;
 
     public MessageResponse transfer(Long senderAccountId, TransferRequestDto dto){
 
@@ -41,7 +43,7 @@ public class TransferService {
                 .amount(dto.getAmount())
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
-                .description(dto.getDescription()).build();
+                .description(formatter.formatString(dto.getDescription())).build();
         transferRepository.save(newTransfer);
 
         receiver.addBalance(dto.getAmount());

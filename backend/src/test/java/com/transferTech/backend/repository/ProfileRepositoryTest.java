@@ -1,6 +1,5 @@
 package com.transferTech.backend.repository;
 
-import com.transferTech.backend.entity.Profile;
 import com.transferTech.backend.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

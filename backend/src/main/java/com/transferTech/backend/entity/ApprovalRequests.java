@@ -25,12 +25,6 @@ public class ApprovalRequests {
     @Column(name = "ID_BACK_PHOTO")
     private String identityCardBack;
 
-    @Column(name = "CURRENT_JOB_SITUATION")
-    private String currentJobSituation;
-
-    @Column(name = "CIVIL_STATUS")
-    private String civilStatus;
-
     @Column(name = "APPROVED")
     private boolean Approved;
 

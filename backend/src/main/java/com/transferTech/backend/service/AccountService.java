@@ -36,8 +36,10 @@ public class AccountService {
         return newAccount;
     }
     public BigInteger generateAccountNumber(){
-        BigInteger maxLimit = new BigInteger("9999999999999999999999");
-        BigInteger minLimit = new BigInteger("1000000000000000000000");
+        int bankID = 132;
+        int subsidiaryId = 1050;
+        BigInteger maxLimit = new BigInteger("999999999999999");
+        BigInteger minLimit = new BigInteger("100000000000000");
         BigInteger bigInteger = maxLimit.subtract(minLimit);
         Random randNum = new Random();
         int len = maxLimit.bitLength();
@@ -46,11 +48,14 @@ public class AccountService {
             res = res.add(minLimit);
         if (res.compareTo(bigInteger) >= 0)
             res = res.mod(bigInteger).add(minLimit);
-
-        if (accountRepository.existsByAccountNumber(res)){
-            res = generateAccountNumber();
+        BigInteger accountNumber = new BigInteger(bankID
+                + String.valueOf(subsidiaryId)
+                + res
+        );
+        if (accountRepository.existsByAccountNumber(accountNumber)){
+            accountNumber = generateAccountNumber();
         }
-        return res;
+        return accountNumber;
     }
     public String generateAlias(){
         List<String> words = new ArrayList<>(List.of("casa", "mesa", "silla", "almohada",
@@ -75,7 +80,6 @@ public class AccountService {
     public String generateQR(){
         return "";
     }
-
     public AccountResponseDto getById(Long accountId) {
         return mapper.EntityToDto(accountRepository.findById(accountId)
                 .orElseThrow(()-> new NotFoundException("Account not found")));
@@ -95,7 +99,6 @@ public class AccountService {
                 .orElseThrow(()-> new NotFoundException("Account not found"));
         return mapper.EntityToInfoDto(account);
     }
-
     public MessageResponse deactivateAccount(Long accountId) {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(()-> new NotFoundException("Account not found"));

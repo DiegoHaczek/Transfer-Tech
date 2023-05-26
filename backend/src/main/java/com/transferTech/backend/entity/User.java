@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -33,8 +35,19 @@ public class User  implements UserDetails {
     @Column(name = "NAME")
     private String name;
 
-    @OneToOne(mappedBy = "user")
-    private Profile profile;
+    @Column(name = "DNI",
+            unique = true)
+    private String dni;
+
+    @Column(name = "PROFILE_IMG")
+    private String profileImg;
+
+    @Column(name = "DATE_OF_BIRTH")
+    //@DateTimeFormat(pattern="dd/MM/yyyy")
+    private Date dateOfBirth;
+
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     @OneToOne(mappedBy = "user")
     private Account account;
