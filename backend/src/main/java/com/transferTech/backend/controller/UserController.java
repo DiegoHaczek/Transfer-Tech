@@ -3,6 +3,7 @@ package com.transferTech.backend.controller;
 import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.user.ProfileDto;
+import com.transferTech.backend.dto.user.UserDto;
 import com.transferTech.backend.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,14 +21,18 @@ public class UserController {
     private final UserService userService;
 
     //TODO
-    //get user by id
     //get By Role
     //assign role
     //delete role
 
     @GetMapping("/{userId}")
-    public ResponseEntity<?> getUserById(@PathVariable Long userId){
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long userId){
         return ResponseEntity.ok(userService.getById(userId));
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAll());
     }
 
     @PostMapping("/{userId}/contact")

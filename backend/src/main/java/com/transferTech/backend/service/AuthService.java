@@ -38,7 +38,6 @@ public class AuthService {
         return response;
         //return new AuthenticationResponseDto("12345");
     }
-
     public AuthenticationResponseDto authenticate(AuthenticationRequestDto request) {
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() ->
                 new NotFoundException("Email not found"));
@@ -50,7 +49,6 @@ public class AuthService {
         authResponse.setToken("12345");
         return authResponse;
     }
-
     public MessageResponse checkApprovalRequest(Long userId, ApprovalRequestDto request) {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> new NotFoundException("User not found"));

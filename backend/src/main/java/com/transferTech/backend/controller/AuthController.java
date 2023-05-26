@@ -41,7 +41,7 @@ import java.util.Map;
 
     @PostMapping("{userId}/approval_request")
     public ResponseEntity<MessageResponse> checkApprovalRequest(
-            @PathVariable Long userId ,@ModelAttribute @Valid  ApprovalRequestDto request) {
+            @PathVariable Long userId, @ModelAttribute @Valid  ApprovalRequestDto request) {
         return ResponseEntity.ok(authService.checkApprovalRequest(userId,request));
     }
 }
