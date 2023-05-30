@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClienteRoutingModule } from './cliente-routing.module';
+import { NgChartsModule } from 'ng2-charts';
 
 // Componentes
 import { InterfazClienteComponent } from './interfaz-cliente/interfaz-cliente.component';
@@ -41,6 +42,7 @@ const Cliente = [
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    NgChartsModule,
   ],
   exports: [Cliente],
 })
