@@ -18,7 +18,14 @@ import { pipeTransaccion } from 'src/app/Utils/pipeTransaccion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
+<<<<<<< HEAD
 import { NgChartsModule } from 'ng2-charts';
+=======
+import { PrincipalComponent } from './Perfil/principal/principal.component';
+import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
+import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
+import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
+>>>>>>> 4f1f5b4c3563c56cda546fc641f21bdd4051b6e7
 
 
 const Cliente = [
@@ -33,6 +40,10 @@ const Cliente = [
   DatosCuentaComponent,
   ClientDashboardComponent,
   pipeTransaccion,
+  PrincipalComponent, 
+  IdentificacionesComponent, 
+  TarjetasComponent, 
+  DatosDeCuentaComponent,
 ];
 
 @NgModule({
