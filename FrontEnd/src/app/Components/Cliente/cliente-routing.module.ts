@@ -7,6 +7,10 @@ import { DatosCuentaComponent } from './Transferencia/datos-cuenta/datos-cuenta.
 import { MontoTransferenciaComponent } from './Transferencia/monto-transferencia/monto-transferencia.component';
 import { ConfirmacionTransferenciasComponent } from './Transferencia/confirmacion-transferencias/confirmacion-transferencias.component';
 import { ComprobanteComponent } from './Transferencia/comprobante/comprobante.component';
+import { PrincipalComponent } from './Perfil/principal/principal.component';
+import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
+import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
+import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
 
 const routes: Routes = [
   {
@@ -36,6 +40,22 @@ const routes: Routes = [
   {
     path: 'transfer/6',
     component: ComprobanteComponent,
+  },
+  {
+    path: 'perfil/1',
+    component: PrincipalComponent,
+  },
+  {
+    path: 'perfil/2',
+    component: IdentificacionesComponent,
+  },
+  {
+    path: 'perfil/3',
+    component: DatosDeCuentaComponent,
+  },
+  {
+    path: 'perfil/4',
+    component: TarjetasComponent,
   },
 ];
 

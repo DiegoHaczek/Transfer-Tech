@@ -15,10 +15,10 @@ import { HeaderComponent } from './Components/header/header.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ClienteModule } from './Components/Cliente/cliente.module';
-// Data Visualization Library
 import { NgChartsModule } from 'ng2-charts';
 
-// CLIENT COMPONENTS
+
+
 
 @NgModule({
   declarations: [

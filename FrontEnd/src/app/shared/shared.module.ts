@@ -16,7 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 const shared=[
   MatToolbarModule,
   MatIconModule,
@@ -33,6 +34,8 @@ const shared=[
   MatBadgeModule,
   MatMenuModule,
   MatInputModule,
+  MatSnackBarModule,
+  MatDialogModule,
 
 ]
 @NgModule({

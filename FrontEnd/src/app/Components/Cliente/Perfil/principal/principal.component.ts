@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener, Output, HostBinding, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-principal',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-
+ 
+ 
 }
