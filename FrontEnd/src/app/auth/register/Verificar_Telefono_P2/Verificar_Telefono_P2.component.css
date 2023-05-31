@@ -20,6 +20,7 @@ border-radius: 10px;
 flex: none;
 order: 0;
 flex-grow: 1;
+margin-bottom: 20px;
 
 }
 
@@ -83,35 +84,18 @@ order: 2;
 flex-grow: 0;
 
 }
-#dropzone {
-  box-sizing: border-box;
-  max-width: 400px;
-  height: 140px;
-  background: #E5E5E5;
-  border: 1px dashed #525252;
-  border-radius: 12px;
-}
-.arrastrar{
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-text-align: center;
-color: #404040;
-}
-.Archivo{
+.s-input{
+box-sizing: border-box;
 display: flex;
-flex-direction: column;
-align-items: flex-start;
-max-width: 263px;
-max-height: 46px;
-order: 0;
+flex-direction: row;
+align-items: center;
+padding: 10px 12px;
+max-width: 400px;
+max-height: 44px;
+border: 1px solid #D4D4D4;
+border-radius: 6px;
+flex: none;
+order: 1;
 align-self: stretch;
 flex-grow: 0;
-}
-.Color{
-  color: #525252;
-}
-.Color2{
-  color: #404040;
 }

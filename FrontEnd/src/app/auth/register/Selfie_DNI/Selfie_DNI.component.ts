@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-Frente_DNI',
-  templateUrl: './Frente_DNI.component.html',
-  styleUrls: ['./Frente_DNI.component.css']
+  selector: 'app-Dorso_DNI',
+  templateUrl: './Selfie_DNI.component.html',
+  styleUrls: ['./Selfie_DNI.component.css']
 })
-export class Frente_DNIComponent implements OnInit {
+export class Selfie_DNIComponent implements OnInit {
 
   constructor() { }
 

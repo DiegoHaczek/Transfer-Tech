@@ -56,6 +56,9 @@ flex-grow: 1;
 }
 
 .Titulo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   max-width: 408px;
   max-height: 38px;
   font-style: normal;
@@ -82,36 +85,4 @@ flex: none;
 order: 2;
 flex-grow: 0;
 
-}
-#dropzone {
-  box-sizing: border-box;
-  max-width: 400px;
-  height: 140px;
-  background: #E5E5E5;
-  border: 1px dashed #525252;
-  border-radius: 12px;
-}
-.arrastrar{
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-text-align: center;
-color: #404040;
-}
-.Archivo{
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-max-width: 263px;
-max-height: 46px;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-}
-.Color{
-  color: #525252;
-}
-.Color2{
-  color: #404040;
 }

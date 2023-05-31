@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClienteRoutingModule } from './cliente-routing.module';
-import { NgChartsModule } from 'ng2-charts';
+
 
 // Componentes
 import { InterfazClienteComponent } from './interfaz-cliente/interfaz-cliente.component';
@@ -18,6 +18,8 @@ import { pipeTransaccion } from 'src/app/Utils/pipeTransaccion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgChartsModule } from 'ng2-charts';
+
 
 const Cliente = [
   InterfazClienteComponent,
@@ -34,15 +36,15 @@ const Cliente = [
 ];
 
 @NgModule({
-  declarations: [Cliente],
+  declarations: [Cliente,  ],
   imports: [
-    CommonModule,
-    ClienteRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    SharedModule,
-    NgChartsModule,
+   CommonModule,
+   ClienteRoutingModule,
+   FormsModule,
+   ReactiveFormsModule,
+   HttpClientModule,
+   SharedModule,
+   NgChartsModule,
   ],
   exports: [Cliente],
 })
