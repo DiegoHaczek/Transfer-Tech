@@ -4,24 +4,31 @@ import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.user.ProfileDto;
 import com.transferTech.backend.dto.user.UserDto;
+import com.transferTech.backend.entity.Role;
 import com.transferTech.backend.entity.User;
+import com.transferTech.backend.enumeration.ERole;
+import com.transferTech.backend.exception.ForbiddenException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
 import com.transferTech.backend.mapper.UserDtoMapper;
+import com.transferTech.backend.repository.RoleRepository;
 import com.transferTech.backend.repository.UserRepository;
 import com.transferTech.backend.utils.StringFormatter;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final UserDtoMapper userMapper;
     private final AccountDtoMapper accountMapper;
     private final StringFormatter formatter;
@@ -73,5 +80,20 @@ public class UserService {
                 .stream()
                 .map(userMapper::EntityToDto)
                 .toList();
+    }
+
+    @Transactional
+    public UserDto updateRole(Long id, String requestRole) {
+        User user = userRepository.findById(id).
+                orElseThrow(()-> new NotFoundException("Error: User not found"));
+        if (user.getRole().contains(roleRepository.findByName(ERole.ROLE_ADMIN).get()))
+            throw new ForbiddenException("Error: Cant change admin role");
+
+        Role role = roleRepository.findByName(Role.RoletoERole(requestRole))
+                .orElseThrow(() -> new NotFoundException("Error: Role not found."));
+        user.getRole().clear();
+        user.getRole().add(role);
+        userRepository.save(user);
+        return userMapper.EntityToDto(user);
     }
 }

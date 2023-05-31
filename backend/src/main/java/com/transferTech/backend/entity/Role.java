@@ -18,4 +18,13 @@ public class Role {
             unique = true)
     private ERole name;
 
+    public static ERole RoletoERole (String role) {
+        return switch (role.toLowerCase()){
+            case "user" -> ERole.ROLE_USER;
+            case "customer" -> ERole.ROLE_CUSTOMER;
+            case "admin" -> ERole.ROLE_ADMIN;
+            default -> null;
+        };
+
+    }
 }

@@ -28,7 +28,7 @@ import java.util.Map;
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(
             @RequestBody @Valid RegisterRequestDto request) {
-        Map<String,Long> registerResponse = authService.register(request);
+        Map<String,String> registerResponse = authService.register(request);
         return new ResponseEntity<>(registerResponse, HttpStatus.OK);
     }
 

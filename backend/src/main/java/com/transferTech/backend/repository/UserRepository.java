@@ -1,5 +1,6 @@
 package com.transferTech.backend.repository;
 
+import com.transferTech.backend.entity.Role;
 import com.transferTech.backend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
               """
             ,nativeQuery=true)
     List<Map<String,Object>> getAllContactsByUserId (@Param("Id") long userId);
+
+    Optional<List<User>> findByRole(Role role);
 }

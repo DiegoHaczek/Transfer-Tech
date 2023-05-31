@@ -10,8 +10,11 @@ import com.transferTech.backend.exception.AlreadyExistException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AuthDtoMapper;
 import com.transferTech.backend.repository.UserRepository;
-import jakarta.validation.constraints.Email;
+import com.transferTech.backend.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +31,25 @@ public class AuthService {
     private final EmailService emailService;
     private final AuthDtoMapper mapper;
     private final PasswordEncoder encoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
-    public Map<String, Long> register(RegisterRequestDto request) {
+    public Map<String, String> register(RegisterRequestDto request) {
         if (userRepository.existsByEmail(request.getEmail().toLowerCase())) {
             throw new AlreadyExistException("Error: Email already taken");
         }
         User newUser = mapper.requestToEntity(request);
         newUser = userRepository.save(newUser);
+
         Long verificationCode = generateVerificationCode();
         emailService.sendVerificationEmail(newUser.getEmail(),verificationCode);
+
+        String jwtToken = jwtService.generateToken(newUser);
         //newUser.setAccount(accountService.createAccount(newUser));
-        Map<String, Long> response = new HashMap<>();
-        response.put("user_id", newUser.getId());
-        response.put("verification_code", verificationCode);
+        Map<String, String> response = new HashMap<>();
+        response.put("user_id", String.valueOf(newUser.getId()));
+        response.put("verification_code", String.valueOf(verificationCode));
+        response.put("token",jwtToken);
         return response;
         //return new AuthenticationResponseDto("12345");
     }
@@ -50,14 +59,20 @@ public class AuthService {
         return rand.nextLong(100000,999999);
     }
     public AuthenticationResponseDto authenticate(AuthenticationRequestDto request) {
-        User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() ->
-                new NotFoundException("Email not found"));
-
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("Error: Username not found"));
         if (!encoder.matches(request.getPassword(), user.getPassword())) {
             throw new NotFoundException("Wrong Password");
         }
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        String jwtToken = jwtService.generateToken(user);
         AuthenticationResponseDto authResponse = new AuthenticationResponseDto();
-        authResponse.setToken("12345");
+        authResponse.setToken(jwtToken);
         return authResponse;
     }
     public MessageResponse checkApprovalRequest(Long userId, ApprovalRequestDto request) {
