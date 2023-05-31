@@ -65,4 +65,10 @@ public class UserController {
         return  ResponseEntity.ok(userService.addContact(userId,contactId));
     }
 
+    @PutMapping("/role/{userId}/{role}")
+    public ResponseEntity<UserDto> updateRole(@PathVariable Long userId, @PathVariable String role) {
+        UserDto updatedUser = userService.updateRole(userId, role);
+        return ResponseEntity.ok(updatedUser);
+    }
+
 }
