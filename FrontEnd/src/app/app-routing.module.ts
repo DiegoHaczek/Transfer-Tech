@@ -11,6 +11,8 @@ import { MontoTransferenciaComponent } from './Components/Cliente/Transferencia/
 import { ConfirmacionTransferenciasComponent } from './Components/Cliente/Transferencia/confirmacion-transferencias/confirmacion-transferencias.component';
 import { ComprobanteComponent } from './Components/Cliente/Transferencia/comprobante/comprobante.component';
 import { PrincipalComponent } from './Components/Cliente/Perfil/principal/principal.component';
+import { ClientDashboardComponent } from './Components/Cliente/client-dashboard/client-dashboard.component';
+
 
 const routes: Routes = [
   {
@@ -29,28 +31,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'transfer/1',
-    component: TransferenciasComponent,
-  },
-  {
-    path: 'transfer/2',
-    component: NuevaCuentaComponent,
-  },
-  {
-    path: 'transfer/3',
-    component: DatosCuentaComponent,
-  },
-  {
-    path: 'transfer/4',
-    component: MontoTransferenciaComponent,
-  },
-  {
-    path: 'transfer/5',
-    component: ConfirmacionTransferenciasComponent,
-  },
-  {
-    path: 'transfer/6',
-    component: ComprobanteComponent,
+    path: 'dash',
+    component: ClientDashboardComponent,
   },
   {
     path: 'perfil/1',
