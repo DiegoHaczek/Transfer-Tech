@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClienteRoutingModule } from './cliente-routing.module';
 
-
 // Componentes
 import { InterfazClienteComponent } from './interfaz-cliente/interfaz-cliente.component';
 import { CardClienteComponent } from './card-cliente/card-cliente.component';
@@ -23,8 +22,11 @@ import { PrincipalComponent } from './Perfil/principal/principal.component';
 import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
 import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
 import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ramiro
 
 const Cliente = [
   InterfazClienteComponent,
@@ -38,22 +40,22 @@ const Cliente = [
   DatosCuentaComponent,
   ClientDashboardComponent,
   pipeTransaccion,
-  PrincipalComponent, 
-  IdentificacionesComponent, 
-  TarjetasComponent, 
+  PrincipalComponent,
+  IdentificacionesComponent,
+  TarjetasComponent,
   DatosDeCuentaComponent,
 ];
 
 @NgModule({
-  declarations: [Cliente,  ],
+  declarations: [Cliente],
   imports: [
-   CommonModule,
-   ClienteRoutingModule,
-   FormsModule,
-   ReactiveFormsModule,
-   HttpClientModule,
-   SharedModule,
-   NgChartsModule,
+    CommonModule,
+    ClienteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,
+    NgChartsModule,
   ],
   exports: [Cliente],
 })
