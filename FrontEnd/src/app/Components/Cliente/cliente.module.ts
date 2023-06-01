@@ -22,11 +22,6 @@ import { PrincipalComponent } from './Perfil/principal/principal.component';
 import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
 import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
 import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ramiro
 
 const Cliente = [
   InterfazClienteComponent,
