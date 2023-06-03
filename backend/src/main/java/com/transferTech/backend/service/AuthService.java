@@ -7,6 +7,8 @@ import com.transferTech.backend.dto.auth.AuthenticationResponseDto;
 import com.transferTech.backend.dto.auth.RegisterRequestDto;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.AlreadyExistException;
+import com.transferTech.backend.exception.ForbiddenException;
+import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AuthDtoMapper;
 import com.transferTech.backend.repository.UserRepository;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 @Service
@@ -45,13 +48,11 @@ public class AuthService {
         emailService.sendVerificationEmail(newUser.getEmail(),verificationCode);
 
         String jwtToken = jwtService.generateToken(newUser);
-        //newUser.setAccount(accountService.createAccount(newUser));
         Map<String, String> response = new HashMap<>();
         response.put("user_id", String.valueOf(newUser.getId()));
         response.put("verification_code", String.valueOf(verificationCode));
         response.put("token",jwtToken);
         return response;
-        //return new AuthenticationResponseDto("12345");
     }
 
     public Long generateVerificationCode() {
@@ -79,10 +80,17 @@ public class AuthService {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> new NotFoundException("User not found"));
 
+        if (Objects.equals(user.getName(),null)){
+            throw new ForbiddenException("User must complete his profile first");
+        }
+
         user.setAccount(accountService.createAccount(user));
         Long accountId = user.getAccount().getId();
 
-        return new MessageResponse(400,
+        //todo: call rekognition service
+
+        return new MessageResponse(200,
                 "Documentation is valid. Created account id: " + accountId);
     }
+
 }

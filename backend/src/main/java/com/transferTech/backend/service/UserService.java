@@ -9,6 +9,7 @@ import com.transferTech.backend.entity.User;
 import com.transferTech.backend.enumeration.ERole;
 import com.transferTech.backend.exception.ForbiddenException;
 import com.transferTech.backend.exception.NotFoundException;
+import com.transferTech.backend.exception.SqlConstraintException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
 import com.transferTech.backend.mapper.UserDtoMapper;
 import com.transferTech.backend.repository.RoleRepository;
@@ -18,6 +19,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +70,11 @@ public class UserService {
         user.setDateOfBirth(profileDto.getDate_of_birth());
         user.setDni(profileDto.getDni());
 
-        userRepository.save(user);
+        try {
+            userRepository.save(user);
+        }catch (RuntimeException e){
+            throw new SqlConstraintException("Dni is already associated with another user");
+        }
 
         return new MessageResponse(400,"Profile created successfully");
     }

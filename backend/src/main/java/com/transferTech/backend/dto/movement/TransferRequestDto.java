@@ -2,6 +2,7 @@ package com.transferTech.backend.dto.movement;
 
 import com.transferTech.backend.entity.Account;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
