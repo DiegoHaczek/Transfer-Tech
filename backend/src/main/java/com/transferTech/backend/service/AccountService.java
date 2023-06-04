@@ -26,10 +26,11 @@ public class AccountService {
 
     public Account createAccount(User user){
         if (userHasAnAccount(user.getId())){
-            throw new ForbiddenException("User already is verified and has an associated account");
+            throw new ForbiddenException("User is already verified and has an associated account");
         }
 
         Account newAccount =  Account.builder()
+                .id(user.getId())
                 .user(user)
                 .accountNumber(generateAccountNumber())
                 .alias(generateAlias())

@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final AccountService accountService;
+    private final RekognitionService rekognitionService;
     private final EmailService emailService;
     private final AuthDtoMapper mapper;
     private final PasswordEncoder encoder;
@@ -54,7 +56,6 @@ public class AuthService {
         response.put("token",jwtToken);
         return response;
     }
-
     public Long generateVerificationCode() {
         Random rand = new Random();
         return rand.nextLong(100000,999999);
@@ -84,10 +85,14 @@ public class AuthService {
             throw new ForbiddenException("User must complete his profile first");
         }
 
+        try {
+            rekognitionService.verifyIdentity(request);
+        }catch (IOException e){
+            throw new InputNotValidException("There was a problem processing the provided images");
+        }
+
         user.setAccount(accountService.createAccount(user));
         Long accountId = user.getAccount().getId();
-
-        //todo: call rekognition service
 
         return new MessageResponse(200,
                 "Documentation is valid. Created account id: " + accountId);

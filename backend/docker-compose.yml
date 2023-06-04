@@ -24,6 +24,8 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       EMAIL_ADDRESS: ${EMAIL_ADDRESS}
       EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      AWS_ACCESS_KEY_ID: ${aws_access_key_id}
+      AWS_SECRET_ACCESS_KEY: ${aws_secret_access_key}
     depends_on:
       - db
     restart: always
