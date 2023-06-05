@@ -5,6 +5,7 @@ import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.account.AccountResponseDto;
 import com.transferTech.backend.entity.Account;
 import com.transferTech.backend.entity.User;
+import com.transferTech.backend.exception.ForbiddenException;
 import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
@@ -22,8 +23,13 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final AccountDtoMapper mapper;
+
     public Account createAccount(User user){
+        if (userHasAnAccount(user.getId())){
+            throw new ForbiddenException("User is already verified and has an associated account");
+        }
         Account newAccount =  Account.builder()
+                .id(user.getId())
                 .user(user)
                 .accountNumber(generateAccountNumber())
                 .alias(generateAlias())
@@ -34,6 +40,9 @@ public class AccountService {
 
         accountRepository.save(newAccount);
         return newAccount;
+    }
+    public boolean userHasAnAccount(Long userId){
+        return accountRepository.existsByUserId(userId);
     }
     public BigInteger generateAccountNumber(){
         int bankID = 132;

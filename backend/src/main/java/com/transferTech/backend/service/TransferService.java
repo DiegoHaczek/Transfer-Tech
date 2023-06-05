@@ -6,12 +6,14 @@ import com.transferTech.backend.dto.movement.MovementDto;
 import com.transferTech.backend.dto.movement.TransferRequestDto;
 import com.transferTech.backend.entity.Account;
 import com.transferTech.backend.entity.Transfer;
+import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.MovementDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
 import com.transferTech.backend.repository.TransferRepository;
 import com.transferTech.backend.utils.StringFormatter;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -44,14 +46,18 @@ public class TransferService {
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
                 .description(formatter.formatString(dto.getDescription())).build();
-        transferRepository.save(newTransfer);
 
-        receiver.addBalance(dto.getAmount());
-        sender.subtractBalance(dto.getAmount());
-        accountRepository.save(receiver);
-        accountRepository.save(sender);
+        updateBalances(newTransfer,receiver,sender);
 
         return new MessageResponse(400,"Successful Transfer");
+    }
+    @Transactional
+    public void updateBalances(Transfer transfer, Account receiver, Account sender) {
+        transferRepository.save(transfer);
+        receiver.addBalance(transfer.getAmount());
+        sender.subtractBalance(transfer.getAmount());
+        accountRepository.save(receiver);
+        accountRepository.save(sender);
     }
     public MessageResponse deposit(Long accountId, DepositRequestDto dto){
         Account receiver = accountRepository.findById(accountId)
@@ -64,11 +70,15 @@ public class TransferService {
                 .transferCode(generateTransferCode())
                 .build();
 
-        transferRepository.save(newDeposit);
-        receiver.addBalance(dto.getAmount());
-        accountRepository.save(receiver);
+        updateBalance(newDeposit,receiver);
 
         return new MessageResponse(400,"Successful Deposit");
+    }
+    @Transactional
+    public void updateBalance(Transfer deposit, Account receiver) {
+        transferRepository.save(deposit);
+        receiver.addBalance(deposit.getAmount());
+        accountRepository.save(receiver);
     }
     public Long generateTransferCode() {
         Random rand = new Random();

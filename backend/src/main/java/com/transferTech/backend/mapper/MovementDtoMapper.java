@@ -23,9 +23,7 @@ public class MovementDtoMapper {
                 .description(getDescription(resultRow))
                 .dateTime(formatDate(resultRow.get("date_time")))
                 .build();
-
     }
-
     private String formatDate(Object dateTimeRow) {
         return String.format("%1$TF %1$TT",(Timestamp) dateTimeRow);
     }
@@ -42,4 +40,5 @@ public class MovementDtoMapper {
             default -> "";
         };
     }
+
 }

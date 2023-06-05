@@ -9,9 +9,9 @@ import java.util.Optional;
 public interface AccountRepository extends JpaRepository<Account,Long> {
     Optional<Account> findByAccountNumber(BigInteger accountNumber);
     Optional<Account> findByAlias(String alias);
-
     boolean existsByAccountNumber(BigInteger accountNumber);
-
     boolean existsByAlias(String alias);
+
+    boolean existsByUserId(Long userId);
 
 }
