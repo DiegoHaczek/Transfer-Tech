@@ -8,13 +8,13 @@ import com.transferTech.backend.dto.auth.ApprovalRequestDto;
 import com.transferTech.backend.exception.RejectedRequest;
 import com.transferTech.backend.dto.MessageResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,7 +70,6 @@ public class RekognitionService {
         }
         logger.log(Level.INFO,"Documentación No Válida");
         throw new RejectedRequest("Documentación No Válida");
-        //return false;
     }
     private static Float getIdCardLabelConfidence(DetectLabelsResult frontCardLabelResult) {
         return frontCardLabelResult.getLabels()
@@ -80,7 +79,7 @@ public class RekognitionService {
                 .map(Label::getConfidence)
                 .stream().reduce(0F, Float::sum);
     }
-    public Map<String,List<String>> extractCardFrontInfo(Image idFront){
+    public Map<String,List<String>> extractFrontCardCredentials(Image idFront){
         RegionOfInterest completeNameRegion = new RegionOfInterest().withBoundingBox(
                 new BoundingBox().withWidth(0.24F).withHeight(0.22F).withLeft(0.33F).withTop(0.22F)
         );
@@ -98,24 +97,26 @@ public class RekognitionService {
             logger.log(Level.WARNING,"Error en la extracción de información del frontal del documento");
             throw new RejectedRequest("Error en la extracción de información del frontal del documento, la imagen no está bien recortada");
         }
-        //TODO refactor -> mapper
+        Map<String, List<String>> frontCardCredentials = getFrontCredentialsFromTextDetections(textDetections);
+        //System.out.println(frontCardCredentials);
+        logger.log(Level.INFO,"Extracción de la información frontal exitosa");
+        return frontCardCredentials;
+    }
+    private static Map<String, List<String>> getFrontCredentialsFromTextDetections(List<TextDetection> textDetections) {
         Pattern isDniRegex = Pattern.compile("^\\d{1,3}\\./?\\d{3}\\./?\\d{3}$");
         Pattern isNameRegex = Pattern.compile("[A-ZÁÉÍÓÚ]+");
-        Function<String,String> dniOrName = e -> e.matches(isDniRegex.toString())? "Dni" : "Name";
+        Function<String,String> dniOrName = e -> e.matches(isNameRegex.toString())? "Name" : "Dni";
+        Function<String,String> removeDotsFromDni = e -> e.contains(".")? e.replace(".","") : e;
 
-        Map<String,List<String>> identityCardInfo = textDetections.stream()
+        return textDetections.stream()
                 .map(TextDetection::getDetectedText)
                 .distinct()
                 .filter(isDniRegex.asPredicate().or(isNameRegex.asMatchPredicate()))
+                .map(removeDotsFromDni)
                 .collect(Collectors.groupingBy(dniOrName));
-
-        identityCardInfo.replace("Dni",List.of(identityCardInfo.get("Dni").get(0).replace(".","")));
-        //System.out.println(identityCardInfo);
-
-        logger.log(Level.INFO,"Extracción de la información frontal exitosa");
-        return identityCardInfo;
     }
-    public Map<String,List<String>> extractCardBackInfo(Image idBack){
+    public Map<String,List<String>> extractBackCardCredentials(Image idBack){
+
         RegionOfInterest nameAndDniRegion = new RegionOfInterest().withBoundingBox(
                 new BoundingBox().withWidth(0.6F).withHeight(0.3F).withLeft(0.02F).withTop(0.7F)
         );
@@ -131,35 +132,40 @@ public class RekognitionService {
             throw new RejectedRequest("Error en la extracción de información del dorso del documento," +
                     " la imagen no está bien recortada");
         }
-        //TODO refactor -> mapper
+
+        Map<String, List<String>> backCardCredentials = getBackCredentialsFromTextDetections(textDetections);
+
+        logger.log(Level.INFO,"Extracción de la información dorsal exitosa");
+        return backCardCredentials;
+    }
+    private static Map<String, List<String>> getBackCredentialsFromTextDetections(List<TextDetection> textDetections) {
         Pattern isDniRegex = Pattern.compile("^IDARG.*");
         Pattern isNameRegex = Pattern.compile("^[A-Z]{2,13}+<.*");
         Function<String,String> dniOrName = e -> e.matches(isNameRegex.toString())? "Name" : "Dni";
+        Function<String,String> removeSignatureFromDni = e -> e.startsWith("IDARG") ? e.substring(5, 13) : e;
 
-        Map<String,List<String>> identityCardInfo = textDetections.stream()
+        Map<String,List<String>> backCardCredentials = textDetections.stream()
                 .map(TextDetection::getDetectedText)
                 .distinct()
                 .filter(isDniRegex.asPredicate().or(isNameRegex.asMatchPredicate()))
-                .map(e -> e.startsWith("IDARG") ? e.substring(5, 13) : e)
+                .map(removeSignatureFromDni)
                 .collect(Collectors.groupingBy(dniOrName));
 
-        //System.out.println(identityCardInfo);
+        // System.out.println(backCardCredentials);
 
-        if(!identityCardInfo.containsKey("Name")){
+        if(!backCardCredentials.containsKey("Name")){
             throw new RejectedRequest("Error en la extracción de información del dorso del documento," +
                     " la imagen no está bien recortada");
         }
 
-        identityCardInfo.replace("Name",List.of(identityCardInfo.get("Name").get(0).split("<{1,2}")));
-        System.out.println(identityCardInfo);
-
-        logger.log(Level.INFO,"Extracción de la información dorsal exitosa");
-        return identityCardInfo;
+        backCardCredentials.replace("Name",List.of(backCardCredentials.get("Name").get(0).split("<{1,2}")));
+        //System.out.println(backCardCredentials);
+        return backCardCredentials;
     }
     public boolean imagesAreFromTheSameIdentityCard(Image idFront, Image idBack) {
         logger.log(Level.INFO,"Comparando información de ambos lados de la documentación");
-        Map<String,List<String>> frontCardInfo = extractCardFrontInfo(idFront);
-        Map<String,List<String>> backCardInfo = extractCardBackInfo(idBack);
+        Map<String,List<String>> frontCardInfo = extractFrontCardCredentials(idFront);
+        Map<String,List<String>> backCardInfo = extractBackCardCredentials(idBack);
 
         if(frontCardInfo.get("Dni").equals(backCardInfo.get("Dni"))
                 && frontCardInfo.get("Name").equals(backCardInfo.get("Name"))){

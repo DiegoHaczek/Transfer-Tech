@@ -85,6 +85,10 @@ public class AuthService {
             throw new ForbiddenException("User must complete his profile first");
         }
 
+        if (accountService.userHasAnAccount(userId)){
+            throw new ForbiddenException("User is already verified and has an associated account");
+        };
+        
         try {
             rekognitionService.verifyIdentity(request);
         }catch (IOException e){

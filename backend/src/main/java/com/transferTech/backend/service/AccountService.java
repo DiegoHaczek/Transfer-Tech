@@ -28,7 +28,6 @@ public class AccountService {
         if (userHasAnAccount(user.getId())){
             throw new ForbiddenException("User is already verified and has an associated account");
         }
-
         Account newAccount =  Account.builder()
                 .id(user.getId())
                 .user(user)
@@ -42,7 +41,6 @@ public class AccountService {
         accountRepository.save(newAccount);
         return newAccount;
     }
-
     public boolean userHasAnAccount(Long userId){
         return accountRepository.existsByUserId(userId);
     }
