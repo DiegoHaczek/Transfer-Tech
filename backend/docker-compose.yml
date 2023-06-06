@@ -26,6 +26,9 @@ services:
       EMAIL_PASSWORD: ${EMAIL_PASSWORD}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      URL_PATH: ${URL_PATH}
+    volumes:
+      - ./statics/images:/media
     depends_on:
       - db
     restart: always

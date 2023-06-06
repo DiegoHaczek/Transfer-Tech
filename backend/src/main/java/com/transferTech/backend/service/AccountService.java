@@ -1,5 +1,6 @@
 package com.transferTech.backend.service;
 
+import com.google.zxing.WriterException;
 import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.account.AccountResponseDto;
@@ -10,10 +11,12 @@ import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
+import com.transferTech.backend.utils.QrGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -33,10 +36,15 @@ public class AccountService {
                 .user(user)
                 .accountNumber(generateAccountNumber())
                 .alias(generateAlias())
-                .QR(generateQR())
                 .balance(0.0)
                 .active(true)
                 .build();
+
+        try {
+            newAccount.setQR(QrGenerator.generateQr(newAccount));
+        }catch (IOException | WriterException e){
+            throw new RuntimeException("There was a problem generating the QR code");
+        }
 
         accountRepository.save(newAccount);
         return newAccount;
@@ -85,9 +93,6 @@ public class AccountService {
         }
 
         return alias.get();
-    }
-    public String generateQR(){
-        return "";
     }
     public AccountResponseDto getById(Long accountId) {
         return mapper.EntityToDto(accountRepository.findById(accountId)
