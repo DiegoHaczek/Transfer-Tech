@@ -13,16 +13,21 @@ import java.nio.file.Path;
 
 public class QrGenerator {
 
-    public static String generateQr(Account account) throws WriterException, IOException {
+    public static String generateQr(Long userId){
         //String qrPath = System.getProperty("user.dir")+"/src/main/resources/static/images/qr/";
         String qrPath= "/media/";
-        String qrName = qrPath + account.getId() + "qr.png";
+        String qrName = qrPath + userId + "qr.png";
         var qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode("id: " + account.getId(),
+
+        try{
+        BitMatrix bitMatrix = qrCodeWriter.encode("id: " + userId,
                 BarcodeFormat.QR_CODE, 400,400);
         Path path = FileSystems.getDefault().getPath(qrName);
         MatrixToImageWriter.writeToPath(bitMatrix,"PNG",path);
+        }catch (IOException | WriterException e){
+            throw new RuntimeException("There was a problem generating the QR code");
+        }
 
-        return System.getenv("URL_PATH") + account.getId() + "qr.png";
+        return System.getenv("URL_PATH") + userId + "qr.png";
     }
 }

@@ -36,15 +36,10 @@ public class AccountService {
                 .user(user)
                 .accountNumber(generateAccountNumber())
                 .alias(generateAlias())
+                .QR(QrGenerator.generateQr(user.getId()))
                 .balance(0.0)
                 .active(true)
                 .build();
-
-        try {
-            newAccount.setQR(QrGenerator.generateQr(newAccount));
-        }catch (IOException | WriterException e){
-            throw new RuntimeException("There was a problem generating the QR code");
-        }
 
         accountRepository.save(newAccount);
         return newAccount;
