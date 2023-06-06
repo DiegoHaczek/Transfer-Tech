@@ -14,6 +14,8 @@ import { Datos_PersonalesComponent } from './auth/register/Datos_Personales/Dato
 import { Dorso_DNIComponent } from './auth/register/Dorso_DNI/Dorso_DNI.component';
 import { Selfie_DNIComponent } from './auth/register/Selfie_DNI/Selfie_DNI.component';
 import { Verificar_Telefono_P2Component } from './auth/register/Verificar_Telefono_P2/Verificar_Telefono_P2.component';
+import { Recuperar_ContraseñaComponent } from './auth/login/Recuperar_Contraseña/Recuperar_Contraseña.component';
+import { Visar_ComponenteComponent } from './auth/login/Visar_Componente/Visar_Componente.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'register/8', component: Verificar_TelefonoComponent },
   { path: 'register/9', component: Verificar_Telefono_P2Component },
   { path: 'forgot', component: ForgotPasswordComponent },
+  {path: 'login/2', component:Visar_ComponenteComponent},
   {
     path: 'cliente',
     loadChildren: () =>
