@@ -1,7 +1,8 @@
 export interface ITransfer {
   id: number;
-  name: string;
-  descripcion: string;
-  monto: number;
-  fecha: string;
+  userName: string;
+  description: string;
+  amount: number;
+  dateTime: string;
+  type: string;
 }

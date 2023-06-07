@@ -3,7 +3,7 @@
     <p class="title ">A qué cuenta transferir </p>
 
     
-    <div class="contenedor d-flex justify-content-between">
+    <div  onclick="location.href='cliente/transfer/2'" class="contenedor d-flex justify-content-between">
         <div class="d-flex align-items-center"><img class="add" src="../../../../assets/Img/Add.png" alt="">
             <p class="text m-0 ">NUEVA CUENTA
             </p>
@@ -28,8 +28,8 @@
     <p class="title " >Cuentas Recientes </p>
  
    </div>
-   <div *ngFor="let transferencia of transfer" class="recientes" >
- <div class="datos-cliente d-flex align-items-center" >
+   <div  (click)="PasarInfo(transferencia.id)" onclick="location.href='cliente/transfer/3'" *ngFor="let transferencia of transfer" class="recientes" >
+ <div  class="datos-cliente d-flex align-items-center" >
    <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="">
    <div class="container-text">
      <div class="name" > {{transferencia.name}} </div>

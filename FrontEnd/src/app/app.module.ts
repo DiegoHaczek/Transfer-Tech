@@ -10,12 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { InicioComponent } from './Components/inicio/inicio.component';
-import { InterfazAdminComponent } from './Components/Admin/interfaz-admin/interfaz-admin.component';
+
 import { HeaderComponent } from './Components/header/header.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ClienteModule } from './Components/Cliente/cliente.module';
 import { NgChartsModule } from 'ng2-charts';
+import { DataTransportService } from './Service/data-transport.service';
 // Data Visualization Library
 
 
@@ -28,7 +29,6 @@ import { NgChartsModule } from 'ng2-charts';
     InicioComponent,
     HeaderComponent,
     FooterComponent,
-    InterfazAdminComponent,
     PageNotFoundComponent,
   ],
   imports: [
@@ -43,7 +43,7 @@ import { NgChartsModule } from 'ng2-charts';
     NgChartsModule,
 
   ],
-  providers: [],
+  providers: [DataTransportService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
