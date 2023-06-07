@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientsService } from 'src/app/Service/clients.service';
+import { DataTransportService } from 'src/app/Service/data-transport.service';
 
 @Component({
   selector: 'app-nueva-cuenta',
@@ -8,8 +9,8 @@ import { ClientsService } from 'src/app/Service/clients.service';
 })
 export class NuevaCuentaComponent {
 valor:any
-aliasInfo:any
-constructor(private clientService: ClientsService) {}
+id:any
+constructor(private clientService: ClientsService, private transport: DataTransportService) {}
 obtenerValor() {
   if (this.valor) {
     if (isNaN(Number(this.valor))) {
@@ -20,24 +21,40 @@ obtenerValor() {
   }
 }
 metodoCBU() {
- 
-}
+  
 
-metodoAlias() {
-
-  const alias = this.valor;
-
-  this.clientService.getClientAlias(this.valor)
+  this.clientService.getClientCVU(this.valor)
     .subscribe(
       (response) => {
-        this.aliasInfo = response;
-        console.log(this.aliasInfo);
+        this.id = response.id;
+        this.PasarInfo(this.id);
+       
       },
       (error) => {
         console.log(error);
       }
     );
 }
+
+metodoAlias() {
+
+  
+
+  this.clientService.getClientAlias(this.valor)
+    .subscribe(
+      (response) => {
+        this.id = response.id;
+        this.PasarInfo(this.id);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+}
+PasarInfo(id: number) {
+  this.transport.guardarDato('id', id);
+  
+     }
 }
   
 

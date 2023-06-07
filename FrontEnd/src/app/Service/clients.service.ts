@@ -17,16 +17,13 @@ accountEndpoint = '/account';
   getClientId(id:number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}${this.accountEndpoint}/${id} `);
   }
-  getClientCVU(CVU:number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}${this.accountEndpoint}/info/account_number `);
+  getClientCVU(CVU:string): Observable<any> {
+    const requestBody = { account_number: CVU };
+    return this.http.post<any>(`${this.apiUrl}${this.accountEndpoint}/info/account_number `, requestBody);
   }
   getClientAlias(alias: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', });
-    const options = {
-      headers: headers,
-      body: { alias: alias }
-    };
-    return this.http.get<any>(`${this.apiUrl}${this.accountEndpoint}/info/alias`, options);
+    const requestBody = { alias: alias };
+    return this.http.post<any>(`${this.apiUrl}${this.accountEndpoint}/info/alias `, requestBody);
   }
 
   getTransfers(id:number): Observable<ITransfer[]> {
