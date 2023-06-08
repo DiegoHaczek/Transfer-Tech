@@ -22,11 +22,11 @@ export class LoginComponent {
 
   loginSubmit() {
     const email = this.loginForm.get('email')?.value || '';
-    const password = this.loginForm.get('password')?.value ||'';
+    const password = this.loginForm.get('password')?.value || '';
     this.authService.login(email, password).subscribe(
       (response) => {
         // Handle successful login
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/cliente']);
       },
       (error) => {
         // Handle login error

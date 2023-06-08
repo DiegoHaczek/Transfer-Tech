@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl: string = "www.xxx.com"
+  apiUrl: string = 'http://100.24.32.13/api/v1/auth/authenticate';
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<{ token: string }> {
-    const body = { username, password };
+  login(email: string, password: string): Observable<{ token: string }> {
+    const body = { email, password };
     return this.http.post<{ token: string }>(this.apiUrl, body).pipe(
       tap(({ token }) => this.saveTokenToLocalStorage(token)),
       shareReplay()
