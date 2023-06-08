@@ -36,14 +36,14 @@ public class AccountController {
         return new ResponseEntity<>(accountService.getById(accountId),HttpStatus.OK);
     }
 
-    @GetMapping("/info/alias")
+    @PostMapping("/info/alias")
     public ResponseEntity<AccountInfoDto> getAccountInfoByAlias(
             @RequestBody Map<String,String> alias) {
         return new ResponseEntity<>(accountService.getAccountInfoByAlias(
                 alias.getOrDefault("alias","")),HttpStatus.OK);
     }
 
-    @GetMapping("/info/account_number")
+    @PostMapping("/info/account_number")
     public ResponseEntity<AccountInfoDto> getAccountInfoByAccountNumber(
             @RequestBody Map<String,String> alias) {
         return new ResponseEntity<>(accountService.getAccountInfoByAccountNumber(

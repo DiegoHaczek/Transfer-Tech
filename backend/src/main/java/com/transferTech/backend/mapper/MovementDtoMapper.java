@@ -16,8 +16,10 @@ public class MovementDtoMapper {
 
     public MovementDto QueryResultRowToDto(Map<String,Object> resultRow) {
         return MovementDto.builder()
-                .id((Long) resultRow.get("id"))
+                .movementId((Long) resultRow.get("id"))
+                .transferCode((Long) resultRow.get("transfer_code"))
                 .userName(getNameByMovementType(resultRow))
+                .accountId((Long) resultRow.get("account_id"))
                 .type((String) resultRow.get("type"))
                 .amount((Double) resultRow.get("amount"))
                 .description(getDescription(resultRow))

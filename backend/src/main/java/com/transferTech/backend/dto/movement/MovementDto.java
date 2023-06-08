@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class MovementDto {
-    private Long id;
+    private Long movementId;
+    private Long transferCode;
     private String userName;
+    private Long accountId;
     private String type;
     private String description;
     private String dateTime;

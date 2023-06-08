@@ -45,7 +45,8 @@ public class TransferService {
                 .amount(dto.getAmount())
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
-                .description(formatter.formatString(dto.getDescription())).build();
+                .description(formatter.formatString(dto.getDescription()))
+                .build();
 
         updateBalances(newTransfer,receiver,sender);
 
