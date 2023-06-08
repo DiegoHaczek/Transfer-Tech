@@ -47,7 +47,7 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 - Boostrap
 
 ------------
-###Contributors 👥
+### Contributors 👥
 - Facundo Ibars
 - Burella Lucio
 - Ramiro Cosa
