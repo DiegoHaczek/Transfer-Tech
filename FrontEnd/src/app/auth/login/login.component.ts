@@ -34,4 +34,7 @@ export class LoginComponent {
       }
     );
   }
+  getIdFromLocalStorage(): any {
+    return localStorage.getItem('id');
+  }
 }

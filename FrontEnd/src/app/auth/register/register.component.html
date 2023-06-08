@@ -13,11 +13,19 @@
             type="email"
             placeholder="Ex. pat@example.com"
             class="matInput"
+            [(ngModel)]="email"
+            name="email"
+            id="email"
           />
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="email" placeholder="Ex. pat@example.com" />
+          <input
+            matInput
+            type="password"
+            placeholder="Ex.pat@example.com"
+            [(ngModel)]="password"
+          />
         </mat-form-field>
       </form>
     </mat-card-content>
@@ -29,7 +37,14 @@
       Olvide mi Contraseña
     </p>
     <div class="C_B">
-      <button mat-raised-button color="accent" class="botones">Ingresar</button>
+      <button
+        mat-raised-button
+        color="accent"
+        class="botones"
+        (click)="loginSubmit()"
+      >
+        Ingresar
+      </button>
       <p class="d-flex align-self-center">¿No tenes una cuenta?</p>
       <button mat-raised-button class="botones">Crear Cuenta</button>
     </div>
