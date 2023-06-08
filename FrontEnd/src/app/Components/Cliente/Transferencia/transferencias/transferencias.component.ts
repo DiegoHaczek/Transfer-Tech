@@ -7,35 +7,35 @@ import { DataTransportService } from 'src/app/Service/data-transport.service';
   templateUrl: './transferencias.component.html',
   styleUrls: ['./transferencias.component.css'],
 })
-export class TransferenciasComponent  {
- 
-  transfer:any
+export class TransferenciasComponent {
+  transfer: any;
 
-  constructor(private clientService: ClientsService, private transport: DataTransportService) {}
+  constructor(
+    private clientService: ClientsService,
+    private transport: DataTransportService
+  ) {}
 
   ngOnInit() {
-   
     this.cargarRecientes();
-    
-    
   }
 
   cargarRecientes() {
-    this.clientService.getTransfers(this.transport.obtenerDato('id')).subscribe((data) => {
-      const sortedData = _.orderBy(data, 'dateTime', 'desc');
-    
-    this.transfer = _.uniqBy(sortedData.filter(item => item.userName !== ""), 'userName');
-    
-    });
-  } 
+    this.clientService
+      .getTransfers(this.transport.obtenerDato('id'))
+      .subscribe((data) => {
+        const sortedData = _.orderBy(data, 'dateTime', 'desc');
+
+        this.transfer = _.uniqBy(
+          sortedData.filter((item) => item.userName !== ''),
+          'userName'
+        );
+      });
+  }
   cargarId() {
-    const id = this.transport.obtenerDato('id') 
-    
+    const id = this.transport.obtenerDato('id');
   }
 
-  
   PasarInfo(id: number) {
     this.transport.guardarDato('idReceptor', id);
-    
-       }
+  }
 }

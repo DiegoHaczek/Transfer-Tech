@@ -1,5 +1,4 @@
-export 
-interface ITransfer {
+export interface ITransfer {
   movementId?: number;
   transferCode?: number;
   userName?: string;
@@ -8,5 +7,5 @@ interface ITransfer {
   description: string;
   dateTime?: string;
   amount: number;
-  receiverAccountId:string;
+  receiverAccountId: string;
 }

@@ -6,7 +6,7 @@ import { IClient } from 'src/app/models/IClient';
 @Component({
   selector: 'app-datos-cuenta',
   templateUrl: './datos-cuenta.component.html',
-  styleUrls: ['./datos-cuenta.component.css']
+  styleUrls: ['./datos-cuenta.component.css'],
 })
 export class DatosCuentaComponent {
   client: IClient = {
@@ -18,15 +18,15 @@ export class DatosCuentaComponent {
     alias: '',
     qr: '',
   };
-  constructor(private transport:DataTransportService, private clientService: ClientsService) { }
+  constructor(
+    private transport: DataTransportService,
+    private clientService: ClientsService
+  ) {}
   ngOnInit(): void {
-   
-      const id = this.transport.obtenerDato('idReceptor');
-      this.clientService.getClientId(id).subscribe((client) => {
-        this.client = client;
-        console.log(client);
-      });
-    }
+    const id = this.transport.obtenerDato('idReceptor');
+    this.clientService.getClientId(id).subscribe((client) => {
+      this.client = client;
+      console.log(client);
+    });
   }
-  
-
+}

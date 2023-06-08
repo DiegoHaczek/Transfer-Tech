@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataTransportService {
   guardarDato(clave: string, valor: any): void {
@@ -15,6 +15,4 @@ export class DataTransportService {
   eliminarDato(clave: string): void {
     localStorage.removeItem(clave);
   }
-
-  
 }

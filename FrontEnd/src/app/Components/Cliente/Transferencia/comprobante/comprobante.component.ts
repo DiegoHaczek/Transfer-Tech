@@ -7,13 +7,17 @@ import { IClient } from 'src/app/models/IClient';
 @Component({
   selector: 'app-comprobante',
   templateUrl: './comprobante.component.html',
-  styleUrls: ['./comprobante.component.css']
+  styleUrls: ['./comprobante.component.css'],
 })
 export class ComprobanteComponent {
-  constructor(private clientService: ClientsService, private transport: DataTransportService, private router: Router) {}
+  constructor(
+    private clientService: ClientsService,
+    private transport: DataTransportService,
+    private router: Router
+  ) {}
 
-  idReceptor:string = ""
-  
+  idReceptor: string = '';
+
   client: IClient = {
     id: 0,
     userName: '',
@@ -24,29 +28,29 @@ export class ComprobanteComponent {
     qr: '',
   };
   transfer = {
-    receiverAccountId:"",
+    receiverAccountId: '',
     description: '',
-    amount: 0
+    amount: 0,
   };
-  
-  ngOnInit() {
-   this.obtenerData()
-    
-    this.clientService.getClientId(Number(this.idReceptor)).subscribe((client) => {
-      this.client = client;
-     
-    });
 
-    };
-   obtenerData(){
+  ngOnInit() {
+    this.obtenerData();
+
+    this.clientService
+      .getClientId(Number(this.idReceptor))
+      .subscribe((client) => {
+        this.client = client;
+      });
+  }
+  obtenerData() {
     this.idReceptor = this.transport.obtenerDato('idReceptor');
     const transferStr = this.transport.obtenerDato('transfer');
     if (transferStr) {
-     this.transfer = JSON.parse(transferStr);
+      this.transfer = JSON.parse(transferStr);
       console.log(this.transfer);
     }
-  } 
-  Inicio(){
+  }
+  Inicio() {
     this.transport.eliminarDato('idReceptor');
     this.router.navigate(['/cliente/transfer/6']);
   }

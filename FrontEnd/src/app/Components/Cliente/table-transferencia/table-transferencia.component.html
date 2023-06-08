@@ -1,24 +1,23 @@
-<div class="container-movimientos ">
-
-   <div class="container-title ">
-
-   <p class="title m-0" > Ultimos Movimientos </p>
-
+<div class="container-movimientos">
+  <div class="container-title">
+    <p class="title m-0">Ultimos Movimientos</p>
   </div>
-  <div *ngFor="let transferencia of transfer" class="transferencia" >
-<div class="datos-cliente  " >
-  <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="">
-  <div class="container-text">
-    <div class="operacion" > {{transferencia.type}} </div>
-    <div class="contacto">{{transferencia.userName}} </div>
+  <div *ngFor="let transferencia of transfer" class="transferencia">
+    <div class="datos-cliente">
+      <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="" />
+      <div class="container-text">
+        <div class="operacion">{{ transferencia.type }}</div>
+        <div class="contacto">{{ transferencia.userName }}</div>
+      </div>
+    </div>
+    <div class="fecha-monto">
+      <div class="monto">{{ transferencia.amount | currency }}</div>
+      <div class="fecha">{{ transferencia.dateTime | date : "d/M/yy" }}</div>
+    </div>
   </div>
-</div>
-<div class="fecha-monto" >
-<div class="monto"> {{transferencia.amount |currency}} </div>
-<div class="fecha">{{transferencia.dateTime | date: 'd/M/yy' }} </div>
-</div>
-</div>
-<div class="footer">
-  <button mat-button color="accent">Ver Todos <mat-icon color="accent" fontIcon="chevron_right"></mat-icon> </button>
-</div>
+  <div class="footer">
+    <button mat-button color="accent">
+      Ver Todos <mat-icon color="accent" fontIcon="chevron_right"></mat-icon>
+    </button>
+  </div>
 </div>

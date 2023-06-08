@@ -1,17 +1,23 @@
-<div class="fondo d-flex justify-content-center align-items-center flex-column " >
-    <div class="bloque mb-4  mt-4">
-       <div class="div1">
-<img src="../../../../../assets/Img/comprobante.png" alt="">
-<div class="txt1">
-    Transferiste $ {{transfer.amount}} a {{client.userName}}
-</div>
-       </div>
-       
+<div class="fondo d-flex justify-content-center align-items-center flex-column">
+  <div class="bloque mb-4 mt-4">
+    <div class="div1">
+      <img src="../../../../../assets/Img/comprobante.png" alt="" />
+      <div class="txt1">
+        Transferiste $ {{ transfer.amount }} a {{ client.userName }}
+      </div>
+    </div>
+
     <div class="div2">
-        <button mat-raised-button class="boton  " color="accent">Descargar comprobante</button>
-        <button mat-raised-button onclick="location.href='cliente'" class="boton2  " >Ir al inicio</button>
+      <button mat-raised-button class="boton" color="accent">
+        Descargar comprobante
+      </button>
+      <button
+        mat-raised-button
+        onclick="location.href='cliente'"
+        class="boton2"
+      >
+        Ir al inicio
+      </button>
     </div>
-       
-       
-    </div>
+  </div>
 </div>
