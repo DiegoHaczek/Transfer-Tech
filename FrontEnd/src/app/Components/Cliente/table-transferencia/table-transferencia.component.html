@@ -9,16 +9,16 @@
 <div class="datos-cliente  " >
   <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="">
   <div class="container-text">
-    <div class="operacion" > Transferencia {{transferencia.tipo|Transaccion}} </div>
-    <div class="contacto">a {{transferencia.name}} </div>
+    <div class="operacion" > {{transferencia.type}} </div>
+    <div class="contacto">{{transferencia.userName}} </div>
   </div>
 </div>
 <div class="fecha-monto" >
-<div class="monto"> {{transferencia.monto |currency}} </div>
-<div class="fecha">{{transferencia.fecha}} </div>
+<div class="monto"> {{transferencia.amount |currency}} </div>
+<div class="fecha">{{transferencia.dateTime | date: 'd/M/yy' }} </div>
 </div>
 </div>
 <div class="footer">
-  <button mat-button color="accent">Ver Todas <mat-icon color="accent" fontIcon="chevron_right"></mat-icon> </button>
+  <button mat-button color="accent">Ver Todos <mat-icon color="accent" fontIcon="chevron_right"></mat-icon> </button>
 </div>
 </div>

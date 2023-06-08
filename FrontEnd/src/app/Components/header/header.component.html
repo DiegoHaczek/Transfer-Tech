@@ -4,23 +4,23 @@
     <span>Menu</span>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>home</mat-icon>
+    <button onclick="location.href='cliente'" mat-menu-item>
+      <mat-icon >home</mat-icon>
       <span>Inicio</span>
     </button>
-    <button mat-menu-item >
+    <button onclick="location.href='cliente/movimientos'"mat-menu-item >
      <img src="../../../assets/Img/Vector.png" class="pe-4">
       <span>Movimientos</span>
     </button>
-    <button mat-menu-item>
+    <button onclick="location.href='cliente/transfer/1'" mat-menu-item>
       <mat-icon>swap_horiz</mat-icon>
       <span>Transferir</span>
     </button>
-    <button mat-menu-item>
+    <button onclick="location.href='cliente/perfil/1'" mat-menu-item>
       <mat-icon>person</mat-icon>
       <span>Mi perfil</span>
     </button>
-    <button mat-menu-item>
+    <button  mat-menu-item>
       <mat-icon>exit_to_app</mat-icon>
       <span>Salir</span>
     </button>

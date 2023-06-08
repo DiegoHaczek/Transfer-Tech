@@ -1,8 +1,9 @@
 export interface IClient {
   id: number;
-  name: string;
-  credit: number;
-  account: number;
-  cvu: number;
+  userName: string;
+  balance: number;
+  accountNumber: number;
+  active: boolean;
   alias: string;
+  qr: string;
 }

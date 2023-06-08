@@ -22,6 +22,7 @@ import { PrincipalComponent } from './Perfil/principal/principal.component';
 import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
 import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
 import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
+import { DataTransportService } from 'src/app/Service/data-transport.service';
 
 const Cliente = [
   InterfazClienteComponent,
@@ -43,6 +44,7 @@ const Cliente = [
 
 @NgModule({
   declarations: [Cliente],
+  providers: [DataTransportService],
   imports: [
     CommonModule,
     ClienteRoutingModule,

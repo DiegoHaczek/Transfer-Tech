@@ -68,7 +68,8 @@ flex-direction: column;
 align-items: flex-end;
 padding: 0px;
 gap: 1px;
-max-width: 74px;
+
+width: 67px;
 max-height: 45px;
 flex: none;
 order: 1;
@@ -99,7 +100,7 @@ order: 0;
 flex-grow: 0;
 }
 .contacto{
-max-width: 93px;
+
 max-height: 20px;
 font-style: normal;
 font-weight: 400;

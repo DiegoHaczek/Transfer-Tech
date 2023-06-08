@@ -1,10 +1,7 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import * as _ from 'lodash';
 import { ClientsService } from 'src/app/Service/clients.service';
-import { ITransfer } from 'src/app/models/itransfer';
-import { MatTableDataSource } from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DataTransportService } from 'src/app/Service/data-transport.service';
 
 @Component({
   selector: 'app-table-transferencia',
@@ -19,15 +16,17 @@ export class TableTransferenciaComponent {
 
 
 
-  constructor(private clientService: ClientsService) {}
+  constructor(private clientService: ClientsService, private transport: DataTransportService) {}
   ngOnInit() {
     this.cargar()
     
   }
  
   cargar(){
-    this.clientService.getTransfers().subscribe((data) => {
-      this.transfer = data.slice(-5);
+    this.clientService.getTransfers(this.transport.obtenerDato('id')).subscribe((data) => {
+      const orderData = _.orderBy(data, 'dateTime', 'asc');
+      const shortData=orderData.slice(-5);
+      this.transfer =shortData.reverse();
      
     });
   }

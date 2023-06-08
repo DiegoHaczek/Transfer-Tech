@@ -9,12 +9,12 @@
   
       <div class="cr ">
         <div class="ti">Usuario</div>
-        <div class="ti">Juan Perez</div>
+        <div class="ti">{{cuenta.name}}</div>
         
       </div>
       <div class="cr ">
         <div class="ti">Email</div>
-        <div class="ti">juanperez@gmail.com</div>
+        <div class="ti">{{cuenta.email}}</div>
         </div>
     </div>
     <div class="container-movimientos">
@@ -25,22 +25,22 @@
     
         <div class="cr ">
           <div class="ti">Nombre</div>
-          <div class="ti">Juan Perez</div>
+          <div class="ti">{{cuenta.name}}</div>
           
         </div>
         <div class="cr ">
             <div class="ti">DNI</div>
-            <div class="ti">45563369</div>
+            <div class="ti">{{cuenta.dni}}</div>
             
           </div>
           <div class="cr ">
             <div class="ti">Fecha de nacimiento</div>
-            <div class="ti">18/09/2001</div>
+            <div class="ti">{{cuenta.dateOfBirth |date}}</div>
             
           </div>
         <div class="cr ">
           <div class="ti">Telefono</div>
-          <div class="ti">3525588841</div>
+          <div class="ti">{{cuenta.phoneNumber}} </div>
           </div>
       </div>
   
