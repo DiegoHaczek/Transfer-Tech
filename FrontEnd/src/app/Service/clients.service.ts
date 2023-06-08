@@ -32,4 +32,7 @@ accountEndpoint = '/account';
   getId(id:number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}${this.userEndpoint}/${id} `);
   }
+ tranferir(id: number, transfer: ITransfer, ): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}${this.accountEndpoint}/${id}/transfer`, transfer);
+  }
 }

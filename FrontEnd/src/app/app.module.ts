@@ -13,7 +13,7 @@ import { InicioComponent } from './Components/inicio/inicio.component';
 
 import { HeaderComponent } from './Components/header/header.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-import { FooterComponent } from './Components/footer/footer.component';
+
 import { ClienteModule } from './Components/Cliente/cliente.module';
 import { NgChartsModule } from 'ng2-charts';
 import { DataTransportService } from './Service/data-transport.service';
@@ -28,7 +28,7 @@ import { DataTransportService } from './Service/data-transport.service';
     AppComponent,
     InicioComponent,
     HeaderComponent,
-    FooterComponent,
+   
     PageNotFoundComponent,
   ],
   imports: [

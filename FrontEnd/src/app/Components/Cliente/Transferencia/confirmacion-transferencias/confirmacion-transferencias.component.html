@@ -2,8 +2,8 @@
     <div class="bloque mb-4 mt-4">
       <p class="title">Revisa la información y confirma</p>
       <div class="div2">
-<div class="text2">Vas a transferir a Luis Aguirre</div>
-<div class="text3">$ 300.00</div>
+<div class="text2">Vas a transferir a {{client.userName}} </div>
+<div class="text3">$ {{transfer.amount }} </div>
       </div>
       <div class="div1">
         <p class="txt1">Lo va a recibir en</p>
@@ -18,20 +18,20 @@
             <img src="../../../../../assets/Img/Smile.png" alt="">
           <div class="text">
             <div class="name"> Alias</div>
-            <div class="label">pelota.gol.messi</div>
+            <div class="label">{{client.alias}}</div>
           </div>
         </div>
         <div class="container-item">
             <img src="../../../../../assets/Img/candado.png" alt="">
           <div class="text">
             <div class="name"> CBU</div>
-            <div class="label">00700504 - 20008547169583</div>
+            <div class="label">{{client.accountNumber}} </div>
           </div>
         </div>
       </div>
     
      
-      <button mat-raised-button onclick="location.href='cliente/transfer/6'" class="boton" color="accent">Continuar</button>
+      <button mat-raised-button (click)="confirmarTransferencia()" class="boton" color="accent">Continuar</button>
     </div>
   </div>
   

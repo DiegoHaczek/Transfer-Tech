@@ -21,7 +21,7 @@ export class DatosCuentaComponent {
   constructor(private transport:DataTransportService, private clientService: ClientsService) { }
   ngOnInit(): void {
    
-      const id = this.transport.obtenerDato('id');
+      const id = this.transport.obtenerDato('idReceptor');
       this.clientService.getClientId(id).subscribe((client) => {
         this.client = client;
         console.log(client);

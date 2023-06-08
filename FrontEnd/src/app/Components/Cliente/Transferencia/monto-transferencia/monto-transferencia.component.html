@@ -5,17 +5,17 @@
             <form class="example-form  ">
                 <mat-form-field class="example-full-width">
                   <mat-label>Ingrese Monto</mat-label>
-                  <input matInput   >
+                  <input matInput [(ngModel)]="valor" name="valor" type="number"  >
                 </mat-form-field>
                 
             </form>
             <div class="dinero">
-                $10.000 disponibles
+                $ {{client.balance}} disponibles
             </div>
     
        
         <button mat-raised-button class="boton " 
-        onclick="location.href='cliente/transfer/5'"
+        (click)="guardarTransferencia()"
         color="accent">Continuar</button>
     </div>
 </div>

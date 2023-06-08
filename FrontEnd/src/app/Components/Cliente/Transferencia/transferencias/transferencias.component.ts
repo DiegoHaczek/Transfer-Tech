@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ClientsService } from 'src/app/Service/clients.service';
-
+import * as _ from 'lodash';
 import { DataTransportService } from 'src/app/Service/data-transport.service';
 @Component({
   selector: 'app-transferencias',
@@ -8,8 +8,8 @@ import { DataTransportService } from 'src/app/Service/data-transport.service';
   styleUrls: ['./transferencias.component.css'],
 })
 export class TransferenciasComponent  {
-  transfer: any;
-  
+ 
+  transfer:any
 
   constructor(private clientService: ClientsService, private transport: DataTransportService) {}
 
@@ -21,18 +21,21 @@ export class TransferenciasComponent  {
   }
 
   cargarRecientes() {
-    this.clientService.getTransfers(1).subscribe((data) => {
-      this.transfer = data.slice(-4);
+    this.clientService.getTransfers(this.transport.obtenerDato('id')).subscribe((data) => {
+      const sortedData = _.orderBy(data, 'dateTime', 'desc');
+    
+    this.transfer = _.uniqBy(sortedData.filter(item => item.userName !== ""), 'userName');
+    
     });
   } 
   cargarId() {
     const id = this.transport.obtenerDato('id') 
-    console.log(id);
+    
   }
 
   
   PasarInfo(id: number) {
-    this.transport.guardarDato('id', id);
+    this.transport.guardarDato('idReceptor', id);
     
        }
 }

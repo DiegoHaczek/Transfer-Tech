@@ -12,10 +12,10 @@ import { IClient } from 'src/app/models/IClient';
 
 export class DatosDeCuentaComponent   {
  cuenta: any
- constructor(private clientService: ClientsService, ) {}
+ constructor(private clientService: ClientsService, private transport: DataTransportService ) {}
 
  ngOnInit() {
-   this.clientService.getId(2).subscribe( (data) => {
+   this.clientService.getId(this.transport.obtenerDato('id')).subscribe( (data) => {
      this.cuenta = data;
      console.log(this.cuenta);
    });
