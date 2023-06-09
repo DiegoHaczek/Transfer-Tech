@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+//Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -17,6 +17,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
+
+
+
+
 const shared = [
   MatToolbarModule,
   MatIconModule,
@@ -35,6 +44,12 @@ const shared = [
   MatInputModule,
   MatSnackBarModule,
   MatDialogModule,
+  MatTabsModule,
+  MatSelectModule,
+  
+  
+
+  
 ];
 @NgModule({
   declarations: [],

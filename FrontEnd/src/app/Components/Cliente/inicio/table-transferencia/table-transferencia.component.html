@@ -4,7 +4,9 @@
   </div>
   <div *ngFor="let transferencia of transfer" class="transferencia">
     <div class="datos-cliente">
-      <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="" />
+      <img *ngIf="transferencia.type == 'Transferencia Enviada'" class="icon" src="../../../../assets/Img/mdi_cash-minus.png" alt="" />
+      <img *ngIf="transferencia.type == 'Transferencia Recibida'" class="icon" src="../../../../assets/Img/mdi_cash-plus.png" alt="" />
+      <img *ngIf="transferencia.type == 'Deposito'" class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="" />
       <div class="container-text">
         <div class="operacion">{{ transferencia.type }}</div>
         <div class="contacto">{{ transferencia.userName }}</div>
@@ -16,7 +18,7 @@
     </div>
   </div>
   <div class="footer">
-    <button mat-button color="accent">
+    <button mat-button onclick="location.href='cliente/movimientos'" color="accent">
       Ver Todos <mat-icon color="accent" fontIcon="chevron_right"></mat-icon>
     </button>
   </div>

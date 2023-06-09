@@ -38,4 +38,5 @@ export class TransferenciasComponent {
   PasarInfo(id: number) {
     this.transport.guardarDato('idReceptor', id);
   }
+  
 }

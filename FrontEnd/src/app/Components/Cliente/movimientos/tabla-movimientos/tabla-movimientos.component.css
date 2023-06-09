@@ -1,79 +1,19 @@
+
 .fondo{
-    background-color:#E5E5E5 ;
+    background-color: #E5E5E5;
     width: 100%;
-height: 100%;
-}
-.bloque{
+    height: 80vh;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px;
+    align-items: center;
+    justify-content: center;
     
-    gap: 10px;
-    max-width: 548px;
-    max-height: 308px;
-    background: #FAFAFA;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-    border-radius: 12px;
-}
-
-.title{
-max-width: 400px;
-max-height: 32px;
-font-style: normal;
-font-weight: 600;
-font-size: 30px;
-line-height: 32px;
-color: #262626;
-flex: none;
-order: 0;
-flex-grow: 1;
-}
-.contenedor{
-box-sizing: border-box;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 6px 6px 6px 8px;
-gap: 80px;
-max-width: 400px;
-max-height: 36px;
-border: 1px solid rgba(0, 0, 0, 0.12);
-border-radius: 4px;
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-}
-
-.add{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 4px;
-    gap: 10px;
-    max-width: 60px;
-    max-height: 30px;
-    padding-right: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-.text{
-min-width: 100px;
-max-width: 216px;
-max-height: 16px;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-}
-.container-recientes {
+      }
+.container-movimientos {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    max-width: 400px;
+    max-width: 456px;
     max-height: 532px;
     background: #fafafa;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
@@ -84,11 +24,10 @@ line-height: 16px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 16px;
-    padding-right: 5px;
-    gap: 190px;
-    max-width: 400px;
-    max-height: 58px;
+    padding: 24px 16px 16px;
+    gap: 10px;
+    max-width: 456px;
+    max-height: 68px;
     border-bottom: 1px solid #e5e5e5;
     flex: none;
     order: 0;
@@ -105,25 +44,23 @@ line-height: 16px;
     order: 0;
     flex-grow: 0;
   }
-  .recientes{
-box-sizing: border-box;
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 10px;
-gap: 100px;
-max-width: 500px;
-max-height: 80px;
-border-bottom: 1px solid #D4D4D4;
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
+  .transferencia{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 170px;
+    border-bottom: 1px solid #D4D4D4;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
   }
   .datos-cliente{
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  
   padding: 0px;
   gap: 24px;
   max-width: 180px;
@@ -132,7 +69,19 @@ flex-grow: 0;
   order: 0;
   flex-grow: 1;
   }
-
+  .fecha-monto{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 1px;
+  
+  width: 67px;
+  max-height: 45px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  }
   .container-text{
   display: flex;
   flex-direction: column;
@@ -145,7 +94,7 @@ flex-grow: 0;
   order: 1;
   flex-grow: 0;
   }
-  .name{
+  .operacion{
   max-width: 140px;
   max-height: 20px;
   font-style: normal;
@@ -157,8 +106,8 @@ flex-grow: 0;
   order: 0;
   flex-grow: 0;
   }
-  .bank{
-  max-width: 93px;
+  .contacto{
+  
   max-height: 20px;
   font-style: normal;
   font-weight: 400;
@@ -169,13 +118,37 @@ flex-grow: 0;
   order: 1;
   flex-grow: 0;
   }
- 
+  .monto{
+  max-width: 74px;
+  max-height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  color: #171717;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  }
+  .fecha{
+  max-width: 68px;
+  max-height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  color: #737373;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  }
   .icon{
-  box-sizing: border-box;
-  max-width: 38px;
-  max-height: 38px;
+  
+  width: 35px;
+  height: 35px;
   background: #F5F5F5;
-  border: 1px solid #A3A3A3;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -196,8 +169,5 @@ flex-grow: 0;
   order: 6;
   align-self: stretch;
   flex-grow: 0;
-  }
-  .spacer {
-    flex: 1 1 auto;
   }
   

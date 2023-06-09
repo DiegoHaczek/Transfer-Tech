@@ -8,7 +8,7 @@ import { Primer_EmailComponent } from './auth/register/Primer_Email/Primer_Email
 import { Verificar_EmailComponent } from './auth/register/Verificar_Email/Verificar_Email.component';
 import { Frente_DNIComponent } from './auth/register/Frente_DNI/Frente_DNI.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-import { ClientDashboardComponent } from './Components/Cliente/client-dashboard/client-dashboard.component';
+
 import { Verificar_TelefonoComponent } from './auth/register/Verificar_Telefono/Verificar_Telefono.component';
 import { Datos_PersonalesComponent } from './auth/register/Datos_Personales/Datos_Personales.component';
 import { Dorso_DNIComponent } from './auth/register/Dorso_DNI/Dorso_DNI.component';
@@ -42,10 +42,7 @@ const routes: Routes = [
         (m) => m.ClienteModule
       ),
   },
-  {
-    path: 'dash',
-    component: ClientDashboardComponent,
-  },
+ 
 
   {
     path: '**',

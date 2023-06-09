@@ -5,12 +5,13 @@ import { DataTransportService } from 'src/app/Service/data-transport.service';
 import { IClient } from 'src/app/models/IClient';
 
 @Component({
-  selector: 'app-confirmacion-transferencias',
-  templateUrl: './confirmacion-transferencias.component.html',
-  styleUrls: ['./confirmacion-transferencias.component.css'],
+  selector: 'app-deposito',
+  templateUrl: './deposito.component.html',
+  styleUrls: ['./deposito.component.css']
 })
-export class ConfirmacionTransferenciasComponent {
-  id: number = 0;
+export class DepositoComponent {
+
+  id: string = '';
   idReceptor: string = '';
   valor: number = 0;
   client: IClient = {
@@ -28,8 +29,7 @@ export class ConfirmacionTransferenciasComponent {
     cardNumber: '',
   };
   transfer = {
-    receiverAccountId: '',
-    description: '',
+    
     amount: 0,
   };
 
@@ -40,25 +40,15 @@ export class ConfirmacionTransferenciasComponent {
   ) {}
 
   ngOnInit() {
-    this.obtenerData();
-
-    this.clientService
-      .getClientId(Number(this.idReceptor))
-      .subscribe((client) => {
-        this.client = client;
-      });
-  }
-  obtenerData() {
-    this.id = this.transport.obtenerDato('id');
+    this.id  = this.transport.obtenerDato('id');
     this.idReceptor = this.transport.obtenerDato('idReceptor');
-    const transferStr = this.transport.obtenerDato('transfer');
-    if (transferStr) {
-      this.transfer = JSON.parse(transferStr);
-      console.log(this.transfer);
-    }
+    this.clientService.getClientId(Number(this.id)).subscribe((client) => {
+      this.client = client;
+    });
   }
-  confirmarTransferencia() {
-    this.clientService.tranferir(this.id, this.transfer).subscribe(
+  depositar() {
+    
+    this.clientService.depositar(Number(this.id), this.valor).subscribe(
       (response) => {
         console.log(response);
       },
@@ -66,6 +56,7 @@ export class ConfirmacionTransferenciasComponent {
         console.error(error);
       }
     );
-    this.router.navigate(['/cliente/transfer/6']);
+
+    //this.router.navigate(['/cliente/transfer/5']);
   }
 }

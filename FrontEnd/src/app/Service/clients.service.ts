@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ClientsService {
-  apiUrl = 'http://100.24.32.13/api/v1';
+  apiUrl = 'https://transfertech.site/api/v1';
   accountEndpoint = '/account';
-  clientEndpoint = '/user';
   userEndpoint = '/user';
   constructor(private http: HttpClient) {}
 
@@ -43,6 +42,13 @@ export class ClientsService {
     return this.http.post<any>(
       `${this.apiUrl}${this.accountEndpoint}/${id}/transfer`,
       transfer
+    );
+  }
+  depositar(id: number, amount: number): Observable<any> {
+    const requestBody = { amount: amount };
+    return this.http.post<any>(
+      `${this.apiUrl}${this.accountEndpoint}/${id}/deposit `,
+      requestBody
     );
   }
 }

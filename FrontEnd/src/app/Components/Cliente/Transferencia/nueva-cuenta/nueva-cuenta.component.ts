@@ -23,7 +23,11 @@ export class NuevaCuentaComponent {
       } else {
         this.metodoCBU();
       }
-      this.router.navigate(['/cliente/transfer/3']);
+      setTimeout(() => {
+        this.router.navigate(['/cliente/transfer/3']);
+      }, 1000);
+      
+      
     }
   }
   metodoCBU() {
@@ -37,6 +41,7 @@ export class NuevaCuentaComponent {
         console.log(error);
       }
     );
+    
   }
 
   metodoAlias() {

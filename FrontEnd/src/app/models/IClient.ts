@@ -6,4 +6,15 @@ export interface IClient {
   active: boolean;
   alias: string;
   qr: string;
+  cardActive: boolean;
+  cardCvv:number;
+  cardExpiration:string;
+  cardIssuance: string;
+  cardNumber: string;
 }
+
+
+
+
+
+

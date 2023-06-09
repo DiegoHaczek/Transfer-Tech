@@ -26,6 +26,11 @@ export class ComprobanteComponent {
     active: true,
     alias: '',
     qr: '',
+    cardActive: true,
+    cardCvv: 0,
+    cardExpiration: '',
+    cardIssuance: '',
+    cardNumber: '',
   };
   transfer = {
     receiverAccountId: '',

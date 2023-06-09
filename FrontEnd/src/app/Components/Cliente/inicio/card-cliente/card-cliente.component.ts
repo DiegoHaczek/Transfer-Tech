@@ -18,6 +18,11 @@ export class CardClienteComponent {
     active: true,
     alias: '',
     qr: '',
+    cardActive: true,
+    cardCvv: 0,
+    cardExpiration: '',
+    cardIssuance: '',
+    cardNumber: '',
   };
 
   constructor(
