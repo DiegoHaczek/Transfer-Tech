@@ -5,6 +5,7 @@ import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.account.AccountResponseDto;
 import com.transferTech.backend.entity.Account;
+import com.transferTech.backend.entity.Card;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.ForbiddenException;
 import com.transferTech.backend.exception.InputNotValidException;
@@ -25,6 +26,7 @@ import java.util.*;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final CardService cardService;
     private final AccountDtoMapper mapper;
 
     public Account createAccount(User user){
@@ -42,12 +44,14 @@ public class AccountService {
                 .build();
 
         accountRepository.save(newAccount);
+        cardService.generateCreditCard(user);
+
         return newAccount;
     }
     public boolean userHasAnAccount(Long userId){
         return accountRepository.existsByUserId(userId);
     }
-    public BigInteger generateAccountNumber(){
+    public BigInteger generateAccountNumber() {
         int bankID = 132;
         int subsidiaryId = 1050;
         BigInteger maxLimit = new BigInteger("999999999999999");
@@ -69,7 +73,7 @@ public class AccountService {
         }
         return accountNumber;
     }
-    public String generateAlias(){
+    public String generateAlias() {
         List<String> words = new ArrayList<>(List.of("casa", "mesa", "silla", "almohada",
                 "perro", "gato", "leon", "pieza", "armario", "cuna", "rata", "porton", "hueco",
                 "noche", "dia", "mientras", "manija", "diurno", "paz", "sueño", "planta",
@@ -115,6 +119,6 @@ public class AccountService {
             throw new InputNotValidException("The account is already inactive");
         }
         account.deactive();
-        return new MessageResponse(400,"The account is now inactive");
+        return new MessageResponse(200,"The account is now inactive");
     }
 }

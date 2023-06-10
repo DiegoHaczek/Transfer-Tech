@@ -40,7 +40,7 @@ public class UserService {
         user.addContact(contact);
         userRepository.save(user);
 
-        return new MessageResponse(400,"Contact added successfully");
+        return new MessageResponse(200,"Contact added successfully");
     }
     public MessageResponse deleteContact(Long userId, Map<String, Long> contactId) {
         User user = retrieveUser(userId);
@@ -49,7 +49,7 @@ public class UserService {
         user.deleteContact(contact);
         userRepository.save(user);
 
-        return new MessageResponse(400,"Contact deleted successfully");
+        return new MessageResponse(200,"Contact deleted successfully");
     }
     private User retrieveUser(Long userId) {
         return userRepository.findById(userId)
@@ -74,7 +74,7 @@ public class UserService {
             throw new SqlConstraintException("Dni is already associated with another user");
         }
 
-        return new MessageResponse(400,"Profile created successfully");
+        return new MessageResponse(200,"Profile created successfully");
     }
     public UserDto getById(Long userId) {
         return userMapper.EntityToDto(retrieveUser(userId));

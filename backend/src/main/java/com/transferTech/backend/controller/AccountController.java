@@ -7,6 +7,7 @@ import com.transferTech.backend.dto.movement.DepositRequestDto;
 import com.transferTech.backend.dto.movement.MovementDto;
 import com.transferTech.backend.dto.movement.TransferRequestDto;
 import com.transferTech.backend.service.AccountService;
+import com.transferTech.backend.service.CardService;
 import com.transferTech.backend.service.TransferService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class AccountController {
 
     private final AccountService accountService;
     private final TransferService transferService;
+    private final CardService cardService;
 
     @GetMapping("")
     public ResponseEntity<List<AccountResponseDto>> getAllAccounts() {
@@ -70,5 +72,15 @@ public class AccountController {
     @PutMapping("/{accountId}/deactivate")
     public ResponseEntity<MessageResponse> deactivate(@PathVariable Long accountId) {
         return new ResponseEntity<>(accountService.deactivateAccount(accountId),HttpStatus.OK);
+    }
+
+    @PutMapping("/{accountId}/deactivate_card")
+    public ResponseEntity<MessageResponse> deactivateCard(@PathVariable Long accountId) {
+        return new ResponseEntity<>(cardService.deactivateCard(accountId),HttpStatus.OK);
+    }
+
+    @PutMapping("/{accountId}/activate_card")
+    public ResponseEntity<MessageResponse> activateCard(@PathVariable Long accountId) {
+        return new ResponseEntity<>(cardService.activateCard(accountId),HttpStatus.OK);
     }
 }

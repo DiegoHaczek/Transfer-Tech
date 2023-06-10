@@ -15,4 +15,9 @@ public class AccountResponseDto {
     private Double balance;
     private String QR;
     private boolean active;
+    private String cardNumber;
+    private String cardIssuance;
+    private String cardExpiration;
+    private Integer cardCvv;
+    private Boolean cardActive;
 }

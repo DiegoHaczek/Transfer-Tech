@@ -22,9 +22,6 @@ import java.util.Map;
 
     private final AuthService authService;
 
-    //TODO
-    //check Approval Request
-
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(
             @RequestBody @Valid RegisterRequestDto request) {
@@ -32,7 +29,7 @@ import java.util.Map;
         return new ResponseEntity<>(registerResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/authenticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponseDto> authenticateUser(
             @RequestBody AuthenticationRequestDto request) {
         AuthenticationResponseDto authResponse = authService.authenticate(request);
