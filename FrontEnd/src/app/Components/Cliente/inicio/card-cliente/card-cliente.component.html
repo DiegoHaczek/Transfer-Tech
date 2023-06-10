@@ -23,7 +23,7 @@
         <p class="liquidar">$0.00 a liquidar</p>
       </div>
       <div class="col-4 sp">
-        <button mat-button color="accent">
+        <button (click)="botonDecorativo()" mat-button color="accent">
           Plazo fijo
           <mat-icon color="accent" fontIcon="chevron_right"></mat-icon>
         </button>
@@ -32,7 +32,7 @@
     </div>
 
     <mat-card-actions>
-      <button mat-button color="accent">
+      <button (click)="botonDecorativo()" mat-button color="accent">
         <mat-icon fontIcon="share"></mat-icon>
         CVU/Alias
       </button>
@@ -60,7 +60,7 @@
       <div>Ingresar</div>
     </button>
 
-    <button mat-stroked-button class="btn-large" color="accent">
+    <button (click)="botonDecorativo()" mat-stroked-button class="btn-large" color="accent">
       <div>
         <mat-icon>payment</mat-icon>
       </div>

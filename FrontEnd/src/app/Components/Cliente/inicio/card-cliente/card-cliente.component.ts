@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientsService } from 'src/app/Service/clients.service';
 import { DataTransportService } from 'src/app/Service/data-transport.service';
 import { IClient } from 'src/app/models/IClient';
@@ -27,7 +28,8 @@ export class CardClienteComponent {
 
   constructor(
     private clientService: ClientsService,
-    private transport: DataTransportService
+    private transport: DataTransportService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -37,5 +39,11 @@ export class CardClienteComponent {
         this.client = client;
        
       });
+  }
+  botonDecorativo(){
+    this.snackBar.open('Esta funcionalidad todavia esta en desarrollo, proximamente estara disponible', 'Cerrar', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
   }
 }

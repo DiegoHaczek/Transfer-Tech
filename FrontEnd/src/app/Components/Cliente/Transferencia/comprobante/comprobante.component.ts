@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ClientsService } from 'src/app/Service/clients.service';
 import { DataTransportService } from 'src/app/Service/data-transport.service';
@@ -13,7 +14,8 @@ export class ComprobanteComponent {
   constructor(
     private clientService: ClientsService,
     private transport: DataTransportService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   idReceptor: string = '';
@@ -60,4 +62,10 @@ export class ComprobanteComponent {
     this.transport.eliminarDato('idReceptor');
     this.router.navigate(['/cliente']);
   }
-}
+  botonDecorativo(){
+    this.snackBar.open('Esta funcionalidad todavia esta en desarrollo, proximamente estara disponible', 'Cerrar', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
+  }
+ }

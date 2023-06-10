@@ -6,13 +6,15 @@
 
 }
 .body{
-  width: 400px;
+  width: 90%;
   align-items: center;
   margin: 10px;
+  
 }
 @media (min-width: 768px) { 
   .body {
     margin: 40px 60px;
+    width: 400px;
   }
 }
 .example-card {

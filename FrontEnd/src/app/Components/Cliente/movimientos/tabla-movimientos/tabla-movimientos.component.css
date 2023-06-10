@@ -1,6 +1,6 @@
 
 .fondo{
-    padding: 3rem;
+    
     width: 100%;
     min-height: 80vh;
     display: flex;
@@ -8,6 +8,13 @@
     justify-content: center;
     
       }
+      @media (min-width: 768px) { 
+        .fondo{
+          margin-top: 2rem;
+        }
+      }
+
+      
 .container-movimientos {
     display: flex;
     flex-direction: column;

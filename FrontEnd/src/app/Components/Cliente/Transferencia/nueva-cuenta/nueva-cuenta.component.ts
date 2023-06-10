@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ClientsService } from 'src/app/Service/clients.service';
 import { DataTransportService } from 'src/app/Service/data-transport.service';
@@ -14,7 +15,8 @@ export class NuevaCuentaComponent {
   constructor(
     private clientService: ClientsService,
     private transport: DataTransportService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
   obtenerValor() {
     if (this.valor) {
@@ -23,9 +25,7 @@ export class NuevaCuentaComponent {
       } else {
         this.metodoCBU();
       }
-      setTimeout(() => {
-        this.router.navigate(['/cliente/transfer/3']);
-      }, 1000);
+      
       
       
     }
@@ -35,10 +35,15 @@ export class NuevaCuentaComponent {
       (response) => {
         this.id = response.id;
         this.PasarInfo(this.id);
-        console.log(response);
+        setTimeout(() => {
+          this.router.navigate(['/cliente/transfer/3']);
+        }, 1000);
       },
       (error) => {
-        console.log(error);
+        this.snackBar.open('Cuenta no encontrada. Por favor, inténtalo nuevamente.', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
       }
     );
     
@@ -49,9 +54,15 @@ export class NuevaCuentaComponent {
       (response) => {
         this.id = response.id;
         this.PasarInfo(this.id);
+        setTimeout(() => {
+          this.router.navigate(['/cliente/transfer/3']);
+        }, 1000);
       },
       (error) => {
-        console.log(error);
+        this.snackBar.open('Cuenta no encontrada. Por favor, inténtalo nuevamente.', 'Cerrar', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
       }
     );
   }
