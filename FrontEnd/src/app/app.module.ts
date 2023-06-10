@@ -1,27 +1,39 @@
+//Angular Imports
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InicioComponent } from './Components/inicio/inicio.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+
 import { HeaderComponent } from './Components/header/header.component';
-import { FooterComponent } from './Components/footer/footer.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { ClienteModule } from './Components/Cliente/cliente.module';
+import { NgChartsModule } from 'ng2-charts';
+import { DataTransportService } from './Service/data-transport.service';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,
     HeaderComponent,
-    FooterComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    FormsModule,
+    HttpClientModule,
+    AuthModule,
+    ClienteModule,
+    NgChartsModule,
+   
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DataTransportService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

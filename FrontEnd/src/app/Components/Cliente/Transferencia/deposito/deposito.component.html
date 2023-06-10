@@ -1,0 +1,27 @@
+<div class="container-button">
+    <button mat-fab color="accent" onclick="location.href='cliente'" aria-label="Example icon button with a bookmark icon">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    </div>
+<div class="fondo d-flex  align-items-center flex-column">
+    <div class="bloque mb-4 mt-4">
+      <p class="title">¿Cuánto quiere ingresar?</p>
+  
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Ingrese Monto</mat-label>
+          <input matInput [(ngModel)]="valor" name="valor" type="number" />
+        </mat-form-field>
+      </form>
+      <div class="dinero">$ {{ client.balance }} disponibles</div>
+  
+      <button
+        mat-raised-button
+        class="boton"
+        (click)="depositar()"
+        color="accent"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>

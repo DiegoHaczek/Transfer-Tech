@@ -1,0 +1,70 @@
+<div class="body">
+  <h1>
+    Hola, <strong>{{ client.userName }}</strong>
+  </h1>
+  <div class="d-flex justify-content-between mt-2">
+    <div><h3>Tu cuenta</h3></div>
+    <div>
+      <mat-slide-toggle [(ngModel)]="saldo">Ver saldo </mat-slide-toggle>
+    </div>
+  </div>
+
+  <mat-card class="example-card mt-2">
+    <mat-card-header class="p-0">
+      <mat-card-subtitle>Cuenta unica</mat-card-subtitle>
+      <mat-card-title class="numeroCuenta">{{
+        client.accountNumber
+      }}</mat-card-title>
+    </mat-card-header>
+
+    <div class="row">
+      <div class="col-8 sp">
+        <p class="saldo" *ngIf="saldo">{{ client.balance | currency }}</p>
+        <p class="liquidar">$0.00 a liquidar</p>
+      </div>
+      <div class="col-4 sp">
+        <button (click)="botonDecorativo()" mat-button color="accent">
+          Plazo fijo
+          <mat-icon color="accent" fontIcon="chevron_right"></mat-icon>
+        </button>
+        <div class="bagde"><div class="text-bagde">97%</div></div>
+      </div>
+    </div>
+
+    <mat-card-actions>
+      <button (click)="botonDecorativo()" mat-button color="accent">
+        <mat-icon fontIcon="share"></mat-icon>
+        CVU/Alias
+      </button>
+    </mat-card-actions>
+    <mat-card-footer> </mat-card-footer>
+  </mat-card>
+  <div class="d-flex justify-content-between mt-4">
+    <button
+      onclick="location.href='cliente/transfer/1'"
+      mat-stroked-button
+      class="btn-large"
+      color="accent"
+    >
+      <div>
+        <mat-icon>swap_horiz</mat-icon>
+      </div>
+      <div>Transferir</div>
+    </button>
+
+    <button 
+    mat-stroked-button 
+    onclick="location.href='cliente/ingresar'" 
+    class="btn-large" color="accent">
+      <div><mat-icon> transit_enterexit</mat-icon></div>
+      <div>Ingresar</div>
+    </button>
+
+    <button (click)="botonDecorativo()" mat-stroked-button class="btn-large" color="accent">
+      <div>
+        <mat-icon>payment</mat-icon>
+      </div>
+      <div>Pagar</div>
+    </button>
+  </div>
+</div>

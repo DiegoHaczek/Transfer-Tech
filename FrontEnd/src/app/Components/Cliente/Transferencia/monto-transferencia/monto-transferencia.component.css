@@ -1,0 +1,86 @@
+.fondo {
+  background-color: #e5e5e5;
+  width: 100%;
+height: 90vh;
+}
+.bloque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 20px;
+  max-width: 400px;
+  max-height: 510px;
+  background: #fafafa;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}
+.title {
+  max-width: 400px;
+  max-height: 32px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 32px;
+  color: #262626;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 22px;
+  gap: 10px;
+  width: 250px;
+  height: 46px;
+  
+  border-radius: 10px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 24px 16px 16px;
+  gap: 10px;
+  max-width: 456px;
+  max-height: 64px;
+  border-bottom: 1px solid #e5e5e5;
+  flex: none;
+  order: 6;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.dinero{
+max-width: 408px;
+max-height: 24px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.5px;
+color: #737373;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

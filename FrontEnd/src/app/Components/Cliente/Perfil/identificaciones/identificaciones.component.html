@@ -1,0 +1,49 @@
+<div class="container-button">
+  <button mat-fab color="accent" onclick="location.href='cliente/perfil/1'" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  </div>
+<div class="fondo d-flex justify-content-center align-items-center flex-column">
+  <div class="container-movimientos">
+    <div class="ct justify-content-between">
+      <div class="t">CVU</div>
+    </div>
+
+    <div class="cr justify-content-between">
+      <div class="ti">{{ client.accountNumber }}</div>
+      <img src="../../../../../assets/Img/copy.png" alt="" />
+    </div>
+  </div>
+
+  <div class="container-movimientos">
+    <div class="ct justify-content-between">
+      <div class="t">Alias</div>
+    </div>
+
+    <div class="cr justify-content-between">
+      <div class="ti">{{ client.alias }}</div>
+      <img src="../../../../../assets/Img/copy.png" alt="" />
+    </div>
+    <div class="cr justify-content-between">
+      <div class="ti">Modificar Alias</div>
+      <img src="../../../../../assets/Img/go.png" alt="" />
+    </div>
+  </div>
+
+  <div class="container-movimientos">
+    <div class="ct justify-content-between">
+      <div class="t">Codigo QR</div>
+    </div>
+
+    <div class="cr justify-content-center">
+      <img class="qr" src="{{ client.qr }}" alt="" />
+    </div>
+    <div class="cr2 justify-content-between">
+      <div class="desc">
+        Mostra tu codigo Qr para ser escaneado si necesitas que te envien
+        dinero.
+      </div>
+      <div class="desc">Quien lo escanee podrá ver tus datos de cuenta.</div>
+    </div>
+  </div>
+</div>

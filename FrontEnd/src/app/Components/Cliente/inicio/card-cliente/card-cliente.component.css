@@ -1,0 +1,106 @@
+.btn-large {
+  height: 81px;
+  width: 116px;
+  border-radius: 10px;
+  background-color: #FAFAFA;
+
+}
+.body{
+  width: 90%;
+  align-items: center;
+  margin: 10px;
+  
+}
+@media (min-width: 768px) { 
+  .body {
+    margin: 40px 60px;
+    width: 400px;
+  }
+}
+.example-card {
+  
+  max-height:232px ;
+  max-width:400px ;
+  border-radius: 16px;
+  padding: 16px;
+}
+.btn {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+width: 82px;
+height: 20px;
+}
+.sp{
+ 
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-top: 1rem;
+}
+.bagde{
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 4px 8px;
+gap: 10px;
+width: 43px;
+height: 22px;
+background: #CACBFD;
+border: 1px solid #3D42E9;
+border-radius: 20px;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+.text-bagde{
+  width: 27px;
+height: 14px;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 14px;
+color: #404040;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.liquidar{
+max-width: 90px;
+max-height: 18px;
+
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+color: #525252;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+.saldo{
+max-width: 235px;
+max-height: 36px;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+color: #171717;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.numeroCuenta{
+max-width: 79px;
+max-height: 18px;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+color: #525252;
+flex: none;
+order: 1;
+flex-grow: 0;
+}

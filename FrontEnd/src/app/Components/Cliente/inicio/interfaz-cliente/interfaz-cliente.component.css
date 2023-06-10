@@ -1,0 +1,19 @@
+.tarjeta
+.table{
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+  }
+  @media (min-width: 768px) { 
+    .tarjeta,.table {
+      width: 520px;
+    }
+  }
+
+.fondo{
+background-color: #E5E5E5;
+width: 100%;
+
+
+  }
+  

@@ -1,0 +1,24 @@
+<div class="container-button">
+  <button mat-fab color="accent" onclick="location.href='cliente/perfil/1'" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+</div>
+<div class="contenedor">
+    <div class="credit-card">
+      <div class="front">
+        
+        <div class="card-content">
+          <div class="card-number">{{client.cardNumber}}</div>
+          <div class="card-holder">{{client.userName}} </div>
+          
+        </div>
+        
+      </div>
+      <div class="back">
+        <div class="card-content">
+          <div class="expiry-date">{{client.cardCvv}} </div>
+          <div class="expiry-date">{{client.cardExpiration}}</div>
+        </div>
+      </div>
+    </div>
+  </div>

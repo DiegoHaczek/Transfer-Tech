@@ -1,12 +1,35 @@
-<mat-toolbar color="primary">
-  <button  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon  >menu</mat-icon>
+<mat-toolbar class="navbar">
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="button--"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>menu</mat-icon>
+    <span>Menu</span>
   </button>
-  <span>TrasferTech</span>
+  <mat-menu #menu="matMenu">
+    <button onclick="location.href='cliente'" mat-menu-item>
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </button>
+    <button onclick="location.href='cliente/movimientos'" mat-menu-item>
+      <img src="../../../assets/Img/Vector.png" class="pe-4" />
+      <span>Movimientos</span>
+    </button>
+    <button onclick="location.href='cliente/transfer/1'" mat-menu-item>
+      <mat-icon>swap_horiz</mat-icon>
+      <span>Transferir</span>
+    </button>
+    <button onclick="location.href='cliente/perfil/1'" mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Mi perfil</span>
+    </button>
+    <button (click)="cerrarSesion()" mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Salir</span>
+    </button>
+  </mat-menu>
+
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
-
 </mat-toolbar>
-

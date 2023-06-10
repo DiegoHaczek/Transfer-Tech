@@ -1,0 +1,44 @@
+<div class="fondo d-flex  align-items-center flex-column">
+  <div class="bloque mb-4 mt-4">
+    <p class="title">A qué cuenta transferir</p>
+
+    <div
+      onclick="location.href='cliente/transfer/2'"
+      class="contenedor d-flex justify-content-between"
+    >
+      <div class="d-flex align-items-center">
+        <img class="add" src="../../../../assets/Img/Add.png" alt="" />
+        <p class="text m-0">NUEVA CUENTA</p>
+      </div>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </div>
+    <div class="contenedor d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <img class="add" src="../../../../assets/Img/QR.png" alt="" />
+        <p class="text m-0">USAR CODIGO QR</p>
+      </div>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+
+  <div class="container-recientes mb-4">
+    <div class="container-title">
+      <p class="title">Cuentas Recientes</p>
+    </div>
+    <div
+      (click)="PasarInfo(transferencia.accountId)"
+      onclick="location.href='cliente/transfer/3'"
+      *ngFor="let transferencia of transfer"
+      class="recientes"
+    >
+      <div class="datos-cliente d-flex align-items-center">
+        <img class="icon" src="../../../../assets/Img/FotoPerfil.png" alt="" />
+        <div class="container-text">
+          <div class="name">{{ transferencia.userName }}</div>
+          <div class="bank">Banco Galicia</div>
+        </div>
+      </div>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="contenedor">
+  <mat-card class="color mt-3 mb-3">
+    <mat-card-header>
+      <mat-card-title class="Titulo"
+        >Indícanos tu correo electrónico</mat-card-title
+      >
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="registerForm" class="example-form d-flex flex-column mb-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Ex. pat@example.com" formControlName="email" />
+          <mat-error *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+            <span *ngIf="registerForm.get('email')?.errors?.['required']">El email es requerido.</span>
+            <span *ngIf="registerForm.get('email')?.errors?.['email']">El email no es válido.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+            <span *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <div class="C_B">
+      <button
+        mat-raised-button
+        color="accent"
+        class="botones"
+        (click)="registerSubmit()"
+      >
+        Continuar
+      </button>
+    </div>
+  </mat-card>
+</div>

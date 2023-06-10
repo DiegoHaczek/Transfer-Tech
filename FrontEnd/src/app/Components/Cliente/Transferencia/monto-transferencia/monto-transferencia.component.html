@@ -1,0 +1,59 @@
+<div class="fondo d-flex  align-items-center flex-column">
+  <div class="bloque mb-4 mt-4">
+    <p class="title">¿Cuánto transferir?</p>
+
+    <form  class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingrese Monto</mat-label>
+        <input type="number" matInput [formControl]="valor" 
+              >
+        <mat-error *ngIf="valor.hasError('max') ">
+          No tiene suficiente dinero
+        </mat-error>
+        <mat-error *ngIf="valor.hasError('required')">
+         Ingrese cuanto quiere transferir
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Categoria</mat-label>
+      <mat-select matInput [formControl]="Categoria">
+        <mat-option value="Comida" >
+         Comida
+        </mat-option>
+        <mat-option value="Bienestar">
+         Bienestar
+        </mat-option>
+        <mat-option value="Estudio">
+         Estudio
+        </mat-option>
+        <mat-option value="Transporte">
+         Transporte
+        </mat-option>
+        <mat-option value="Vivienda">
+         Vivienda
+        </mat-option>
+        <mat-option value="Otros">
+          Otros
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="Categoria.hasError('required')">
+        Seleccione categoria
+       </mat-error>
+      </mat-form-field>
+      
+    </form>
+    <div class="dinero">$ {{ client.balance }} disponibles</div>
+
+    <button
+      mat-raised-button
+      [disabled]="Categoria.invalid"
+      [disabled]="valor.invalid"
+      class="boton"
+      (click)="guardarTransferencia()"
+      color="accent"
+    >
+      Continuar
+    </button>
+  </div>
+</div>

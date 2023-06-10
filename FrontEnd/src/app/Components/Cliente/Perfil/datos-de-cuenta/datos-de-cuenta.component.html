@@ -1,0 +1,45 @@
+<div class="container-button">
+  <button mat-fab color="accent" onclick="location.href='cliente/perfil/1'" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  </div>
+<div class="fondo d-flex  align-items-center flex-column">
+  <div class="container-movimientos">
+    <div class="ct justify-content-between">
+      <div class="t">Datos de tu cuenta</div>
+      <img src="../../../../../assets/Img/copy.png" alt="" />
+    </div>
+
+    <div class="cr">
+      <div class="ti">Usuario</div>
+      <div class="ti">{{ cuenta.name }}</div>
+    </div>
+    <div class="cr">
+      <div class="ti">Email</div>
+      <div class="ti">{{ cuenta.email }}</div>
+    </div>
+  </div>
+  <div class="container-movimientos">
+    <div class="ct justify-content-between">
+      <div class="t">Datos personales</div>
+      <img src="../../../../../assets/Img/copy.png" alt="" />
+    </div>
+
+    <div class="cr">
+      <div class="ti">Nombre</div>
+      <div class="ti">{{ cuenta.name }}</div>
+    </div>
+    <div class="cr">
+      <div class="ti">DNI</div>
+      <div class="ti">{{ cuenta.dni }}</div>
+    </div>
+    <div class="cr">
+      <div class="ti">Fecha de nacimiento</div>
+      <div class="ti">{{ cuenta.dateOfBirth | date }}</div>
+    </div>
+    <div class="cr">
+      <div class="ti">Telefono</div>
+      <div class="ti">{{ cuenta.phoneNumber }}</div>
+    </div>
+  </div>
+</div>

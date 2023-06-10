@@ -1,0 +1,42 @@
+<div class="fondo d-flex justify-content-center align-items-center flex-column">
+  <div class="bloque mb-4 mt-4">
+    <p class="title">Revisa la información y confirma</p>
+    <div class="div2">
+      <div class="text2">Vas a transferir a {{ client.userName }}</div>
+      <div class="text3">$ {{ transfer.amount }}</div>
+    </div>
+    <div class="div1">
+      <p class="txt1">Lo va a recibir en</p>
+      <div class="container-item">
+        <img src="../../../../../assets/Img/Bank.png" alt="" />
+        <div class="text">
+          <div class="name">Cuenta</div>
+          <div class="label">Santander</div>
+        </div>
+      </div>
+      <div class="container-item">
+        <img src="../../../../../assets/Img/Smile.png" alt="" />
+        <div class="text">
+          <div class="name">Alias</div>
+          <div class="label">{{ client.alias }}</div>
+        </div>
+      </div>
+      <div class="container-item">
+        <img src="../../../../../assets/Img/candado.png" alt="" />
+        <div class="text">
+          <div class="name">CBU</div>
+          <div class="label">{{ client.accountNumber }}</div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      mat-raised-button
+      (click)="confirmarTransferencia()"
+      class="boton"
+      color="accent"
+    >
+      Continuar
+    </button>
+  </div>
+</div>
