@@ -43,7 +43,7 @@ en caso de que se suministre un dominio válido.
 3. Definir las credenciales de SMTP y AWS como variables de entorno o como secretos.
 
 4. Abrir el archivo docker-compose.yml y reemplazar la linea
-'-image:{$IMAGE}' por '-build: .'
+`-image:{$IMAGE}` por `-build: .`
 
 5. Correr el archivo docker-compose.yml
 `docker-compose up`
