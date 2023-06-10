@@ -27,7 +27,7 @@ import { InterfazMovimientosComponent } from './movimientos/interfaz-movimientos
 import { TablaMovimientosComponent } from './movimientos/tabla-movimientos/tabla-movimientos.component';
 import { GraficosMovimientosComponent } from './movimientos/graficos-movimientos/graficos-movimientos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { QrScannerModule } from 'ngx-qrscanner';
+
 
 const Cliente = [
   InterfazClienteComponent,
