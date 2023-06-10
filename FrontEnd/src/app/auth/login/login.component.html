@@ -9,23 +9,25 @@
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input matInput type="email" placeholder="Ex. pat@example.com" formControlName="email" />
-            <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
-                Please enter a valid email address
-              </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+              <span *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido.</span>
+              <span *ngIf="loginForm.get('email')?.errors?.['email']">El email no es válido.</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Contraseña</mat-label>
             <input matInput type="password" formControlName="password" />
+            <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</span>
+            </mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
-      <p class="d-flex align-self-center OlvideContraseña" color="primary" link="">
-        Olvidé mi Contraseña
-      </p>
+      
       <div class="C_B">
-        <button mat-raised-button color="accent" class="botones" (click)="loginSubmit()">Ingresar</button>
+        <button mat-raised-button color="accent" [disabled]="!loginForm.valid" class="botones" (click)="loginSubmit()">Ingresar</button>
         <p class="d-flex align-self-center">¿No tienes una cuenta?</p>
-        <button mat-raised-button class="botones">Crear Cuenta</button>
+        <button mat-raised-button color="accent" class="botones">Crear Cuenta</button>
       </div>
     </mat-card>
   </div>
