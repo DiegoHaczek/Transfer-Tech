@@ -1,40 +1,39 @@
-<div class="container">
+<div class="contenedor">
   <mat-card class="color mt-3 mb-3">
     <mat-card-header>
       <mat-card-title class="Titulo">Datos Personales</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <form class="example-form d-flex flex-column mb-3">
+      <form [formGroup]="profileForm" class="example-form d-flex flex-column mb-3">
         <mat-form-field class="example-full-width">
           <mat-label>Nombre y Apellido</mat-label>
-          <input
-            matInput
-            type="email"
-            placeholder="Juan Perez"
-            class="matInput"
-          />
+          <input matInput type="text" placeholder="Juan Perez" class="matInput" formControlName="name" />
+          <mat-error *ngIf="profileForm.get('name')?.invalid && (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)">
+            El nombre es requerido
+          </mat-error>
         </mat-form-field>
-
+      
         <mat-form-field class="example-full-width">
-          <mat-label>Contraseña</mat-label>
-          <input matInput type="email" placeholder="12.345.678" />
+          <mat-label>DNI</mat-label>
+          <input matInput type="text" formControlName="dni" (input)="formatDni()" />
+          <mat-error *ngIf="profileForm.get('dni')?.invalid && (profileForm.get('dni')?.dirty || profileForm.get('dni')?.touched)">
+            El DNI debe tener 8 numeros
+          </mat-error>
         </mat-form-field>
-
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <mat-label>Fecha de nacimiento</mat-label>
-            <input type="tel" matInput placeholder="DD/MM/AAAA">
-            <mat-icon>calendar_today</mat-icon>
-          </mat-form-field>
-        </form>
-
+      
+        <div class="custom-date-input">
+          <label>Fecha de Nacimiento</label>
+          <input type="date" formControlName="dateOfBirth" class="date-input" />
+          <mat-error *ngIf="profileForm.get('dateOfBirth')?.invalid && (profileForm.get('dateOfBirth')?.dirty || profileForm.get('dateOfBirth')?.touched)">
+            La fecha de nacimiento es requerida
+          </mat-error>
+        </div>
       </form>
     </mat-card-content>
 
-    <div class="C_B ">
-
-      <button mat-raised-button class="botones">Continuar</button>
-  </div >
+    <div class="C_B">
+      <button mat-raised-button (click)="enviarDatos()" class="botones">Continuar</button>
+    </div>
   </mat-card>
 </div>

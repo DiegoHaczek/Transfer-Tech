@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITransfer } from '../models/itransfer';
 import { Observable } from 'rxjs';
+import { Iprofile } from '../models/Iprofile';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ export class ClientsService {
   apiUrl = 'https://transfertech.site/api/v1';
   accountEndpoint = '/account';
   userEndpoint = '/user';
+
   constructor(private http: HttpClient) {}
 
   getClientId(id: number): Observable<any> {
@@ -49,6 +51,13 @@ export class ClientsService {
     return this.http.post<any>(
       `${this.apiUrl}${this.accountEndpoint}/${id}/deposit `,
       requestBody
+    );
+  }
+  crearPerfil(id: number, datos: Iprofile): Observable<any> {
+    console.log(datos)
+    return this.http.post<any>(
+      `${this.apiUrl}${this.userEndpoint}/${id}/profile `,
+      datos
     );
   }
 }

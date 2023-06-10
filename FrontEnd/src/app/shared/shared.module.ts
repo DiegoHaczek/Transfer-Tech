@@ -44,7 +44,7 @@ const shared = [
   MatDialogModule,
   MatTabsModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
   
 
   
