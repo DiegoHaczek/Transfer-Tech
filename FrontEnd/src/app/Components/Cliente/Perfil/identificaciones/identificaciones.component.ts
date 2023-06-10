@@ -17,6 +17,11 @@ export class IdentificacionesComponent {
     active: true,
     alias: '',
     qr: '',
+    cardActive: true,
+    cardCvv: 0,
+    cardExpiration: '',
+    cardIssuance: '',
+    cardNumber: '',
   };
 
   constructor(private clientService: ClientsService, private transport: DataTransportService ) {}

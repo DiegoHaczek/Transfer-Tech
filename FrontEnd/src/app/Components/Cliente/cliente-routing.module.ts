@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from '../inicio/inicio.component';
+
 import { TransferenciasComponent } from './Transferencia/transferencias/transferencias.component';
 import { NuevaCuentaComponent } from './Transferencia/nueva-cuenta/nueva-cuenta.component';
 import { DatosCuentaComponent } from './Transferencia/datos-cuenta/datos-cuenta.component';
@@ -11,11 +11,17 @@ import { PrincipalComponent } from './Perfil/principal/principal.component';
 import { IdentificacionesComponent } from './Perfil/identificaciones/identificaciones.component';
 import { TarjetasComponent } from './Perfil/tarjetas/tarjetas.component';
 import { DatosDeCuentaComponent } from './Perfil/datos-de-cuenta/datos-de-cuenta.component';
+import { InterfazClienteComponent } from './inicio/interfaz-cliente/interfaz-cliente.component';
+import { DepositoComponent } from './Transferencia/deposito/deposito.component';
+import { InterfazMovimientosComponent } from './movimientos/interfaz-movimientos/interfaz-movimientos.component';
+
+
+
 
 const routes: Routes = [
   {
     path: '',
-    component: InicioComponent,
+    component: InterfazClienteComponent,
   },
   {
     path: 'transfer/1',
@@ -56,6 +62,12 @@ const routes: Routes = [
   {
     path: 'perfil/4',
     component: TarjetasComponent,
+  },{
+    path: 'ingresar',
+    component: DepositoComponent,
+  },{
+    path: 'movimientos',
+    component: InterfazMovimientosComponent,
   },
 ];
 

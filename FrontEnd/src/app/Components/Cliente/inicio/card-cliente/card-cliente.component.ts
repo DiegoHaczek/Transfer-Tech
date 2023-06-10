@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from 'src/app/Service/clients.service';
 import { DataTransportService } from 'src/app/Service/data-transport.service';
 import { IClient } from 'src/app/models/IClient';
@@ -19,14 +18,24 @@ export class CardClienteComponent {
     active: true,
     alias: '',
     qr: '',
+    cardActive: true,
+    cardCvv: 0,
+    cardExpiration: '',
+    cardIssuance: '',
+    cardNumber: '',
   };
 
-  constructor(private clientService: ClientsService, private transport: DataTransportService) {}
+  constructor(
+    private clientService: ClientsService,
+    private transport: DataTransportService
+  ) {}
 
   ngOnInit() {
-    this.clientService.getClientId(this.transport.obtenerDato('id')).subscribe((client) => {
-      this.client = client;
-      console.log(client);
-    });
+    this.clientService
+      .getClientId(this.transport.obtenerDato('id'))
+      .subscribe((client) => {
+        this.client = client;
+       
+      });
   }
 }

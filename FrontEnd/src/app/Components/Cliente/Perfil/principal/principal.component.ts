@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientsService } from 'src/app/Service/clients.service';
+import { DataTransportService } from 'src/app/Service/data-transport.service';
 import { IClient } from 'src/app/models/IClient';
 
 @Component({
@@ -16,12 +17,17 @@ export class PrincipalComponent {
     active: true,
     alias: '',
     qr: '',
+    cardActive: true,
+    cardCvv: 0,
+    cardExpiration: '',
+    cardIssuance: '',
+    cardNumber: '',
   };
 
-  constructor(private clientService: ClientsService, ) {}
+  constructor(private clientService: ClientsService, private transport: DataTransportService ) {}
 
   ngOnInit() {
-    this.clientService.getClientId(2).subscribe( (client) => {
+    this.clientService.getClientId(this.transport.obtenerDato('id')).subscribe( (client) => {
       this.client = client;
       console.log(client);
     });
