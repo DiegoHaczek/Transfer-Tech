@@ -1,9 +1,9 @@
-# Bienvenido al repositorio  de Fintech tu proxima billetera virtual 
+# Bienvenido al repositorio  de TransferTech tu proxima billetera virtual 
 
 ## Introduccion
-Fintech nace a traves de solucionar y entender como funciona una billetera virtual para poder facilitar asi una herramienta mas al usuario que permita desde transferir hasta poder interactuar de una manera segura con tu plata.
- es el resultado de un proyecto desafiante construído desde cero, integrando en la misma todos los conocimientos adquiridos durante nuestros años como programadores y con la finalidad de poder seguir progresando en no country.
- La aplicación se trata de una billetera digital en la cual una persona puede transitar por los procesos de registro de usuario, login, envío, recepción y recarga de dinero. Además, es posible realizar transferencias de moneda hacia establecimientos comerciales y operar mediante un CVU (clave virtual uniforme). Es posible agregar a mi lista de contactos otros usuarios de FintTech y visualizar mis estadísticas transaccionales de acuerdo a mi actividad en la aplicación, y muchas otras cosas que hacen de esta aplicacion unica.
+TransferTech nace a traves de solucionar y entender como funciona una billetera virtual para poder facilitar asi una herramienta más al usuario que permita desde transferir hasta poder interactuar de una manera segura con tu plata.
+ Es el resultado de un proyecto desafiante construído desde cero, integrando en la misma todos los conocimientos adquiridos durante nuestros años como programadores y con la finalidad de poder seguir progresando en no country.
+ La aplicación se trata de una billetera digital en la cual una persona puede transitar por los procesos de registro de usuario, login, envío, recepción y recarga de dinero. Además, es posible realizar transferencias de moneda hacia establecimientos comerciales y operar mediante un CVU (clave virtual uniforme) y QR. Es posible agregar a mi lista de contactos otros usuarios de TransferTech y visualizar mis estadísticas transaccionales de acuerdo a mi actividad en la aplicación, y muchas otras cosas que hacen de esta aplicacion única.
 
 ------------
  ## Comenzando
