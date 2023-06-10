@@ -1,19 +1,23 @@
 package com.transferTech.backend.service;
 
+import com.google.zxing.WriterException;
 import com.transferTech.backend.dto.MessageResponse;
 import com.transferTech.backend.dto.account.AccountInfoDto;
 import com.transferTech.backend.dto.account.AccountResponseDto;
 import com.transferTech.backend.entity.Account;
+import com.transferTech.backend.entity.Card;
 import com.transferTech.backend.entity.User;
 import com.transferTech.backend.exception.ForbiddenException;
 import com.transferTech.backend.exception.InputNotValidException;
 import com.transferTech.backend.exception.NotFoundException;
 import com.transferTech.backend.mapper.AccountDtoMapper;
 import com.transferTech.backend.repository.AccountRepository;
+import com.transferTech.backend.utils.QrGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -22,6 +26,7 @@ import java.util.*;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final CardService cardService;
     private final AccountDtoMapper mapper;
 
     public Account createAccount(User user){
@@ -33,18 +38,20 @@ public class AccountService {
                 .user(user)
                 .accountNumber(generateAccountNumber())
                 .alias(generateAlias())
-                .QR(generateQR())
+                .QR(QrGenerator.generateQr(user.getId()))
                 .balance(0.0)
                 .active(true)
                 .build();
 
         accountRepository.save(newAccount);
+        cardService.generateCreditCard(user);
+
         return newAccount;
     }
     public boolean userHasAnAccount(Long userId){
         return accountRepository.existsByUserId(userId);
     }
-    public BigInteger generateAccountNumber(){
+    public BigInteger generateAccountNumber() {
         int bankID = 132;
         int subsidiaryId = 1050;
         BigInteger maxLimit = new BigInteger("999999999999999");
@@ -66,7 +73,7 @@ public class AccountService {
         }
         return accountNumber;
     }
-    public String generateAlias(){
+    public String generateAlias() {
         List<String> words = new ArrayList<>(List.of("casa", "mesa", "silla", "almohada",
                 "perro", "gato", "leon", "pieza", "armario", "cuna", "rata", "porton", "hueco",
                 "noche", "dia", "mientras", "manija", "diurno", "paz", "sueño", "planta",
@@ -85,9 +92,6 @@ public class AccountService {
         }
 
         return alias.get();
-    }
-    public String generateQR(){
-        return "";
     }
     public AccountResponseDto getById(Long accountId) {
         return mapper.EntityToDto(accountRepository.findById(accountId)
@@ -115,6 +119,6 @@ public class AccountService {
             throw new InputNotValidException("The account is already inactive");
         }
         account.deactive();
-        return new MessageResponse(400,"The account is now inactive");
+        return new MessageResponse(200,"The account is now inactive");
     }
 }

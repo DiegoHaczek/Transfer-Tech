@@ -16,8 +16,11 @@ public interface TransferRepository extends JpaRepository<Transfer,Long> {
                  select
                  (case when sender_account_id is null then 'Deposito'
                   when sender_account_id= :Id then 'Transferencia Enviada'
-                 else 'Transferencia Recibida' end) as type,*
-                 from transfers where sender_account_id = :Id or receiver_account_id = :Id ;
+                 else 'Transferencia Recibida' end) as type,
+                 (case when sender_account_id is null then :Id
+                    when sender_account_id= :Id then receiver_account_id
+                    else sender_account_id end) as account_id,*
+                 from transfers where sender_account_id= :Id or receiver_account_id= :Id ;
               """
             ,nativeQuery=true)
     List<Map<String,Object>> getAllMovementsByUserId (@Param("Id") long userId);

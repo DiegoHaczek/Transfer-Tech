@@ -45,11 +45,12 @@ public class TransferService {
                 .amount(dto.getAmount())
                 .dateTime(LocalDateTime.now())
                 .transferCode(generateTransferCode())
-                .description(formatter.formatString(dto.getDescription())).build();
+                .description(formatter.formatString(dto.getDescription()))
+                .build();
 
         updateBalances(newTransfer,receiver,sender);
 
-        return new MessageResponse(400,"Successful Transfer");
+        return new MessageResponse(200,"Successful Transfer");
     }
     @Transactional
     public void updateBalances(Transfer transfer, Account receiver, Account sender) {
@@ -72,7 +73,7 @@ public class TransferService {
 
         updateBalance(newDeposit,receiver);
 
-        return new MessageResponse(400,"Successful Deposit");
+        return new MessageResponse(200,"Successful Deposit");
     }
     @Transactional
     public void updateBalance(Transfer deposit, Account receiver) {
