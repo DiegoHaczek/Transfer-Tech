@@ -29,11 +29,7 @@ FrontEnd:
 `ng serve`
 
 BackEnd:
-
-FrontEnd:
- - Prerequisitos: Tener instalado Docker
-                  Disponer de credenciales válidas de servicio de SMTP
-                  Disponer de credenciales válidas de AWS con permisos para utilizar AWS Rekognition.
+ - Prerequisitos: Tener instalado Docker y disponer de credenciales válidas de servicio de SMTP y de AWS con permisos para utilizar AWS Rekognition.
                   
  - Aclaración: el archivo docker-compose dispone de generación y renovación automática de certificados SSL, y de la configuración automática de Nginx como proxy reverso
 en caso de que se suministre un dominio válido.
