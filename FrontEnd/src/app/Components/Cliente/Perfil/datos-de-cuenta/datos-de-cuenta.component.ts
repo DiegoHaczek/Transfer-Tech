@@ -17,7 +17,7 @@ export class DatosDeCuentaComponent   {
  ngOnInit() {
    this.clientService.getId(this.transport.obtenerDato('id')).subscribe( (data) => {
      this.cuenta = data;
-     console.log(this.cuenta);
+     
    });
  
 } 

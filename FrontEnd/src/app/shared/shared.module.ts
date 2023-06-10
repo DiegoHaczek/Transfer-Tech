@@ -15,11 +15,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -42,11 +41,10 @@ const shared = [
   MatBadgeModule,
   MatMenuModule,
   MatInputModule,
-  MatSnackBarModule,
   MatDialogModule,
   MatTabsModule,
   MatSelectModule,
-  MatSnackBar
+  MatSnackBarModule
   
 
   

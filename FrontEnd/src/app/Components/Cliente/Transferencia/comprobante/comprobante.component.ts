@@ -56,7 +56,8 @@ export class ComprobanteComponent {
     }
   }
   Inicio() {
+    this.transport.eliminarDato('transfer');
     this.transport.eliminarDato('idReceptor');
-    this.router.navigate(['/cliente/transfer/6']);
+    this.router.navigate(['/cliente']);
   }
 }

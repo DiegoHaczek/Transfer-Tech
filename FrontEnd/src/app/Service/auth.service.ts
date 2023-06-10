@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, shareReplay, tap } from 'rxjs';
+import { Observable, Subject, shareReplay, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import jwtDecode from 'jwt-decode';
@@ -8,17 +8,30 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  Auth:string="authenticate"
+  Auth: string = 'authenticate';
   Register: string = 'register';
   apiUrl: string = 'https://transfertech.site/api/v1/auth/';
-  constructor(private http: HttpClient) {}
-
+  private loginStatusSubject: Subject<boolean> = new Subject<boolean>();
+  loginStatus$ = this.loginStatusSubject.asObservable();
+  
+  constructor(private http: HttpClient, private router:Router) {}
+  
+ 
+  
   login(email: string, password: string): Observable<{ token: string }> {
     const body = { email: email, password: password };
-    return this.http.post<{ token: string }>(this.apiUrl + this.Auth, body).pipe(
-      tap(({ token }) => this.saveTokenToLocalStorage(token)),
-      shareReplay()
-    );
+    this.loginStatusSubject.next(true);
+    return this.http
+      .post<{ token: string }>(this.apiUrl + this.Auth, body)
+      .pipe(
+        tap(({ token }) => this.saveTokenToLocalStorage(token)),
+        shareReplay()
+      );
+  }
+  logouth() {
+    localStorage.clear();
+    this.loginStatusSubject.next(false);
+    this.router.navigate(['/login']);
   }
   register(email: string, password: string) {
     const requestData = {

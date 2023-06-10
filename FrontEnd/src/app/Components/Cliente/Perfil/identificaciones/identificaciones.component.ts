@@ -29,7 +29,7 @@ export class IdentificacionesComponent {
   ngOnInit() {
     this.clientService.getClientId(this.transport.obtenerDato('id')).subscribe( (client) => {
       this.client = client;
-      console.log(client);
+      
     });
   }
 }

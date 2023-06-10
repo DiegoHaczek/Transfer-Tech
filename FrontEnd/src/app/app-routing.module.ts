@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { Creacion_CuentaComponent } from './auth/register/Creacion_Cuenta/Creacion_Cuenta.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { Primer_EmailComponent } from './auth/register/Primer_Email/Primer_Email.component';
@@ -14,6 +13,7 @@ import { Datos_PersonalesComponent } from './auth/register/Datos_Personales/Dato
 import { Dorso_DNIComponent } from './auth/register/Dorso_DNI/Dorso_DNI.component';
 import { Selfie_DNIComponent } from './auth/register/Selfie_DNI/Selfie_DNI.component';
 import { Verificar_Telefono_P2Component } from './auth/register/Verificar_Telefono_P2/Verificar_Telefono_P2.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'forgot', component: ForgotPasswordComponent },
   
   {
-    path: 'cliente',
+    path: 'cliente', canActivate: [AuthGuard],
     loadChildren: () =>
       import('./Components/Cliente/cliente.module').then(
         (m) => m.ClienteModule

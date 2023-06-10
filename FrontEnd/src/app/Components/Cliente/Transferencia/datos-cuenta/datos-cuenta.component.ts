@@ -31,7 +31,7 @@ export class DatosCuentaComponent {
     const id = this.transport.obtenerDato('idReceptor');
     this.clientService.getClientId(id).subscribe((client) => {
       this.client = client;
-      console.log(client);
+      
     });
   }
 }
