@@ -1,0 +1,72 @@
+version: '3'
+services:
+  db:
+    ports:
+      - "5432:5432"
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: always
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./vhostd:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+    depends_on:
+      - backend
+
+  letsencrypt:
+      restart: always
+      image: jrcs/letsencrypt-nginx-proxy-companion
+      environment:
+        - NGINX_PROXY_CONTAINER=nginx-proxy
+      volumes:
+        - ./certs:/etc/nginx/certs:rw
+        - ./vhostd:/etc/nginx/vhost.d
+        - ./html:/usr/share/nginx/html
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  backend:
+    image: ${IMAGE}
+    container_name: backend
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      EMAIL_ADDRESS: ${EMAIL_ADDRESS}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      URL_PATH: ${URL_PATH}
+      VIRTUAL_HOST: transfertech.site
+      VIRTUAL_PORT: 8080
+      LETSENCRYPT_HOST: transfertech.site
+      LETSENCRYPT_EMAIL: diegohaczek1996@gmail.com
+    volumes:
+      - ./statics/images:/media
+    depends_on:
+      - letsencrypt
+      - db
+    restart: always
+
+volumes:
+  statics:
+  data:
+  html:
+  certs:
+  vhostd:
