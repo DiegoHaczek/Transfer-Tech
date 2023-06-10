@@ -8,13 +8,14 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  apiRegister: string = 'http://100.24.32.13/api/v1/auth/register';
-  apiUrl: string = 'http://100.24.32.13/api/v1/auth/authenticate';
+  Auth:string="authenticate"
+  Register: string = 'register';
+  apiUrl: string = 'https://transfertech.site/api/v1/auth/';
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<{ token: string }> {
-    const body = { email, password };
-    return this.http.post<{ token: string }>(this.apiUrl, body).pipe(
+    const body = { email: email, password: password };
+    return this.http.post<{ token: string }>(this.apiUrl + this.Auth, body).pipe(
       tap(({ token }) => this.saveTokenToLocalStorage(token)),
       shareReplay()
     );
@@ -25,7 +26,7 @@ export class AuthService {
       password: password,
     };
 
-    return this.http.post<any>(this.apiUrl, requestData);
+    return this.http.post<any>(this.apiUrl + this.Register, requestData);
   }
 
   private saveTokenToLocalStorage(token: string): void {

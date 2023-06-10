@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -16,8 +15,7 @@ import { Datos_PersonalesComponent } from './register/Datos_Personales/Datos_Per
 import { Dorso_DNIComponent } from './register/Dorso_DNI/Dorso_DNI.component';
 import { Selfie_DNIComponent } from './register/Selfie_DNI/Selfie_DNI.component';
 import { Verificar_Telefono_P2Component } from './register/Verificar_Telefono_P2/Verificar_Telefono_P2.component';
-import { Recuperar_ContraseñaComponent } from './login/Recuperar_Contraseña/Recuperar_Contraseña.component';
-import { Visar_ComponenteComponent } from './login/Visar_Componente/Visar_Componente.component';
+
 
 @NgModule({
   declarations: [
@@ -33,8 +31,7 @@ import { Visar_ComponenteComponent } from './login/Visar_Componente/Visar_Compon
     Dorso_DNIComponent,
     Selfie_DNIComponent,
     Verificar_Telefono_P2Component,
-    Recuperar_ContraseñaComponent,
-    Visar_ComponenteComponent,
+   
   ],
   imports: [CommonModule, SharedModule, ReactiveFormsModule, FormsModule],
 })

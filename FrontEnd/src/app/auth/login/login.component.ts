@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
 
@@ -14,27 +9,39 @@ import { AuthService } from 'src/app/Service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm = new FormGroup({
-    email: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
   });
-  constructor(private router: Router, private authService: AuthService) {}
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) {}
+
+ 
 
   loginSubmit() {
-    const email = this.loginForm.get('email')?.value || '';
-    const password = this.loginForm.get('password')?.value || '';
-    this.authService.login(email, password).subscribe(
-      (response) => {
-        // Handle successful login
-        this.router.navigate(['/cliente']);
-      },
-      (error) => {
-        // Handle login error
-        console.error(error);
+    if (this.loginForm && this.loginForm.valid) {
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+     
+  
+      if (email != null && password != null) {
+        this.authService.login(email, password).subscribe(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
       }
-    );
+    }
   }
-  getIdFromLocalStorage(): any {
-    return localStorage.getItem('id');
+
+  getUserIdFromLocalStorage(): string {
+    return localStorage.getItem('id') || '';
   }
 }
