@@ -57,6 +57,6 @@ export class DepositoComponent {
       }
     );
 
-    //this.router.navigate(['/cliente/transfer/5']);
+    this.router.navigate(['/cliente']);
   }
 }

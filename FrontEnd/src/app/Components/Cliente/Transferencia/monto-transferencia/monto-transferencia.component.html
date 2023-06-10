@@ -7,7 +7,7 @@
         <mat-label>Ingrese Monto</mat-label>
         <input type="number" matInput [formControl]="valor" 
               >
-        <mat-error *ngIf="valor.hasError('max') && !valor.hasError('required')">
+        <mat-error *ngIf="valor.hasError('max') ">
           No tiene suficiente dinero
         </mat-error>
         <mat-error *ngIf="valor.hasError('required')">

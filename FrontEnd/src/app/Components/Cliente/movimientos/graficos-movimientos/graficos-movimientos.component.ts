@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
+import { ITransfer } from 'src/app/models/itransfer';
 
 @Component({
   selector: 'app-graficos-movimientos',
@@ -7,12 +8,13 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./graficos-movimientos.component.css']
 })
 export class GraficosMovimientosComponent {
-  @Input() transferencias: any;
-  expensesData: ChartData<'pie'> = {
+  @Input() transferencias!: ITransfer[];
+  transferenciasFiltradas!: ITransfer[];
+  expensesData: ChartData<'pie', number[], unknown> = {
     labels: ['Comida', 'Bienestar', 'Estudio', 'Transporte', 'Vivienda', 'Otros'],
     datasets: [
       {
-        data: this.generateRandomExpenses(),
+        data: [],
         backgroundColor: [
           '#09004D',
           '#424BF5',
@@ -27,15 +29,28 @@ export class GraficosMovimientosComponent {
 
   chartOptions: ChartOptions = {
     responsive: true,
-    
   };
 
-  generateRandomExpenses(): number[] {
-    const expenses: number[] = [];
-    for (let i = 0; i < 6; i++) {
-      expenses.push(Math.floor(Math.random() * 1000) + 1); // Generar un número aleatorio entre 1 y 1000 para cada categoría
+  ngOnChanges() {
+    this.filtrarTransferencias();
+  }
+
+  filtrarTransferencias() {
+    this.transferenciasFiltradas = this.transferencias.filter(transferencia => transferencia.type === 'Transferencia Enviada');
+
+    const sumsByDescription: { [key: string]: number } = {};
+    const descripcionesPosibles = ['Comida', 'Bienestar', 'Estudio', 'Transporte', 'Vivienda', 'Otros'];
+    
+    for (const descripcion of descripcionesPosibles) {
+      sumsByDescription[descripcion] = 0;
     }
-    return expenses;
+  
+    for (const transferencia of this.transferenciasFiltradas) {
+      const descripcion = transferencia.description;
+      const amount = transferencia.amount;
+      sumsByDescription[descripcion] += amount;
+    }
+    
+    this.expensesData.datasets[0].data = descripcionesPosibles.map(descripcion => sumsByDescription[descripcion]);
   }
 }
-

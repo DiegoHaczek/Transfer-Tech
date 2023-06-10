@@ -35,7 +35,7 @@ export class CardClienteComponent {
       .getClientId(this.transport.obtenerDato('id'))
       .subscribe((client) => {
         this.client = client;
-        console.log(client);
+       
       });
   }
 }
