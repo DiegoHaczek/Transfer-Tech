@@ -19,7 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -45,7 +45,7 @@ const shared = [
   MatTabsModule,
   MatSelectModule,
   MatSnackBarModule,
-  
+  MatProgressSpinnerModule
 
   
 ];

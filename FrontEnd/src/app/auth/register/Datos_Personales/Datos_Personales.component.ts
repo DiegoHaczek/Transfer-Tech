@@ -47,7 +47,7 @@ import { ClientsService } from 'src/app/Service/clients.service';
         date_of_birth: this.profileForm.value.dateOfBirth
       };
   
-      this.service.crearPerfil(id, body).subscribe(
+      this.service.createPerfil(id, body).subscribe(
         (response) => {
           this.router.navigate(['/register/5'])
         },

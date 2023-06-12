@@ -7,29 +7,47 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form class="example-form d-flex flex-column mb-3">
+      <div class="example-form d-flex flex-column mb-3">
         <p class="d-flex p-1 Color2">A tener en cuenta</p>
         <ul class="Color">
           <li>Busca un lugar con luz y no uses flash</li>
           <li>Limpia tu camara y mantenela quieta</li>
           <li>Verifica que sea legible la informacion</li>
         </ul>
-      </form>
+      </div>
       <div>
-        <p class="Color2">DNI de frente</p>
+        
         <div class="input-group d-flex pb-2">
-          <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile04"
+            (change)="onInputChange($event)"
+            [(ngModel)]="value"
+          />
         </div>
       </div>
 
-      <div id="dropzone" class="d-flex align-items-center justify-content-center flex-column m-0" (drop)="onFileDropped($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
-        <img src="../../../../../assets/Img/Nube.png" alt="">
-          <div class="arrastrar">Arrastra y suelta los archivos aquí.</div>
-        </div>
+      <div
+        id="dropzone"
+        class="d-flex align-items-center justify-content-center flex-column m-0"
+        (drop)="onFileDropped($event)"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        [style.background-color]="dropzoneColor"
+      >
+        <img src="../../../../../assets/Img/Nube.png" alt="" />
+        <div class="arrastrar">Arrastra y suelta los archivos aquí.</div>
+      </div>
     </mat-card-content>
 
     <div class="C_B">
-      <button mat-raised-button color="accent" class="botones">
+      <button
+        mat-raised-button
+        (click)="continuar()"
+        color="accent"
+        class="botones"
+      >
         Continuar
       </button>
     </div>

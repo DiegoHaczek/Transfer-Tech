@@ -8,10 +8,14 @@
 .container-button {
   display: flex;
   justify-content: flex-start;
-  padding-left: 10rem;
-  width: 100%;
+  padding-left: 1rem;
   padding-top: 2rem;
   background-color: #e5e5e5;
+}
+@media (min-width: 750px) {
+  .container-button {
+    padding-left: 10rem;
+  }
 }
 .credit-card {
   width: 400px;

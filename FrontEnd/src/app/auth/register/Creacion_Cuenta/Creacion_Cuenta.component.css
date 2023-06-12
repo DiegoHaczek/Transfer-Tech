@@ -15,7 +15,7 @@ gap: 10px;
 width: 50rem;
 max-width: 408px;
 max-height: 46px;
-background: #424BF5;
+
 border-radius: 10px;
 flex: none;
 order: 0;
@@ -46,16 +46,7 @@ flex-grow: 1;
   height: 100%;
 }
 
-.OlvideContraseña {
-  max-width: 400px;
-  max-height: 24px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  color: #3335DC;
-}
+
 
 .Titulo {
   max-width: 408px;

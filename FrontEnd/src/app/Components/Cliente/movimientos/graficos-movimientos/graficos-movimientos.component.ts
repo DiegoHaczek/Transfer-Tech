@@ -16,12 +16,12 @@ export class GraficosMovimientosComponent {
       {
         data: [],
         backgroundColor: [
-          '#09004D',
-          '#424BF5',
-          '#2A28D1',
-          '#7F87FC',
+          '#C8CB3B',
           '#A6A9FC',
-          '#EAEAFF',
+          '#D19843',
+          '#C54600',
+          '#007D00',
+          '#1700C0',
         ],
       },
     ],

@@ -53,11 +53,12 @@ export class ClientsService {
       requestBody
     );
   }
-  crearPerfil(id: number, datos: Iprofile): Observable<any> {
-    console.log(datos)
+  createPerfil(id: number, datos: Iprofile): Observable<any> {
+   
     return this.http.post<any>(
       `${this.apiUrl}${this.userEndpoint}/${id}/profile `,
       datos
     );
   }
+
 }

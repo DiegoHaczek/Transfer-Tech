@@ -15,7 +15,7 @@ gap: 10px;
 width: 50rem;
 max-width: 408px;
 max-height: 46px;
-background: #424BF5;
+
 border-radius: 10px;
 flex: none;
 order: 0;
@@ -37,7 +37,7 @@ flex-grow: 1;
 
 }
 
-.container {
+.contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +89,7 @@ flex-grow: 0;
   box-sizing: border-box;
   max-width: 400px;
   height: 140px;
-  background: #E5E5E5;
+ 
   border: 1px dashed #525252;
   border-radius: 12px;
 }

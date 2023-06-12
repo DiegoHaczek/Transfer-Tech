@@ -57,6 +57,7 @@
     flex-direction: row;
     align-items: center;
     padding: 16px;
+    min-height: 62px;
     gap: 40px;
     border-bottom: 1px solid #D4D4D4;
     flex: none;

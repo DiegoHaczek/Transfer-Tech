@@ -3,6 +3,7 @@ import { Observable, Subject, shareReplay, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import jwtDecode from 'jwt-decode';
+import { TagContentType } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,17 @@ export class AuthService {
     const decodedToken: any = jwtDecode(token);
     const id = decodedToken.id;
     localStorage.setItem('id', id);
+  }
+  approvalRegister(id:number, files: File[]): Observable<any> {
+    
+    const formData = new FormData();
+    formData.append('selfie_photo', files[2]);
+    formData.append('identity_card_front', files[0]);
+    formData.append('identity_card_back', files[1]);
+    
+    console.log(files)
+    console.log(formData)
+    return this.http.post(`${this.apiUrl}${id}/approval_request `, formData);
   }
   
 }

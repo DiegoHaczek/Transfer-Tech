@@ -16,11 +16,7 @@ import { DataTransportService } from './Service/data-transport.service';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    PageNotFoundComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +27,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     ClienteModule,
     NgChartsModule,
-   
   ],
   providers: [DataTransportService],
   bootstrap: [AppComponent],
