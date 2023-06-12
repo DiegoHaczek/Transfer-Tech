@@ -54,7 +54,7 @@ export class Dorso_DNIComponent implements OnInit {
   continuar() {
     if (this.files) {
       this.router.navigate(['/register/7']);
-      console.log(this.files);
+    
       this.photoService.setPhoto( this.files);
     }
     else{

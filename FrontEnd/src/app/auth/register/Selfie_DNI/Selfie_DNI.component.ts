@@ -24,7 +24,10 @@ export class Selfie_DNIComponent implements OnInit {
     private service: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+
+  }
   onFileDropped(event: any) {
     event.preventDefault();
     event.stopPropagation();
@@ -62,10 +65,10 @@ export class Selfie_DNIComponent implements OnInit {
     const datos = this.photoService.getPhotos();
         const Id = localStorage.getItem('newId');
         const id = Id ? parseInt(Id) : 0;
-        console.log(datos)
+       
         this.service.approvalRegister(id, datos).subscribe(
           (response) => {
-            if(response.message == 'Documentation is valid. Created account id: 18 ') {
+            if(response.message[0].includes("is valid") ) {
               this.snackBar.open('Cuenta creada con exito' , 'Cerrar'),
             {
               duration: 3000,
@@ -83,8 +86,8 @@ export class Selfie_DNIComponent implements OnInit {
               this.photoService.clearPhotos();
               this.router.navigate(['/register/5']);
             }
-            
-           
+            console.log("respuesta", response.message[0].includes("is valid"))
+            console.log("respuesta", response.message[0])
           },
           (error) => {
             this.snackBar.open('Error desconocido, intenta con imagenes de menor tamaño' , 'Cerrar'),
@@ -103,6 +106,7 @@ export class Selfie_DNIComponent implements OnInit {
           verticalPosition: 'top',
         };
         this.mostrarSpinner=false
+
     }
     
   }

@@ -53,7 +53,7 @@ export class Frente_DNIComponent implements OnInit {
   continuar() {
     if (this.files) {
       this.router.navigate(['/register/6']);
-      console.log(this.files);
+   
       this.photoService.setPhoto( this.files);
     }
     else{

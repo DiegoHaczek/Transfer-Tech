@@ -4,22 +4,22 @@
       <mat-card-title class="Titulo">Verifica tu correo electrónico</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="width">
       <p class="d-flex flex-column mb-3 mt-3 Color">
         Por favor ingresa a tu correo electrónico. Ingresa el código que te enviamos.
       </p>
-      <div>
+     
         <p class="d-flex mt-1">Ingresar Codigo</p>
-        <p class="justify-content-left Color">
-          <mat-form-field class="example-full-width">
+        
+          <mat-form-field class="width">
             <input matInput [(ngModel)]="entrycode" name="entrycode" />
           </mat-form-field>
-        </p>
-      </div>
+        
+      
     </mat-card-content>
 
     <div class="C_B">
-      <button mat-raised-button color="accent" class="botones" (click)="confirmarCodigo()" [disabled]="entrycode !== code">
+      <button mat-raised-button color="accent" class="width" (click)="confirmarCodigo()" [disabled]="entrycode !== code">
         Confirmar Codigo
       </button>
     </div>

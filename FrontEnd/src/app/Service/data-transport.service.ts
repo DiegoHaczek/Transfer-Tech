@@ -15,7 +15,7 @@ export class DataTransportService {
   }
 
   eliminarDato(clave: string): void {
-    console.log(clave);
+
     localStorage.removeItem(clave);
   }
 

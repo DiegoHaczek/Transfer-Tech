@@ -56,8 +56,7 @@ export class AuthService {
     formData.append('identity_card_front', files[0]);
     formData.append('identity_card_back', files[1]);
     
-    console.log(files)
-    console.log(formData)
+   
     return this.http.post(`${this.apiUrl}${id}/approval_request `, formData);
   }
   

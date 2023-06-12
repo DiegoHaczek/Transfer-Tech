@@ -4,8 +4,8 @@
       <mat-card-title class="Titulo">Datos Personales</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content>
-      <form [formGroup]="profileForm" class="example-form d-flex flex-column mb-3">
+    <mat-card-content class="example-full-width">
+      <form [formGroup]="profileForm" class=" d-flex flex-column mb-3">
         <mat-form-field class="example-full-width">
           <mat-label>Nombre y Apellido</mat-label>
           <input matInput type="text" placeholder="Juan Perez" class="matInput" formControlName="name" />
@@ -33,7 +33,7 @@
     </mat-card-content>
 
     <div class="C_B">
-      <button mat-raised-button (click)="enviarDatos()" class="botones">Continuar</button>
+      <button mat-raised-button color="accent" class="example-full-width" (click)="enviarDatos()" >Continuar</button>
     </div>
   </mat-card>
 </div>
